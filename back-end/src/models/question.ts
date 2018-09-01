@@ -2,7 +2,20 @@ import * as mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const QuestionSchema = new Schema({
+export interface IQuestion extends mongoose.Document {
+
+    id?: string
+    statement: string
+    area: string
+    options: Array<String>
+    links: Array<String>
+    correctOption: string 
+}
+
+const questionSchema = new Schema({
+    id: {
+        type: String
+    },
     statement:{
         type: String,
         required: 'Enter the statement!'
@@ -23,5 +36,7 @@ export const QuestionSchema = new Schema({
         type: String,
         required: 'Enter the correct option!'
     }
-});
+})
+
+export const QuestionSchema = mongoose.model<IQuestion>('Question', questionSchema)
 
