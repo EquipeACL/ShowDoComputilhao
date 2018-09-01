@@ -12,7 +12,7 @@ export interface IQuestion extends mongoose.Document {
     correctOption: string 
 }
 
-const questionSchema = new Schema({
+const QuestionSchema = new Schema({
     id: {
         type: String
     },
@@ -38,5 +38,5 @@ const questionSchema = new Schema({
     }
 })
 
-export const QuestionSchema = mongoose.model<IQuestion>('Question', questionSchema)
+export const QuestionModel = mongoose.model<IQuestion>('Question', QuestionSchema)
 

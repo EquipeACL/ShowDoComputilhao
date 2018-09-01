@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Routes } from "./routes/question";
-import * as mongoose from "mongoose"
+import * as mongoose from "mongoose";
 
 class App {
 
@@ -10,13 +10,12 @@ class App {
     public mongoUrl: string = 'mongodb://localhost:27017/sdc';
 
     constructor() {
-        this.app = express();
-        this.managerRoutes.routes(this.app);
+        this.app = express();        
         this.config();
-
+        this.managerRoutes.routes(this.app);
     }
 
-    config(): void {
+    private config(): void {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
 

@@ -6,3 +6,7 @@
 
 #package-lock configuration 
 /back-end/package-lock.json
+
+/show-do-milhao-ui
+
+.gitignore

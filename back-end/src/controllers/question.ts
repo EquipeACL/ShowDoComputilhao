@@ -1,9 +1,7 @@
 import * as mongoose from "mongoose";
-import { QuestionSchema } from "../models/question";
+import { QuestionModel } from "../models/question";
 import { Request, Response } from "express";
-import * as HttpStatus from "http-status"
-
-const QuestionModel = QuestionSchema
+import * as HttpStatus from "http-status";
 
 export class QuestionController {
     public addNewQuestion(req: Request, res: Response) {//Salva uma nova questão
@@ -53,7 +51,7 @@ export class QuestionController {
     }
 
     public deleteQuestion(req: Request, res: Response) {//Delata uma questão pelo id
-        QuestionModel.findOneAndDelete({ _id: req.params.questionId }, (err, question) => {
+        QuestionModel.deleteOne({ _id: req.params.questionId }, (err) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             }
