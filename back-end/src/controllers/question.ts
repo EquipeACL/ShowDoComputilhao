@@ -6,7 +6,7 @@ import * as HttpStatus from "http-status";
 export class QuestionController {
     public addNewQuestion(req: Request, res: Response) {//Salva uma nova questão
         let newQuestion = new QuestionModel(req.body);
-        
+
         newQuestion.save((err, question) => {
             if (err) {
                 switch (err.name) {
@@ -24,7 +24,13 @@ export class QuestionController {
     }
 
     public getQuestionAll(req: Request, res: Response) {//Retorna todas as questoes
-        QuestionModel.find({}).exec((err, questions) => {
+        let filter: any = {}
+        if (req.query.area)
+            filter.area = req.query.area
+        if(req.query.level)
+            filter.level = req.query.level 
+        console.log('filter: ', filter);
+        QuestionModel.find(filter).exec((err, questions) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             }

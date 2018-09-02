@@ -9,7 +9,9 @@ export interface IQuestion extends mongoose.Document {
     area: string
     options: Array<String>
     links: Array<String>
+    level: string
     correctOption: string 
+    comment: string
 }
 
 const QuestionSchema = new Schema({
@@ -35,6 +37,14 @@ const QuestionSchema = new Schema({
     correctOption:{
         type: String,
         required: 'Enter the correct option!'
+    }, 
+    comment: {
+        type: String,
+        required: "Enter the comment"
+    },
+    level: {
+        type: String,
+        required: "Enter the level of answer"
     }
 })
 
