@@ -1,6 +1,6 @@
 import * as express from "express";
 import { MatchController } from "../controllers/match";
-
+import { MatchModel } from "../models/match";
 
 export class RoutesMatch {
 

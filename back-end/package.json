@@ -7,7 +7,10 @@
     "build": "tsc",
     "dev": "ts-node ./src/server.ts",
     "start": "nodemon ./dist/server.js",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && npm run start",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "test:unit": "mocha -r ts-node/register test/unit/**/*.spec.ts",
+    "test:integration": "mocha -r ts-node/register test/integration/**/*.spec.ts"
   },
   "author": "EquipeACL",
   "license": "MIT",
