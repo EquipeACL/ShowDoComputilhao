@@ -7,6 +7,7 @@
 #package-lock configuration 
 /back-end/package-lock.json
 
-/show-do-milhao-ui
+# node modules
+/show-do-milhao-ui/node_modules
 
 .gitignore
