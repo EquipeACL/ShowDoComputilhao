@@ -1,0 +1,36 @@
+h1,h2,h3,h4,h5,h6 {
+    color: black;
+}
+a{
+    text-decoration: none;
+    
+}
+#cronometro{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#cronometro input{
+    text-decoration: none;
+    border: none;
+    width: 30px;
+    text-align: center;
+    background: transparent;
+    font-size: 25px;
+    font-style: oblique;
+    color: white;
+}
+#externa{
+    position: absolute;
+    margin: auto;
+    width: 90%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#errou{
+    z-index: 2000;
+}

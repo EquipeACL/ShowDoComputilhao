@@ -1,0 +1,103 @@
+<div class="container" style="background-color: white; width: 100%; height: 100%;">
+  <div class="container">
+    <h3>Nova pergunta</h3>
+    <form>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="statement">Enunciado:</label>
+          <textarea class="form-control" name="statement" id="statement" rows="2"></textarea>
+        </div>
+        <div class="form-group col-md">
+            <label for="area">Area:</label>
+            <select class="form-control" name="area">
+              <option value="Matematica">Matematica</option>
+            </select>
+          </div>
+          <div class="form-group col-md">
+            <label for="level">Nivel:</label>
+            <select class="form-control" name="level">
+              <option value="">Facil</option>
+              <option value="">Médio</option>
+              <option value="">Dificil</option>
+            </select>
+          </div>
+      </div>
+      
+      <hr>
+
+      <h5>Opções de resposta</h5>
+      <div class="form-group">
+        <div class="form-group">
+          <label for="options">A:</label>
+          <textarea class="form-control" name="options-a" id="options-a" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="options">B:</label>
+          <textarea class="form-control" name="options-b" id="options-b" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="options">C:</label>
+          <textarea class="form-control" name="options-c" id="options-c" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="options">D:</label>
+          <textarea class="form-control" name="options-d" id="options-d" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="area">Opção correta:</label>
+          <select class="form-control" name="area">
+            <option value=""> - - Selecione a opção correta - -</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <h5>Feedback e referências</h5>
+      <div class="form-group">
+        <div class="form-group">
+          <label for="comment">Justifique a resposta correta :</label>
+          <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="comment">Links com referências :</label>
+        </div>
+        <div class="form-group col-md-10">          
+          <input type="text" class="form-control">          
+        </div>
+
+        <div class="form-group col-md-2">
+          <button class="btn btn-default btn-block">Adicionar</button>
+        </div>
+
+
+        <div id="referencias" class="col-md-12">
+      
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <a href="https://getbootstrap.com/docs/4.1/components/alerts/" target="true">https://getbootstrap.com/docs/4.1/components/alerts/</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <a href="https://www.devmedia.com.br/angular-cli-como-criar-artefatos-do-angular/38250" target="true">https://www.devmedia.com.br/angular-cli-como-criar</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Salvar</button>
+      </div>
+    </form>
+
+  </div>
+</div>

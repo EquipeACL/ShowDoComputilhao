@@ -1,0 +1,16 @@
+#cronometro{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#cronometro input{
+    text-decoration: none;
+    border: none;
+    width: 30px;
+    text-align: center;
+    background: transparent;
+    font-size: 25px;
+    font-style: oblique;
+    color: white;
+}
