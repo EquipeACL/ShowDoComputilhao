@@ -9,7 +9,7 @@
 	<!-- DIV DE OPÇÔES -->
 	<div class="col-lg-8">
 		<div class="opcao row" *ngFor="let op of pergunta.options; let i=index">
-			<a href="#" class="genric-btn default-border radius" data-toggle="modal" data-target="#confirmacao" (click)="tocar()">
+			<a class="genric-btn default-border radius" (click)="mostrarConfirmacao()">
 				<button class="btn btn-primary">{{flags[i]}}</button>
 				<span> {{op}}</span>
 			</a>
@@ -90,60 +90,12 @@
 	<!-- FIM DA DIV DE AJUDAS -->
 
 	<!--Modal de confirmar resposta-->
-	<div class="modal show" tabindex="-1" role="dialog" id="confirmacao">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Voce está certo disso?</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-
-					<h4>Valendo R$ 100,00, posso perguntar?</h4>
-				</div>
-				<div class="modal-footer">
-					<div class="col-md">
-						<button type="button" class="btn btn-primary btn-block" data-dismiss="modal" (click)="proxima()">Sim</button>
-					</div>
-					<div class="col-md">
-						<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Não</button>
-					</div>				
-				</div>
-				
-			</div>
-		</div>
-	</div>
+	<app-confirmacao *ngIf="modalconfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorAtual"></app-confirmacao>
 	<!--Fim do modal-->
 
 	<!--Modal de resposta errada-->
-	<div id="externa">
-	<div *ngIf="modalerro" tabindex="-1" role="dialog" id="errou">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Que pena!</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-	
-					<h4>Voçe errou!</h4>
-				</div>
-				<div class="modal-footer">
-					<div class="col-md">
-						<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Fechar</button>
-					</div>
-				</div>
-	
-			</div>
-		</div>
-	</div>
-	</div>
+	<app-erro *ngIf="modalerro" [audio]="nomeaudio" [message]="mensagem" (closeDiv)="closeModalError()"></app-erro>
 	<!--Fim do modal-->
 
-	<!--Fundo preto do modal-->
-	<div class="modal-backdrop show" *ngIf="modalerro"><div>
+	
 </div>

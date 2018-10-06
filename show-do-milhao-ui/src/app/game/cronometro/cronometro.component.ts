@@ -17,6 +17,12 @@ export class CronometroComponent implements OnInit {
     this.cronometroService.resetarCronometro.subscribe(()=>{
       this.resetarCronometro();
     });
+    this.cronometroService.pausarCronometro.subscribe(()=>{
+      this.pausarCronometro();
+    });
+    this.cronometroService.iniciarCronometro.subscribe(()=>{
+      this.timer = this.inciarCronometro();
+    });
   }
 
 
@@ -40,9 +46,15 @@ export class CronometroComponent implements OnInit {
 
   resetarCronometro() {
     clearInterval(this.timer);
+
     this.cronometro = 10;
     this.styleCronometro = "badge-primary";
     this.timer = this.inciarCronometro();
   }
+
+  pausarCronometro() {    
+    clearInterval(this.timer);
+  }
+  
 
 }
