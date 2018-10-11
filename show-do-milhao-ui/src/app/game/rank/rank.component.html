@@ -10,34 +10,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>Jogaodor1</td>
-				<td>R$ 100,00</td>
+			<tr *ngFor="let match of matchs; let i=index">
+				<th scope="row">{{i+1}}</th>
+				<td>{{match.player}}</td>
+				<td>R$ {{match.score}}</td>
 				<td>
-					<a routerLink="/detalhes" class="genric-btn primary-border small">Visualizar</a>
-				</td>
-			</tr>
-
-			<tr>
-				<th scope="row">2</th>
-				<td>Jogaodor2</td>
-				<td>R$ 50,00</td>
-				<td>
-					<a routerLink="/" class="genric-btn primary-border small">Visualizar</a>
-				</td>
-			</tr>
-
-			<tr>
-				<th scope="row">3</th>
-				<td>Jogaodor3</td>
-				<td>R$ 0,00</td>
-				<td>
-					<a routerLink="/detalhes" class="genric-btn primary-border small">Visualizar</a>
+					<a [routerLink]="['/detalhes/',match._id]" class="genric-btn primary-border small">Visualizar</a>
 				</td>
 			</tr>
 
 		</tbody>
 	</table>
 </div>
-<!-- <app-salvar-jogador></app-salvar-jogador> -->
+<app-salvar-jogador *ngIf="modal" (close)="fecharModal()" (salvar)="salvarPartida($event)"></app-salvar-jogador>

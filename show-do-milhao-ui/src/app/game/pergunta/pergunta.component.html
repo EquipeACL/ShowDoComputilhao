@@ -72,7 +72,7 @@
 
 			<div>
 				<img src="../../../assets/img/parar.png">
-				<span class="situacao">R$ 100,00</span>
+				<span class="situacao">R$ {{valorSeParar}}</span>
 				<a href="#" title="Clique aqui se quiser parar o jogo.">
 					<h5>Parar</h5>
 				</a>
@@ -80,7 +80,7 @@
 
 			<div>
 				<img src="../../../assets/img/acertar.png">
-				<span class="situacao">R$ 100,00</span>
+				<span class="situacao">R$ {{valorSeAcertar}}</span>
 				<h5>Acertar</h5>
 			</div>
 
@@ -90,11 +90,11 @@
 	<!-- FIM DA DIV DE AJUDAS -->
 
 	<!--Modal de confirmar resposta-->
-	<app-confirmacao *ngIf="modalconfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorAtual"></app-confirmacao>
+	<app-confirmacao *ngIf="modalconfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorSeAcertar"></app-confirmacao>
 	<!--Fim do modal-->
 
-	<!--Modal de resposta errada-->
-	<app-erro *ngIf="modalerro" [audio]="nomeaudio" [message]="mensagem" (closeDiv)="closeModalError()"></app-erro>
+	<!--Modal de resposta errada/feedback-->
+	<app-erro *ngIf="modalerro" [audio]="nomeaudio" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links" (closeDiv)="closeModalError()"></app-erro>
 	<!--Fim do modal-->
 
 	

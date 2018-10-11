@@ -1,14 +1,38 @@
-<div id="salvarJogador" class="fullscreen">
-  <h4 class="mb-30">Salvar Pontuação</h4>
-  <form class="row" style="align-items: baseline">
-    <div class="form-group col-md-2">
-      <label style="text-align: right;width: 100%;">Seu nome:</label>        
+<div id="externa">
+  <div tabindex="-1" role="dialog" id="salvarJogador">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Salvar Pontuação</h5>
+          <button type="button" class="close" title="Clicando aqui você NÂO salvará sua pontuação." (click)="oncloseevent()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <form #Form="ngForm"  (ngSubmit)="salvarPartida(Form.value.player)">
+          <div class="modal-body">
+            
+              <div class="form-group">
+                <label class="control-label" >Seu nome:</label>
+              </div>
+              <div class="form-group">
+                <input type="text" required minlength="4" class="form-control" name="palyer" #nomeModel="ngModel" [(ngModel)]="Form.value.player" >
+              </div>
+            
+          </div>
+          
+          <div class="modal-footer">
+            <div class="form-group col-md">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="!Form.valid">Salvar</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
     </div>
-    <div class="form-group col-md-8">
-      <input type="text" class="form-control">
-    </div>
-    <div class="form-group col-md-2">
-      <button class="btn btn-primary btn-block">Salvar</button>
-    </div>
-  </form>
+  </div>
 </div>
+
+<!--Fundo preto do modal-->
+<div class="modal-backdrop show"> <div>

@@ -12,6 +12,13 @@ import { RankComponent } from './game/rank/rank.component';
 import { AdminModule } from './admin/admin.module';
 import { CronometroComponent } from './game/cronometro/cronometro.component';
 import { CronometroService } from './game/cronometro/cronometro-service.service';
+import { ConfirmacaoComponent } from './game/confirmacao/confirmacao.component';
+import { ErroComponent } from './game/feedback/feedback.component';
+import { SalvarJogadorComponent } from './game/salvar-jogador/salvar-jogador.component';
+import { MatchService } from './game/servicos/match.service';
+import { HttpModule } from '@angular/http';
+
+
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
@@ -27,19 +34,23 @@ const rotas: Routes = [
     DetalhesJogadorComponent,
     PerguntaComponent,
     RankComponent,
-    CronometroComponent
+    CronometroComponent,
+    ConfirmacaoComponent,
+    ErroComponent,
+    SalvarJogadorComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AdminModule,
+    HttpModule,
     RouterModule.forRoot(
       rotas
       //{ enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [CronometroService],
+  providers: [CronometroService, MatchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

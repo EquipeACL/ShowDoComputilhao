@@ -1,25 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { Router , NavigationExtras} from '@angular/router';
+
 import { CronometroComponent } from '../cronometro/cronometro.component';
 import { CronometroService } from '../cronometro/cronometro-service.service';
-
+import { valores } from './valores-por-pergunta';
+import { IMatch, Match } from './Match';
+import { MatchService } from '../servicos/match.service';
 @Component({
   selector: 'app-pergunta',
   templateUrl: './pergunta.component.html',
   styleUrls: ['./pergunta.component.css']
 })
 export class PerguntaComponent implements OnInit{
-  flags = ['A','B','C','D'];//Indica a letra da resposta
-  valores = [500,600,700,800,900,'1 mil','2 mil','3 mil','4 mil', '5 mil','6 mil','10 mil', '20 mil','30 mil','40 mil', '50 mil','60 mil','100 mil', '200 mil','300 mil','400 mil', '500 mil','600 mil','1 milhão'];// Valores de cada pergunta
-  valorAtual: any;
+  match: IMatch;
+  flags = ['A','B','C','D'];//Indica a letra da resposta  
+  valorSeAcertar: any;
+  valorSeParar: any = 0;
   pergunta: any;//A pergunta da vez
   indeceAtual = 0;
   listaPerguntas: any[];//Todas as perguntas  
-  audio = new Audio('../../../assets/audios/vocetemcerteza.wav');
+  audio = new Audio('../../../assets/audios/vocetemcerteza.mp3');
   modalconfirmacao = false;
   modalerro = false;
   nomeaudio = 'tempoesgotado';
   mensagem = 'Tempo esgotado!';
-  constructor(private cronometroService: CronometroService){
+
+  constructor(private cronometroService: CronometroService, private _router: Router, private matchService: MatchService){
+    this.match =  new Match();
     this.listaPerguntas = [
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 01","area":"Area da questao01","correctOption":"A","level":"low","comment":"Questao facil de mais junior"},
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 02","area":"Area da questao02","correctOption":"A","level":"low","comment":"Questao facil de mais junior"},
@@ -46,7 +53,7 @@ export class PerguntaComponent implements OnInit{
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 10","area":"Area da questao10","correctOption":"B","level":"high","comment":"Questao dificil de mais junior"},
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 10","area":"Area da questao10","correctOption":"B","level":"high","comment":"Questao dificil de mais junior"}
     ];
-    this.valorAtual = this.valores[this.indeceAtual];
+    this.valorSeAcertar = valores[this.indeceAtual];
     this.pergunta = this.listaPerguntas[this.indeceAtual++];
     
   }
@@ -69,24 +76,24 @@ export class PerguntaComponent implements OnInit{
   
   
   proxima() {
-    this.valorAtual = this.valores[this.indeceAtual];
+    this.valorSeAcertar = valores[this.indeceAtual];
     this.pergunta = this.listaPerguntas[this.indeceAtual++];
     this.cronometroService.resetar();
   }
 
   validarResposta(): boolean {     
-    return false;
+    return this.indeceAtual%2==0?false:true;
   }
   
   clicouSim(){
     this.modalconfirmacao = false;
     if(this.validarResposta()){
+      this.valorSeParar = this.valorSeAcertar;
       this.proxima();
     }else{
       this.mensagem = "Você errou!";
       this.nomeaudio = 'quepenavoceerrou';
       this.modalerro = true;
-      //clearInterval(this.timer);
     }
   }
   clicouNao(){
@@ -94,7 +101,23 @@ export class PerguntaComponent implements OnInit{
     this.cronometroService.iniciar();
   }
   closeModalError(){
+    this.match.player = 'FLAG';
+    this.match.score = this.valorSeParar;
+    this.match.data = new Date();
+    this.match.hits = this.indeceAtual-1;
     this.modalerro = false;
+    
+    this.matchService.salvar(this.match)
+      .then((match)=>{
+        let navigationExtras: NavigationExtras = {
+          queryParams: {id:match._id}
+        };
+        this._router.navigate(['rank'], navigationExtras);
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
+    
   }   
 
 }

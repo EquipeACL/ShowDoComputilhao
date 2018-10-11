@@ -2,18 +2,20 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-erro',
-  templateUrl: './erro.component.html',
-  styleUrls: ['./erro.component.css']
+  templateUrl: './feedback.component.html',
+  styleUrls: ['./feedback.component.css']
 })
 export class ErroComponent implements OnInit {
   @Input() audio;
-  @Input() message;
+  @Input() titulo;
+  @Input() comentario;
+  @Input() links;
   @Output() closeDiv = new EventEmitter();
   sound;
   constructor() { }
   
   ngOnInit() {
-    this.sound = new Audio(`../../../assets/audios/${this.audio}.wav`);
+    this.sound = new Audio(`../../../assets/audios/${this.audio}.mp3`);
     this.sound.play();
   }
 

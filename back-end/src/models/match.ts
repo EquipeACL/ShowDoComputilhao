@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 export interface IMatch extends mongoose.Document {
 
-    id?: string
     player: string
     score: number 
     data: Date 
@@ -18,9 +17,7 @@ export interface IMatch extends mongoose.Document {
 }
 
 const MatchSchema = new Schema({
-    id: {
-        type: String
-    },
+    
     player: {
         type: String,
         required: "Enter the name of player"
