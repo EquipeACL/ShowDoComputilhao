@@ -30,8 +30,10 @@ export class MatchController {
     }
 
     public getMatchsAll(req: Request, res: Response) {//Retorna todas as partidas
-
-        return MatchModel.find({}).exec((err, matchs) => {
+        let sort = {"score":"desc", "data": "asc", "hits":"asc", "skips":"desc"}
+        return MatchModel.find({})
+            .sort(sort)
+            .exec((err, matchs) => {
             if (err) res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             else res.status(HttpStatus.OK).send(matchs);
         });
