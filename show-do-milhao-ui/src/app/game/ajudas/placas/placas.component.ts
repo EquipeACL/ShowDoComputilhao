@@ -7,9 +7,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class PlacasComponent implements OnInit {
   @Output() ok = new EventEmitter();
+  audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosnossosconvidados.mp3');
   constructor() { }
 
   ngOnInit() {
+    this.audio.play();
   }
 
   clicouOk() {
