@@ -29,7 +29,6 @@ export class QuestionController {
             filter.area = req.query.area
         if(req.query.level)
             filter.level = req.query.level 
-        console.log('filter: ', filter);
         QuestionModel.find(filter).exec((err, questions) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
