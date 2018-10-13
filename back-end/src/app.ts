@@ -3,12 +3,14 @@ import * as bodyParser from "body-parser";
 import * as morgan from "morgan";
 import { Routes } from "./routes/index";
 import * as mongoose from "mongoose";
+import * as dotenv from 'dotenv'
+dotenv.load()
 
 class App {
 
     public app: express.Application;
     public managerRoutes: Routes;
-    public mongoUrl: string = 'mongodb://localhost:27017/sdc';
+    public mongoUrl: string = `${process.env.DATABASE}`;
 
     constructor() {
         this.app = express();        

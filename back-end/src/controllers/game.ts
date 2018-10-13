@@ -16,7 +16,6 @@ export class GameController {
         }
         if (req.query.area)
             filter.area = req.query.area
-        console.log('filter: ', filter);
         QuestionModel.find(filter).exec((err, questions) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
