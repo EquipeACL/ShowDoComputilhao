@@ -17,14 +17,16 @@ import { ErroComponent } from './game/feedback/feedback.component';
 import { SalvarJogadorComponent } from './game/salvar-jogador/salvar-jogador.component';
 import { MatchService } from './game/servicos/match.service';
 import { HttpModule } from '@angular/http';
-
+import { CartasComponent } from './game/ajudas/cartas/cartas.component';
+import { UniversitariosComponent } from './game/ajudas/universitarios/universitarios.component';
+import { PlacasComponent } from './game/ajudas/placas/placas.component';
 
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
   {path:'rank',component:RankComponent},
   {path:'game',component:PerguntaComponent},
-  {path:'detalhes',component:DetalhesJogadorComponent}
+  {path:'detalhes/:id',component:DetalhesJogadorComponent}
 ];
 @NgModule({
   declarations: [
@@ -37,7 +39,10 @@ const rotas: Routes = [
     CronometroComponent,
     ConfirmacaoComponent,
     ErroComponent,
-    SalvarJogadorComponent
+    SalvarJogadorComponent,
+    CartasComponent,
+    UniversitariosComponent,
+    PlacasComponent
 
   ],
   imports: [

@@ -6,6 +6,7 @@ import { CronometroService } from '../cronometro/cronometro-service.service';
 import { valores } from './valores-por-pergunta';
 import { IMatch, Match } from './Match';
 import { MatchService } from '../servicos/match.service';
+
 @Component({
   selector: 'app-pergunta',
   templateUrl: './pergunta.component.html',
@@ -24,6 +25,10 @@ export class PerguntaComponent implements OnInit{
   modalerro = false;
   nomeaudio = 'tempoesgotado';
   mensagem = 'Tempo esgotado!';
+
+  modalCartas: boolean;
+  modalUniversitarios: boolean;
+  modalPlacas: boolean
 
   constructor(private cronometroService: CronometroService, private _router: Router, private matchService: MatchService){
     this.match =  new Match();
@@ -54,8 +59,7 @@ export class PerguntaComponent implements OnInit{
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 10","area":"Area da questao10","correctOption":"B","level":"high","comment":"Questao dificil de mais junior"}
     ];
     this.valorSeAcertar = valores[this.indeceAtual];
-    this.pergunta = this.listaPerguntas[this.indeceAtual++];
-    
+    this.pergunta = this.listaPerguntas[this.indeceAtual++];    
   }
 
   ngOnInit() {
@@ -101,10 +105,12 @@ export class PerguntaComponent implements OnInit{
     this.cronometroService.iniciar();
   }
   closeModalError(){
-    this.match.player = 'FLAG';
+    
+    this.match.player = ' ';
     this.match.score = this.valorSeParar;
     this.match.data = new Date();
     this.match.hits = this.indeceAtual-1;
+
     this.modalerro = false;
     
     this.matchService.salvar(this.match)
@@ -118,7 +124,60 @@ export class PerguntaComponent implements OnInit{
         console.log(err);
       });
     
-  }   
+  }  
 
+  mostrarCartas() {
+    this.modalCartas = true;
+    this.cronometroService.pausar();
+  }
+
+  cartasFechou() {
+    this.modalCartas = false;
+    this.cronometroService.iniciar();
+  }
+
+  numCartas(event: number) {
+    let temp = [];
+    let index = 0;
+    console.log('Quantidade: '+event);
+    this.pergunta.options.forEach(element => {
+      if(element === this.pergunta.correctOption){
+        temp.push(element);
+      } else {
+        if (index < event) {
+          index++;
+        } else {
+          temp.push(element);
+        }
+      }
+      
+    });
+    this.pergunta.options = temp;
+    this.match.cards = 1;
+  }
+
+
+
+  mostrarUniversitarios() {
+    this.modalUniversitarios = true;
+    this.cronometroService.pausar();
+  }
+
+  universitariosFechou() {
+    this.match.universitaries = 1;
+    this.modalUniversitarios = false;
+    this.cronometroService.iniciar();
+  }
+
+  mostrarPlacas() {
+    this.modalPlacas = true;
+    this.cronometroService.pausar();
+  }
+
+  placasFechou() {
+    this.match.plates = 1;
+    this.modalPlacas = false;
+    this.cronometroService.iniciar();
+  }
 }
 

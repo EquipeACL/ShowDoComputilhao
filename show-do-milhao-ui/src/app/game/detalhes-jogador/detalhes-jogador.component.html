@@ -1,29 +1,30 @@
+<app-menu></app-menu>
 <div id="detalhes" class="fullscreen">
 	<h4 class="mb-30">Detalhes da partida</h4>
 	<form class="row">
 		<div class="form-group col-lg-12">
 			<label for="nome">Jogador:</label>
-			<input type="text" class="form-control" id="nome" placeholder="Nome do jogador" readonly>
+			<input type="text" class="form-control" id="nome" placeholder="Nome do jogador" readonly [value]="match.player">
 		</div>
 
 		<div class="form-group col-lg-4">
-			<label for="pontuacao">Data:</label>
-			<input type="text" class="form-control" id="data" placeholder="14/09/2018" readonly>
+			<label for="data">Data:</label>
+			<input type="text" class="form-control" id="data" placeholder="14/09/2018" readonly [value]="match.data | date:'dd/MM/yyyy hh:mm'">
 		</div>
 
 		<div class="form-group col-lg-4">
 			<label for="pontuacao">Pontuação:</label>
-			<input type="text" class="form-control" id="pontuacao" placeholder="R$ 100,00" readonly>
+			<input type="text" class="form-control" id="pontuacao" placeholder="R$ 100,00" readonly [value]="match.score | currency :'R$ '">
 		</div>
 
 		<div class="form-group col-lg-4">
 			<label for="acertos">Acertos:</label>
-			<input type="number" class="form-control" id="acertos" placeholder="10" readonly>
+			<input type="number" class="form-control" id="acertos" placeholder="10" readonly [value]="match.hits">
 		</div>
 
 	</form>
 	<div class="row">
-		<h4 class="col-lg-2">Ajudas utilizadas</h4>
+		<h4 class="col-lg-4">Ajudas utilizadas</h4>
 	</div>
 	<div class="row">
 		<div id="ajudas-usadas" class="table-responsive col-lg">
@@ -33,18 +34,24 @@
 						<div class="col-lg-2">
 							<img src="../../../assets/img/cartas.png" alt="..." class="rounded">
 							<h6 class="">Cartas</h6>
+							<span class="badge badge-success" *ngIf="match.cards" >Sim</span>
+							<span class="badge badge-secondary" *ngIf="!match.cards">Não</span>
 						</div>
 					</td>
 					<td>
 						<div class="col-lg-2">
 							<img src="../../../assets/img/universitarios.png" alt="..." class="rounded">
 							<h6 class="">Universitários</h6>
+							<span class="badge badge-success" *ngIf="match.universitaries" >Sim</span>
+							<span class="badge badge-secondary" *ngIf="!match.universitaries">Não</span>
 						</div>
 					</td>
 					<td>
 						<div class="col-lg-2">
 							<img src="../../../assets/img/placas.png" alt="..." class="rounded">
 							<h6 class="">Placas</h6>
+							<span class="badge badge-success" *ngIf="match.plates" >Sim</span>
+							<span class="badge badge-secondary" *ngIf="!match.plates">Não</span>
 						</div>
 					</td>
 					<td>
@@ -53,7 +60,7 @@
 							<div class="row">
 								<h6 class="col-lg-2">Pulos: </h6>
 								<span class="badge badge-pill badge-danger" style="position: absolute;
-											margin-left: 60px;">3</span>
+											margin-left: 60px;">{{match.skips}}</span>
 							</div>
 						</div>
 					</td>

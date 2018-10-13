@@ -1,101 +1,108 @@
 <div class="row fullscreen">
 
-	<div class="col-lg-12 pergunta">
-		<p>{{pergunta.statement}}</p>
-		<br>
-		<app-cronometro></app-cronometro>
-	</div>
-
-	<!-- DIV DE OPÇÔES -->
-	<div class="col-lg-8">
-		<div class="opcao row" *ngFor="let op of pergunta.options; let i=index">
-			<a class="genric-btn default-border radius" (click)="mostrarConfirmacao()">
-				<button class="btn btn-primary">{{flags[i]}}</button>
-				<span> {{op}}</span>
-			</a>
-		</div>		
-
-	</div>
-	<!-- FIM DA DIV DE OPÇÔES -->
-
-	<!-- DIV DE AJUDAS -->
-	<div class="col-lg-4 ajudas">
-		<div class="row centralizado">
-			<h4 class="title">Tipos de ajuda</h4>
+		<div class="col-lg-12 pergunta">
+			<p>{{pergunta.statement}}</p>
+			<br>
+			<app-cronometro></app-cronometro>
 		</div>
-
-		<div class="row centralizado">
-			<div class="ajuda cartas">
-				<a href="#" class="genric-btn default-border radius">
-					<img src="../../../assets/img/cartas.png">
-					<h5>Cartas</h5>
-				</a>
-			</div>
-
-			<div class="ajuda universitarios">
-				<a href="#" class="genric-btn default-border radius">
-					<img src="../../../assets/img/universitarios.png">
-					<h5>Universitários</h5>
-				</a>
-			</div>
-
-			<div class="ajuda pular">
-				<a href="#" class="genric-btn default-border radius">
-					<span class="badge badge-pill badge-danger">3</span>
-					<img src="../../../assets/img/pular.png">
-					<h5>Pular</h5>
-
-				</a>
-			</div>
-
-			<div class="ajuda placas ajuda-usada">
-				<a href="#" class="genric-btn default-border radius ajuda-usada">
-					<img src="../../../assets/img/placas.png">
-					<h5>Placas</h5>
-
-				</a>
-			</div>
-
-		</div>
-
-		<div class="row centralizado">
-			<h4 class="title">Situação atual</h4>
-		</div>
-
-		<div class="row centralizado">
-
-			<div>
-				<img src="../../../assets/img/perdeutudo.png">
-				<span class="situacao">Perde tudo</span>
-				<h5>Errar</h5>
-			</div>
-
-			<div>
-				<img src="../../../assets/img/parar.png">
-				<span class="situacao">R$ {{valorSeParar}}</span>
-				<a href="#" title="Clique aqui se quiser parar o jogo.">
-					<h5>Parar</h5>
-				</a>
-			</div>
-
-			<div>
-				<img src="../../../assets/img/acertar.png">
-				<span class="situacao">R$ {{valorSeAcertar}}</span>
-				<h5>Acertar</h5>
-			</div>
-
-		</div>
-
-	</div>
-	<!-- FIM DA DIV DE AJUDAS -->
-
-	<!--Modal de confirmar resposta-->
-	<app-confirmacao *ngIf="modalconfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorSeAcertar"></app-confirmacao>
-	<!--Fim do modal-->
-
-	<!--Modal de resposta errada/feedback-->
-	<app-erro *ngIf="modalerro" [audio]="nomeaudio" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links" (closeDiv)="closeModalError()"></app-erro>
-	<!--Fim do modal-->
-
 	
-</div>
+		<!-- DIV DE OPÇÔES -->
+		<div class="col-lg-8">
+			<div class="opcao row" *ngFor="let op of pergunta.options; let i=index">
+				<a class="genric-btn default-border radius" (click)="mostrarConfirmacao()">
+					<button class="btn btn-primary">{{flags[i]}}</button>
+					<span> {{op}}</span>
+				</a>
+			</div>		
+	
+		</div>
+		<!-- FIM DA DIV DE OPÇÔES -->
+	
+		<!-- DIV DE AJUDAS -->
+		<div class="col-lg-4 ajudas">
+			<div class="row centralizado">
+				<h4 class="title">Tipos de ajuda</h4>
+			</div>
+	
+			<div class="row centralizado">
+				<div class="ajuda cartas">
+					<button class="genric-btn default-border radius" [ngClass]="match.cards?'ajuda-usada':null"(click)="mostrarCartas()" [disabled]="match.cards" >
+						<img src="../../../assets/img/cartas.png" *ngIf="!match.cards">
+						<img src="../../../assets/img/cartas-usada.png" *ngIf="match.cards">
+						<h5>Cartas</h5>
+					</button>
+				</div>
+	
+				<div class="ajuda universitarios" >
+					<button class="genric-btn default-border radius" [ngClass]="match.universitaries?'ajuda-usada':null"  (click)="mostrarUniversitarios()" [disabled]="match.universitaries">
+						<img src="../../../assets/img/universitarios.png" *ngIf="!match.universitaries">
+						<img src="../../../assets/img/universitarios-usada.png" *ngIf="match.universitaries">
+						<h5>Universitários</h5>
+					</button>
+				</div>
+	
+				<div class="ajuda pular">
+					<a href="#" class="genric-btn default-border radius">
+						<span class="badge badge-pill badge-danger">3</span>
+						<img src="../../../assets/img/pular.png">
+						<h5>Pular</h5>
+	
+					</a>
+				</div>
+	
+				<div class="ajuda placas">
+					<button class="genric-btn default-border radius" [ngClass]="match.plates?'ajuda-usada':null" (click)="mostrarPlacas()" [disabled]="match.plates">
+						<img src="../../../assets/img/placas.png" *ngIf="!match.plates">
+						<img src="../../../assets/img/placas-usada.png" *ngIf="match.plates">
+						<h5>Placas</h5>
+	
+					</button>
+				</div>
+	
+			</div>
+	
+			<div class="row centralizado">
+				<h4 class="title">Situação atual</h4>
+			</div>
+	
+			<div class="row centralizado">
+	
+				<div>
+					<img src="../../../assets/img/perdeutudo.png">
+					<span class="situacao">Perde tudo</span>
+					<h5>Errar</h5>
+				</div>
+	
+				<div>
+					<img src="../../../assets/img/parar.png">
+					<span class="situacao">R$ {{valorSeParar}}</span>
+					<a href="#" title="Clique aqui se quiser parar o jogo.">
+						<h5>Parar</h5>
+					</a>
+				</div>
+	
+				<div>
+					<img src="../../../assets/img/acertar.png">
+					<span class="situacao">R$ {{valorSeAcertar}}</span>
+					<h5>Acertar</h5>
+				</div>
+	
+			</div>
+	
+		</div>
+		<!-- FIM DA DIV DE AJUDAS -->
+	
+		<!--Modal de confirmar resposta-->
+		<app-confirmacao *ngIf="modalconfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorSeAcertar"></app-confirmacao>
+		<!--Fim do modal-->
+	
+		<!--Modal de resposta errada/feedback-->
+		<app-erro *ngIf="modalerro" [audio]="nomeaudio" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links" (closeDiv)="closeModalError()"></app-erro>
+		<!--Fim do modal-->
+		
+		<app-cartas *ngIf="modalCartas" (close)="cartasFechou()" (num_cartas)="numCartas($event)" ></app-cartas>
+		
+		<app-universitarios *ngIf="modalUniversitarios" (ok)="universitariosFechou()" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]"></app-universitarios>
+
+		<app-placas *ngIf="modalPlacas" (ok)="placasFechou()"></app-placas>
+	</div>

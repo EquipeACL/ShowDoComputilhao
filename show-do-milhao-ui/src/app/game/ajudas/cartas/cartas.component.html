@@ -1,0 +1,51 @@
+<div id="externa">
+  <div class="" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Escolha sua carta</h5>
+        </div>
+        <div class="modal-body row" style="padding: 0px 0px"> 
+          <div class="col-sm">
+            <button (click)="escolher(0)" class="btn btn-default ajuda-usada" [disabled]="sorteada">
+              <img [src]="temp[0]">
+            </button>
+          </div>
+          <div class="col-sm">
+            <button (click)="escolher(1)" class="btn btn-default ajuda-usada" [disabled]="sorteada">
+              <img [src]="temp[1]">
+            </button>
+          </div>
+          <div class="col-sm">
+            <button (click)="escolher(2)" class="btn btn-default ajuda-usada" [disabled]="sorteada">
+              <img [src]="temp[2]">
+            </button>
+          </div>
+          <div class="col-sm">
+            <button (click)="escolher(3)" class="btn btn-default ajuda-usada" [disabled]="sorteada">
+              <img [src]="temp[3]">
+            </button>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+            
+          <div class="col-md">
+              <button type="button" class="btn btn-secondary btn-block" (click)="cancelar()" [disabled]="sorteada">Cancelar</button>
+          </div>
+          <div class="col-md">
+            <button type="button" class="btn btn-primary btn-block" (click)="ok()" [disabled]="!sorteada">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<!--Fundo preto do modal-->
+<div class="modal-backdrop show">
+  <div>

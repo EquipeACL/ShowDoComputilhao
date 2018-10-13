@@ -25,15 +25,17 @@ export class RankComponent implements OnInit {
   });
   }
   validaId() {
-    this.matchService.buscar(this.id)
+    if(this.id){
+      this.matchService.buscar(this.id)
       .then((match)=>{
-        if(match.player!=='FLAG'){
+        if(match.player!== ' '){
           this._router.navigate(['/rank']);
         }
       })
       .catch((err)=>{
         this._router.navigate(['/rank']);        
       });
+    }
   }
   ngOnInit() {
     this.carregarPartidas();
@@ -77,6 +79,7 @@ export class RankComponent implements OnInit {
   fecharModal(){
     this.matchService.deletar(this.id)
       .then(()=>{
+        this.carregarPartidas();
         this._router.navigate(['/rank']);
       })
       .catch((err)=>{
