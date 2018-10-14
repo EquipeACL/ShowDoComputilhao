@@ -29,6 +29,7 @@ export class PerguntaComponent implements OnInit{
   modalCartas: boolean;
   modalUniversitarios: boolean;
   modalPlacas: boolean
+  modalParar: boolean;
 
   constructor(private cronometroService: CronometroService, private _router: Router, private matchService: MatchService){
     this.match =  new Match();
@@ -104,6 +105,7 @@ export class PerguntaComponent implements OnInit{
     this.modalconfirmacao = false;
     this.cronometroService.iniciar();
   }
+
   closeModalError(){
     
     this.match.player = ' ';
@@ -179,5 +181,20 @@ export class PerguntaComponent implements OnInit{
     this.modalPlacas = false;
     this.cronometroService.iniciar();
   }
+
+  mostrarModalParar(){
+    this.modalParar = true;
+    this.cronometroService.pausar();
+  }
+
+  modalPararOk(){
+    this.modalParar = false;
+    this.closeModalError();
+  }
+  modalPararCancelar(){
+    this.modalParar = false;
+    this.cronometroService.iniciar();
+  }
+  
 }
 

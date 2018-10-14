@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-placas',
@@ -6,7 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./placas.component.css']
 })
 export class PlacasComponent implements OnInit {
-  @Output() ok = new EventEmitter();
+  @Input() correta;
+  @Output() close = new EventEmitter();
   audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosnossosconvidados.mp3');
   constructor() { }
 
@@ -14,8 +15,8 @@ export class PlacasComponent implements OnInit {
     this.audio.play();
   }
 
-  clicouOk() {
-    this.ok.emit();
+  clicouFechar() {
+    this.close.emit();
   }
 
 }

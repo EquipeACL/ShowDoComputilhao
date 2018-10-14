@@ -20,6 +20,7 @@ import { HttpModule } from '@angular/http';
 import { CartasComponent } from './game/ajudas/cartas/cartas.component';
 import { UniversitariosComponent } from './game/ajudas/universitarios/universitarios.component';
 import { PlacasComponent } from './game/ajudas/placas/placas.component';
+import { PararJogoComponent } from './game/parar-jogo/parar-jogo.component';
 
 
 const rotas: Routes = [
@@ -42,7 +43,8 @@ const rotas: Routes = [
     SalvarJogadorComponent,
     CartasComponent,
     UniversitariosComponent,
-    PlacasComponent
+    PlacasComponent,
+    PararJogoComponent
 
   ],
   imports: [

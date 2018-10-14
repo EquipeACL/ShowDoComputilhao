@@ -1,30 +1,50 @@
 <div id="externa">
-    <div class="" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Veja o que dizem os universitarios</h5>
-          </div>
-          <div class="modal-body container" style="padding: 0px 0px"> 
-            <div class="form-group col-md">
-              <input type="text" class="form-control" readonly [value]="'A maioria acredita ser: '+ correta">
-            </div>
-  
-          </div>
-          <div class="modal-footer">
-            <div class="col-md">
-              <button type="button" class="btn btn-primary btn-block" (click)="clicouOk()" >OK</button>
-            </div>
-          </div>
+  <div class="" tabindex="-1" role="dialog">
+    <div class="modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Veja o que dizem os universitários</h5>
+          <button type="button" class="close" (click)="clicouOk()">
+              <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body row">
+          <div class="col">
+            <div class="centralizado">
+              <img src="../../../../assets/img/universitario.png">
+              <h2>
+                <span class="badge badge-light placa">{{correta}}</span>
+              </h2>
+            </div>
+          </div>
+          <div class="col">
+            <div class="centralizado">
+              <img src="../../../../assets/img/caio.png">
+              <h2>
+                <span class="badge badge-light placa">{{correta}}</span>
+              </h2>
+            </div>
+          </div>
+          <div class="col">
+            <div class="centralizado">
+              <img src="../../../../assets/img/lucas.png">
+              <h2>
+                <span class="badge badge-light placa">{{correta}}</span>
+              </h2>
+            </div>
+          </div>
+          
+        </div>
+        
       </div>
     </div>
-  
-  
   </div>
-  
-  
-  
-  <!--Fundo preto do modal-->
-  <div class="modal-backdrop show">
-    <div>
+
+
+</div>
+
+
+
+<!--Fundo preto do modal-->
+<div class="modal-backdrop show">
+  <div>

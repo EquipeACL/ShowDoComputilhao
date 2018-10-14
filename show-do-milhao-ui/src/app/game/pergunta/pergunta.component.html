@@ -87,8 +87,14 @@
 					<h5>Acertar</h5>
 				</div>
 	
+			</div>	
+			
+			<div class="row">
+				<div class="col-md">
+					<button class="btn btn-danger btn-block" (click)="mostrarModalParar()" >PARAR JOGO</button>
+				</div>
 			</div>
-	
+			
 		</div>
 		<!-- FIM DA DIV DE AJUDAS -->
 	
@@ -104,5 +110,7 @@
 		
 		<app-universitarios *ngIf="modalUniversitarios" (ok)="universitariosFechou()" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]"></app-universitarios>
 
-		<app-placas *ngIf="modalPlacas" (ok)="placasFechou()"></app-placas>
+		<app-placas *ngIf="modalPlacas" [correta]="pergunta.correctOption" (close)="placasFechou()"></app-placas>
+
+		<app-parar-jogo *ngIf="modalParar" (onclicksim)="modalPararOk()" (onclicknao)="modalPararCancelar()" ></app-parar-jogo>
 	</div>
