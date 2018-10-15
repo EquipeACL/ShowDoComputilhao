@@ -21,13 +21,15 @@ import { CartasComponent } from './game/ajudas/cartas/cartas.component';
 import { UniversitariosComponent } from './game/ajudas/universitarios/universitarios.component';
 import { PlacasComponent } from './game/ajudas/placas/placas.component';
 import { PararJogoComponent } from './game/parar-jogo/parar-jogo.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
   {path:'rank',component:RankComponent},
   {path:'game',component:PerguntaComponent},
-  {path:'detalhes/:id',component:DetalhesJogadorComponent}
+  {path:'detalhes/:id',component:DetalhesJogadorComponent},
+  {path:'**',component:PaginaNaoEncontradaComponent}
 ];
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ const rotas: Routes = [
     CartasComponent,
     UniversitariosComponent,
     PlacasComponent,
-    PararJogoComponent
+    PararJogoComponent,
+    PaginaNaoEncontradaComponent
 
   ],
   imports: [

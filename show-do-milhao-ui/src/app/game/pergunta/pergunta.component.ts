@@ -93,6 +93,8 @@ export class PerguntaComponent implements OnInit{
   clicouSim(){
     this.modalconfirmacao = false;
     if(this.validarResposta()){
+      let audio = new Audio('../../../assets/audios/certaresposta.mp3');
+      audio.play();
       this.valorSeParar = this.valorSeAcertar;
       this.proxima();
     }else{
