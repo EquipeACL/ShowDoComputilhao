@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  menu: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  clicou(){
+    this.menu = !this.menu;
+  }
 }

@@ -6,12 +6,12 @@
           
         </div>
         <div class="main-menubar d-flex align-items-center">
-          <nav id="menu" class="hide">
+          <nav id="menu" [ngClass]="menu?null:'hide'">
             <a routerLink="/" >Inicio</a>
             <a routerLink="/rank" >Rank</a>
             <a routerLink="/" >Sobre</a>
           </nav>
-          <div class="menu-bar"><span class="lnr lnr-menu"></span></div>
+          <div class="menu-bar"><span [ngClass]="menu?'lnr lnr-cross':'lnr lnr-menu'" (click)="clicou()" ></span></div>
         </div>
       </div>
     </div>

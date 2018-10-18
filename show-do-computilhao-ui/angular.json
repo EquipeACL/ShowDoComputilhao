@@ -28,11 +28,7 @@
               "src/assets/css/linearicons.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [
-              "src/assets/js/vendor/jquery-2.2.4.min.js",
-              "src/assets/js/vendor/bootstrap.min.js",
-              "src/assets/js/main.js"
-            ]
+            "scripts": [ ]
           },
           "configurations": {
             "production": {
