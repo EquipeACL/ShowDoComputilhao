@@ -10,8 +10,8 @@ import { MatchService } from '../servicos/match.service';
   styleUrls: ['./detalhes-jogador.component.css']
 })
 export class DetalhesJogadorComponent implements OnInit {
-  private id: string;
-  private match: IMatch;
+  id: string;
+  match: IMatch;
 
   constructor(private matchService: MatchService,private activeRoute: ActivatedRoute,private router: Router) { 
     this.match = new Match();

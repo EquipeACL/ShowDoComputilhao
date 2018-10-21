@@ -20,7 +20,7 @@ export class PerguntaComponent implements OnInit{
   pergunta: any;//A pergunta da vez
   indeceAtual = 0;
   listaPerguntas: any[];//Todas as perguntas  
-  audio = new Audio('../../../assets/audios/vocetemcerteza.mp3');
+  
   modalconfirmacao = false;
   modalerro = false;
   nomeaudio = 'tempoesgotado';
@@ -30,11 +30,14 @@ export class PerguntaComponent implements OnInit{
   modalUniversitarios: boolean;
   modalPlacas: boolean
   modalParar: boolean;
+  modalPular: boolean;
+
+  classOptions = ['opcao','opcao','opcao','opcao'];
 
   constructor(private cronometroService: CronometroService, private _router: Router, private matchService: MatchService){
     this.match =  new Match();
     this.listaPerguntas = [
-      {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 01","area":"Area da questao01","correctOption":"A","level":"low","comment":"Questao facil de mais junior"},
+      {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Para quais valores de a, b, c, d, e, f a matriz J é diagonalizável?","area":"Area da questao01","correctOption":"A","level":"low","comment":"Questao facil de mais junior"},
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 02","area":"Area da questao02","correctOption":"A","level":"low","comment":"Questao facil de mais junior"},
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 03","area":"Area da questao03","correctOption":"C","level":"high","comment":"Questao dificil de mais junior"},
       {"options":["A","B","C","D"],"links":["link1","link2"],"statement":"Questao 04","area":"Area da questao04","correctOption":"B","level":"medium","comment":"Questao mais ou menos junior"},
@@ -72,18 +75,16 @@ export class PerguntaComponent implements OnInit{
   mostrarConfirmacao() {
     this.modalconfirmacao = true;
     this.cronometroService.pausar();
-    this.tocar();
+    const audio = new Audio('../../../assets/audios/vocetemcerteza.mp3');
+    audio.play();
   }
-
-  tocar(): void {
-    this.audio.play();
-  }
-  
   
   proxima() {
+    this.valorSeParar = this.valorSeAcertar;
     this.valorSeAcertar = valores[this.indeceAtual];
     this.pergunta = this.listaPerguntas[this.indeceAtual++];
     this.cronometroService.resetar();
+    this.classOptions = ['opcao','opcao','opcao','opcao'];
   }
 
   validarResposta(): boolean {     
@@ -93,9 +94,8 @@ export class PerguntaComponent implements OnInit{
   clicouSim(){
     this.modalconfirmacao = false;
     if(this.validarResposta()){
-      let audio = new Audio('../../../assets/audios/certaresposta.mp3');
+      const audio = new Audio('../../../assets/audios/certaresposta.mp3');
       audio.play();
-      this.valorSeParar = this.valorSeAcertar;
       this.proxima();
     }else{
       this.mensagem = "Você errou!";
@@ -140,27 +140,17 @@ export class PerguntaComponent implements OnInit{
     this.cronometroService.iniciar();
   }
 
-  numCartas(event: number) {
-    let temp = [];
-    let index = 0;
-    console.log('Quantidade: '+event);
-    this.pergunta.options.forEach(element => {
-      if(element === this.pergunta.correctOption){
-        temp.push(element);
-      } else {
-        if (index < event) {
-          index++;
-        } else {
-          temp.push(element);
-        }
+  numCartas(event: number) {    
+    let index = 0;    
+    this.pergunta.options.forEach(element => {            
+      if(element !== this.pergunta.correctOption &&  event>0){
+        this.classOptions[index] = 'opcao-invalida';
+        event--;
       }
-      
-    });
-    this.pergunta.options = temp;
+      index++;
+    });    
     this.match.cards = 1;
   }
-
-
 
   mostrarUniversitarios() {
     this.modalUniversitarios = true;
@@ -195,6 +185,21 @@ export class PerguntaComponent implements OnInit{
   }
   modalPararCancelar(){
     this.modalParar = false;
+    this.cronometroService.iniciar();
+  }
+
+  mostrarModalPular(){
+    this.modalPular = true;
+    this.cronometroService.pausar();
+  }
+
+  modalPularSim(){
+    this.modalPular = false;
+    this.proxima();
+    this.match.skips++;
+  }
+  modalPularNao(){
+    this.modalPular = false;
     this.cronometroService.iniciar();
   }
   

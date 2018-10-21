@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node ./src/server.ts",
+    "dev": "nodemon --exec ts-node -- ./src/server.ts",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",

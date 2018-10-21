@@ -5,5 +5,32 @@ a{
     text-decoration: none;
     
 }
-
-
+.opcao-invalida{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor:not-allowed;
+    background-color: #E6E6E6;
+    opacity: 0.5;
+    z-index: 20000;
+}
+.opcao-invalida span{  
+    text-transform: capitalize;  
+    cursor:not-allowed;
+}
+.opcao-invalida button{    
+    cursor:not-allowed;
+}
+.opcao-invalida a{
+    cursor:not-allowed;
+}
+#imagem{
+    background: white;
+    border-radius: 2%;   
+}
+.centralizado{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

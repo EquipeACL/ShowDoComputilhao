@@ -22,6 +22,7 @@ import { UniversitariosComponent } from './game/ajudas/universitarios/universita
 import { PlacasComponent } from './game/ajudas/placas/placas.component';
 import { PararJogoComponent } from './game/parar-jogo/parar-jogo.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { PularComponent } from './game/ajudas/pular/pular.component';
 
 
 const rotas: Routes = [
@@ -47,7 +48,8 @@ const rotas: Routes = [
     UniversitariosComponent,
     PlacasComponent,
     PararJogoComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    PularComponent
 
   ],
   imports: [

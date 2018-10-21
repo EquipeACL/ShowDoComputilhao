@@ -6,7 +6,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./cartas.component.css']
 })
 export class CartasComponent implements OnInit {
-  audio = new Audio('../../../assets/audios/tireaquiasuacartadobaralho.mp3');
   index: number;
   cartas = ['rei','as','2','3'];
   temp = ['../../../../assets/img/costa.png','../../../../assets/img/costa.png','../../../../assets/img/costa.png','../../../../assets/img/costa.png'];
@@ -16,8 +15,8 @@ export class CartasComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.audio.play();
-    
+    const audio = new Audio('../../../assets/audios/tireaquiasuacartadobaralho.mp3');
+    audio.play();    
   }
 
   escolher(i: number) {

@@ -9,11 +9,12 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class UniversitariosComponent implements OnInit {
   @Output() ok = new EventEmitter();
   @Input() correta
-  audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosseuscolegas.mp3');
+  
   constructor() { }
   
   ngOnInit() {
-    this.audio.play();
+    const audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosseuscolegas.mp3');
+    audio.play();
   }
 
   clicouOk(){

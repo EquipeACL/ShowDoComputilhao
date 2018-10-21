@@ -1,18 +1,34 @@
 <div class="row fullscreen">
 
 		<div class="col-lg-12 pergunta">
-			<p>{{pergunta.statement}}</p>
-			<br>
-			<app-cronometro></app-cronometro>
+			<!-- CASO A PERGUNTA TENHA IMAGEM -->
+			<div class="row">
+				<div class="col-sm-8 col-md-8 col-lg-8 centralizado">
+					<h6>{{pergunta.statement}}</h6>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem">
+					<img class="" src="../../../../assets/img/matriz.png">
+				</div>
+			</div>
+
+			<!-- CASO A PERGUNTA NÂO TENHA IMAGEM -->
+			<div class="row" *ngIf="false">
+				<div class="col-sm-12 col-md-12 col-lg-12 centralizado" >
+					<h6>{{pergunta.statement}}</h6>
+				</div>
+			</div>			
+			
+			<app-cronometro></app-cronometro>			
+
 		</div>
 	
 		<!-- DIV DE OPÇÔES -->
 		<div class="col-lg-8">
-			<div class="opcao row" *ngFor="let op of pergunta.options; let i=index">
-				<a class="genric-btn default-border radius" (click)="mostrarConfirmacao()">
-					<button class="btn btn-primary">{{flags[i]}}</button>
+			<div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]" >
+				<button class="genric-btn default-border radius" (click)="mostrarConfirmacao()" [disabled]="classOptions[i]==='opcao-invalida'" >
+					<button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'" >{{flags[i]}}</button>
 					<span> {{op}}</span>
-				</a>
+				</button>
 			</div>		
 	
 		</div>
@@ -42,20 +58,19 @@
 				</div>
 	
 				<div class="ajuda pular">
-					<a href="#" class="genric-btn default-border radius">
-						<span class="badge badge-pill badge-danger">3</span>
-						<img src="../../../assets/img/pular.png">
-						<h5>Pular</h5>
-	
-					</a>
+					<button href="#" class="genric-btn default-border radius" [ngClass]="match.skips==3?'ajuda-usada':null" (click)="mostrarModalPular()" [disabled]="match.skips==3">
+						<span class="badge badge-pill badge-danger">{{3 - match.skips}}</span>
+						<img src="../../../assets/img/pular.png" *ngIf="match.skips<3">
+						<img src="../../../assets/img/pular-usada.png" *ngIf="match.skips==3">
+						<h5>Pular</h5>	
+					</button>
 				</div>
 	
 				<div class="ajuda placas">
 					<button class="genric-btn default-border radius" [ngClass]="match.plates?'ajuda-usada':null" (click)="mostrarPlacas()" [disabled]="match.plates">
 						<img src="../../../assets/img/placas.png" *ngIf="!match.plates">
 						<img src="../../../assets/img/placas-usada.png" *ngIf="match.plates">
-						<h5>Placas</h5>
-	
+						<h5>Placas</h5>	
 					</button>
 				</div>
 	
@@ -113,4 +128,6 @@
 		<app-placas *ngIf="modalPlacas" [correta]="pergunta.correctOption" (close)="placasFechou()"></app-placas>
 
 		<app-parar-jogo *ngIf="modalParar" (onclicksim)="modalPararOk()" (onclicknao)="modalPararCancelar()" ></app-parar-jogo>
+
+		<app-pular *ngIf="modalPular" (onclicksim)="modalPularSim()" (onclicknao)="modalPularNao()" [pulos]="3 - match.skips"></app-pular>
 	</div>

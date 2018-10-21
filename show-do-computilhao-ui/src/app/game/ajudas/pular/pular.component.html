@@ -1,0 +1,38 @@
+<div id="externa">
+  <div class="" tabindex="-1" role="dialog">
+    <div class="modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Deseja pular? </h5>
+        </div>
+        <div class="modal-body row">
+          <div class="col">
+            <div class="centralizado">
+              <div class="col" *ngIf="pulos>1">
+                <h6>Você ainda tem {{pulos}} pulos.</h6>
+              </div>
+              <div class="col" *ngIf="pulos==1">
+                <h6>Este é o seu último pulo.</h6>
+              </div>              
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <div class="col-md">
+            <button type="button" class="btn btn-secondary btn-block" (click)="clicouNao()">Não</button>
+          </div>
+          <div class="col-md">
+            <button type="button" class="btn btn-primary btn-block" (click)="clicouSim()">Sim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!--Fundo preto do modal-->
+<div class="modal-backdrop show">
+  <div>
