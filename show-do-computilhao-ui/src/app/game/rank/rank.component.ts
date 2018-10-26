@@ -38,7 +38,7 @@ export class RankComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.carregarPartidas();
+    this.carregarPartidas();    
   }
 
   carregarPartidas() {

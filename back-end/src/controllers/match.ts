@@ -30,7 +30,7 @@ export class MatchController {
     }
 
     public getMatchsAll(req: Request, res: Response) {//Retorna todas as partidas
-        let sort = {"score":"desc", "data": "asc", "hits":"asc", "skips":"desc"}
+        let sort = { "hits":"desc", "cards":"asc","universitaries":"asc","plates":"asc", "skips":"asc", "data": "asc",}
         return MatchModel.find({})
             .sort(sort)
             .exec((err, matchs) => {
