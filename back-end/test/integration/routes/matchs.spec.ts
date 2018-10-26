@@ -1,11 +1,12 @@
 /**
  * Arquivo criado para testes de integração de Matchs
  */
-import app from "../../../src/app";
+import "mocha";
 import * as request from "supertest";
 import {expect} from "chai";
-import {MatchModel} from "../../../src/models/match";
 import * as HttpStatus from "http-status";
+import app from "../../../src/app";
+import { MatchModel } from "../../../src/models/match";
 
 describe('Routes: Matchs',()=>{
     const defaultId = '56cb91bdc3464f14678934ca';
@@ -13,7 +14,7 @@ describe('Routes: Matchs',()=>{
     const saveMatch = {
         __v:0,
         player: "Fake player",
-        score: 1000,
+        score: "1000",
         data: "2018-09-12T09:17:47.861Z",
         hits: 10,
         skips: 2,
@@ -27,7 +28,7 @@ describe('Routes: Matchs',()=>{
 
     const defaultMatch = {
         player: "Fake player",
-        score: 1000,
+        score: "1000",
         data: "2018-09-12T09:17:47.861Z",
         hits: 10,
         skips: 2,
@@ -44,7 +45,7 @@ describe('Routes: Matchs',()=>{
         __v:0,
         _id:defaultId,
         player: "Fake player",
-        score: 1000,
+        score: "1000",
         data: "2018-09-12T09:17:47.861Z",
         hits: 10,
         skips: 2,
@@ -109,7 +110,7 @@ describe('Routes: Matchs',()=>{
                 __v : 0,
                 _id:"5b991223d9edc50d98bf9498",
                 player: "New player",
-                score: 1000,
+                score: "1000",
                 data: "2018-09-12T09:17:47.861Z",
                 hits: 10,
                 skips: 2,
@@ -163,7 +164,7 @@ describe('Routes: Matchs',()=>{
             __v:0,
             _id:defaultId,
             player: "Fake player",
-            score: 1000,
+            score: "1000",
             data: "2018-09-12T09:17:47.861Z",
             hits: 10,
             skips: 2,

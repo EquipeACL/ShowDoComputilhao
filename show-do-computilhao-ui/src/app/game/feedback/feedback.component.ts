@@ -6,17 +6,19 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./feedback.component.css']
 })
 export class ErroComponent implements OnInit {
-  @Input() audio;
+  
   @Input() titulo;
   @Input() comentario;
   @Input() links;
   @Output() closeDiv = new EventEmitter();
-  sound;
+  
   constructor() { }
   
   ngOnInit() {
-    this.sound = new Audio(`../../../assets/audios/${this.audio}.mp3`);
-    this.sound.play();
+    if(this.titulo !=='Você errou!'){
+      const audio = new Audio(`../../../assets/audios/tempoesgotado.mp3`);
+      audio.play();
+    }
   }
 
   oncloseevent() {

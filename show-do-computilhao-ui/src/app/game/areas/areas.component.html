@@ -1,0 +1,61 @@
+<app-menu></app-menu>
+<div class="fullscreen">
+  <div class="row">
+    <div class="col-lg">
+      <h3>Sobre o POSCOMP</h3>
+      <p style="text-align: justify-all;">POSCOMP é um exame organizado anualmente pela Sociedade Brasileira de Computação com o objetivo de avaliar os conhecimentos
+        em computação dos candidatos a vagas em programas de pós-graduação na área. São avaliadas três competências: matemática,
+        fundamentos da computação e tecnologia da computação, distribuídas em 70 questões de múltipla escolha. Os assuntos
+        abordados em geral fazem parte do currículo dos cursos de computação das principais universidades e faculdades do
+        Brasil. </p>
+      Para mais informações acesse aqui:
+      <a href="http://www.sbc.org.br/educacao/poscomp" target="_blank">www.sbc.org.br</a>
+    </div>
+  </div>
+  <hr>
+  <div class="row centralizado">
+    <div class="col-md-12">
+      <h4>Escolha as areas que deseja jogar.</h4>
+    </div>
+    <div class="col-md-4 checkbox checkbox-primary">
+      <input id="checkbox1" type="checkbox" [(ngModel)]="matematica">
+      <label for="checkbox1">
+        Matemática
+      </label>
+    </div>
+
+    <div class="col-md-4  checkbox checkbox-primary">
+      <input id="checkbox2" type="checkbox" [(ngModel)]="fundamentos">
+      <label for="checkbox2">
+        Fundamentos da Computação
+      </label>
+    </div>
+
+    <div class="col-md-4  checkbox checkbox-primary">
+      <input id="checkbox3" type="checkbox" [(ngModel)]="tecnologias">
+      <label for="checkbox3">
+        Tecnologia da Computação
+      </label>
+    </div>
+
+    <div class="col-md-4  checkbox checkbox-primary">
+      <input id="checkbox4" type="checkbox" [(checked)]="matematica&&fundamentos&&tecnologias" #check (click)="onclickTodas(check.checked)">
+      <label for="checkbox4">
+        Todas as areas
+      </label>
+    </div>
+
+  </div>
+
+  <div class="row centralizado" style="background-color: white">
+    <div class="col-md-4">
+      <button class="genric-btn btn-block primary radius e-large"
+      [ngClass]="matematica||fundamentos||tecnologias||todas?null:'opcao-invalida'"
+      [disabled]="!(matematica||fundamentos||tecnologias||todas)"
+      (click)="iniciarJogo()">Iniciar jogo
+        <span class="lnr lnr-arrow-right"></span>
+      </button>
+    </div>
+  </div>
+
+</div>

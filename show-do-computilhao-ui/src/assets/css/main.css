@@ -28,7 +28,6 @@
 	font-weight:300
 }
 body{
-	color:#777;
 	font-family:"Poppins",sans-serif;font-size:14px;
 	font-weight:300;
 	line-height:1.5em;
@@ -282,6 +281,7 @@ td,th{border-radius:0px}
 .about-area .story-content h2 span{font-weight:600}
 .about-area .story-content p{line-height:1.65em;font-size:14px;font-weight:300}@media (max-width: 768px){.story-content{margin-top:40px;margin-bottom:40px}}.feature-area .overlay-bg{background:rgba(108,187,35,0.85)}.feature-area .icon{font-size:100px;color:#fff;background:#f0f8e9;text-align:center;padding:50px;-webkit-transition:all 0.3s ease 0s;-moz-transition:all 0.3s ease 0s;-o-transition:all 0.3s ease 0s;transition:all 0.3s ease 0s}.feature-area .icon:hover{color:#fff;background-color:#2E2EFE}.feature-area .icon:hover .lnr{color:#fff}.feature-area .lnr{color:#2E2EFE}.feature-area .desc{margin-top:30px}.feature-area .desc h2{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:2.5px}.feature-area .desc p{color:#555}.single-feature{background-color:#fff;padding:30px;margin-bottom:30px}.faq-area{background:#fff}.counter-left{text-align:right}.counter-left h2{font-size:48px;font-weight:100;color:#2E2EFE}.counter-left p{font-size:14px;font-weight:300}.counter-left .single-facts{margin-bottom:26px}@media (max-width: 768px){.counter-left{text-align:center}}.faq-content{padding-left:10%;padding-right:10%}@media (max-width: 1199px){.faq-content{padding-left:2%;padding-right:2%}}@media (max-width: 767px){.faq-content{text-align:center}}.single-faq{margin-bottom:30px}.single-faq h2{font-size:18px;font-weight:600;letter-spacing:3px;margin-top:15px;margin-bottom:25px}.single-faq p{font-size:16px;font-weight:300;line-height:24px}
 .contact-area .overlay-bg{background:rgba(108,187,35,0.85)}.contact-area h2{font-size:36px;font-weight:100}.contact-area h2 span{font-weight:600}.contact-area p{font-size:14px;font-weight:300}.contact-form ::-webkit-input-placeholder{color:#fff;font-weight:300}.contact-form :-moz-placeholder{color:#fff;opacity:1;font-weight:300}.contact-form ::-moz-placeholder{color:#fff;opacity:1;font-weight:300}.contact-form :-ms-input-placeholder{color:#fff;font-weight:300}.contact-form ::-ms-input-placeholder{color:#fff;font-weight:300}.contact-form .alert-msg{color:#fff !important;margin-top:50px;z-index:1}.common-input{border:1px solid #a6d477;line-height:48px;width:100%;display:block;background:transparent;padding:0 25px;color:#fff}.common-textarea{border:1px solid #a6d477;width:100%;display:block;background:transparent;padding:15px 25px;color:#fff;height:150px;resize:none}footer{background:#fff}footer .footer-nav li{margin-top:8px}footer .footer-nav li a{color:#777}footer .footer-nav li a:hover{color:#2E2EFE}.single-footer-widget{margin-bottom:30px}.single-footer-widget h6{color:#000}.footer-bottom{border-top:1px solid #eeeeee;padding-top:40px}.footer-bottom .footer-text{color:#777}.footer-bottom .footer-text i{color:#2E2EFE}.footer-bottom .footer-text a{color:#2E2EFE}.footer-bottom .footer-text a:hover{color:#2E2EFE}@media (max-width: 767px){.footer-social{margin-top:10px}}.footer-social a{width:30px;background:#f9f9ff;line-height:30px;display:inline-block;text-align:center;margin-right:5px}.footer-social a i{color:#777;-webkit-transition:all 0.3s ease 0s;-moz-transition:all 0.3s ease 0s;-o-transition:all 0.3s ease 0s;transition:all 0.3s ease 0s}.footer-social a:last-child{margin-right:0}.footer-social a:hover{background:#2E2EFE}.footer-social a:hover i{color:#fff}.generic-header .menu-bar span{color:#777}.generic-header nav a{color:#000}.generic-banner{background:#fff;color:#222}.about-generic-area{background:#fff}.about-generic-area .border-top-generic{padding:100px 15px}.about-generic-area p{margin-bottom:20px}.white-bg{background:#fff}.section-top-border{padding:70px 0;border-top:1px dotted #eee}.switch-wrap{margin-bottom:10px}.switch-wrap p{margin:0}.elements-banner{color:#000 !important}
+
 body{
 	background:#003c66;
 	background:-webkit-linear-gradient(#005c7a,#001d54);
@@ -301,7 +301,6 @@ body{
 	background:#E6E6E6;
 	padding-top: 10px;
 	width: 100%;
-
 }
 
 .opcao{

@@ -34,3 +34,8 @@ a{
     flex-wrap: wrap;
     justify-content: center;
 }
+.linha-cronometro{
+    position: absolute;
+    top:5px;
+    left: 0px;
+}

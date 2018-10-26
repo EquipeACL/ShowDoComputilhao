@@ -1,13 +1,12 @@
 /**
  * Arquivo criado para testes de integração de Question
  */
-import app from "../../../src/app";
+import "mocha";
 import * as request from "supertest";
 import { expect } from "chai";
-import { QuestionModel } from "../../../src/models/question";
 import * as HttpStatus from "http-status";
-import { ObjectId } from "bson";
-
+import app from "../../../src/app";
+import { QuestionModel } from "../../../src/models/question";
 
 describe('Routes: Questions', () => {
 

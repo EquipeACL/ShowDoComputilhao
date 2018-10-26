@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 export interface IMatch extends mongoose.Document {
     
     player: string
-    score: number 
+    score: string 
     data: Date 
     hits: number
     skips: number
@@ -23,7 +23,7 @@ const MatchSchema = new Schema({
         required: "Enter the name of player"
     },
     score: {
-        type: Number,
+        type: String,
         required: "Enter the user score"
     },
     data: {

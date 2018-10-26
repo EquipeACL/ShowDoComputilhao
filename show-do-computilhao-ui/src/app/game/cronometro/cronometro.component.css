@@ -1,21 +1,27 @@
-#cronometro{
-    position: absolute;
-    top: -45px;
-    right: 0px;
+.cronometro{
+    background:#0a93c0;
+    border-radius: 0.5rem;
+}
+
+.cronometro span{
     width: 100%;
 }
 
-#cronometro span{
-    width: 100%;
-}
-
-#cronometro input{
+.cronometro input{
     text-decoration: none;
     border: none;
     width: 100%;
     text-align: center;
     background: transparent;
-    font-size: 25px;
+    font-size: 20px;
     font-style: oblique;
     color: white;
+}
+
+.cronometro-acabou{
+    background:gray;
+}
+
+.ultimos-segundos{
+    background: #dc3545;
 }

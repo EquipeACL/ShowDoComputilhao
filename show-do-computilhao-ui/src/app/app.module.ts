@@ -23,11 +23,14 @@ import { PlacasComponent } from './game/ajudas/placas/placas.component';
 import { PararJogoComponent } from './game/parar-jogo/parar-jogo.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { PularComponent } from './game/ajudas/pular/pular.component';
+import { ValidandoRespostaComponent } from './game/validando-resposta/validando-resposta.component';
+import { AreasComponent } from './game/areas/areas.component';
 
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
   {path:'rank',component:RankComponent},
+  {path:'gameareas',component:AreasComponent},
   {path:'game',component:PerguntaComponent},
   {path:'detalhes/:id',component:DetalhesJogadorComponent},
   {path:'**',component:PaginaNaoEncontradaComponent}
@@ -49,7 +52,9 @@ const rotas: Routes = [
     PlacasComponent,
     PararJogoComponent,
     PaginaNaoEncontradaComponent,
-    PularComponent
+    PularComponent,
+    ValidandoRespostaComponent,
+    AreasComponent
 
   ],
   imports: [

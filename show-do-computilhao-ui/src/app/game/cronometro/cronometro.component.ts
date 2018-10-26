@@ -7,8 +7,8 @@ import { CronometroService } from './cronometro-service.service';
   styleUrls: ['./cronometro.component.css']
 })
 export class CronometroComponent implements OnInit {
-  cronometro = 120;
-  styleCronometro = "badge-primary";
+  cronometro = 1000;
+  styleCronometro = "cronometro";
   timer;
   constructor(private cronometroService: CronometroService ) { }
 
@@ -32,12 +32,12 @@ export class CronometroComponent implements OnInit {
     const time = setInterval(() => {
       this.cronometro--;
       if (this.cronometro === 0) {
-        this.styleCronometro = "badge-secondary";
+        this.styleCronometro = "cronometro-acabou";
         this.cronometroService.zerou();
         clearInterval(time);
       }
       if (this.cronometro === 5) {
-        this.styleCronometro = "badge-danger";
+        this.styleCronometro = "ultimos-segundos";
       }
     }, 1000);
     return time;
