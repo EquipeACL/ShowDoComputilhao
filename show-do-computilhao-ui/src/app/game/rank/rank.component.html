@@ -1,27 +1,50 @@
 <app-menu></app-menu>
 <div id="rank" class="fullscreen">
-	<h4 class="mb-30">Rank</h4>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Jogador</th>
-				<th scope="col">Pontuação</th>
-				<th scope="col">Detalhes</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let match of matchs; let i=index">
-				<th scope="row">{{i+1}}</th>
-				<td>{{match.player}}</td>
-				<td>R$ {{match.score}}</td>
-				<td>
-					<a [routerLink]="['/detalhes/',match._id]" class="genric-btn primary-border small">Visualizar</a>
-				</td>
-			</tr>
+	<div style="height: 100%;">
+		<h4 class="mb-30">Rank</h4>
+		<table class="table table-striped table-sm" style="height: 90%">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Jogador</th>
+					<th scope="col">Pontuação</th>
+					<th scope="col">Detalhes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let match of matchs; let i=index;">
+					<th scope="row">{{pagina*rows+i+1}}</th>
+					<td>{{match.player}}</td>
+					<td *ngIf="match.score!=''">R$ {{match.score}}</td>
+					<td *ngIf="match.score==''">{{match.score}}</td>
+					<td *ngIf="match._id!=''">
+						<a [routerLink]="['/detalhes/',match._id]" class="genric-btn primary-border small">Visualizar</a>
+					</td>
+					<td *ngIf="match._id==''">
+						
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						<ul class="pagination">
+							<li class="page-item" [ngClass]="pagina==0?'desativado':null">
+								<button class="page-link" (click)="anterior()" [disabled]="pagina==0">Anterior</button>
+							</li>
+							
+							<li class="page-item" [ngClass]="chegouAoFim()?'desativado':null">
+								<button class="page-link" (click)="proximo()" [disabled]="chegouAoFim()">Proximo</button>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 
-		</tbody>
-	</table>
-	
+
+
+	</div>
+
 </div>
 <app-salvar-jogador *ngIf="modal" (close)="fecharModal()" (salvar)="salvarPartida($event)"></app-salvar-jogador>

@@ -12,80 +12,132 @@ export class RankComponent implements OnInit {
   id: string;
   modal: boolean = false;
   matchs = [];
-  
-  constructor(private route: ActivatedRoute, private matchService: MatchService,private _router: Router) { 
+  rows: number = 10;
+  pagina: number = 0;
+
+  constructor(private route: ActivatedRoute, private matchService: MatchService, private _router: Router) {
     this.route.queryParams.subscribe((params: any) => {
-      if(JSON.stringify(params) !== '{}'){
+      if (JSON.stringify(params) !== '{}') {
         this.modal = true;
         this.id = params.id;
-      }else{
+      } else {
         this.modal = false;
       }
       this.validaId();
-  });
+    });
   }
-  validaId() {
-    if(this.id){
-      this.matchService.buscar(this.id)
-      .then((match)=>{
-        if(match.player!== ' '){
-          this._router.navigate(['/rank']);
+
+  ngOnInit() {
+    this.carregarPartidas();
+  }
+
+  proximo() {
+    this.pagina++;
+    this.matchService.buscarTodas(this.rows * this.pagina, this.rows)
+      .then((matchs) => {
+        this.matchs = matchs;
+        let falta = this.rows - matchs.length;
+        if (falta < this.rows) {
+          for (let i = falta; i > 0; i--) {
+            this.matchs.push({ _id: '', player: '', score: '' });
+          }
         }
       })
-      .catch((err)=>{
-        this._router.navigate(['/rank']);        
+      .catch((err) => {
+        console.log(`Error: ${err}`);
       });
-    }
+  }  
+
+  anterior() {
+    this.pagina--;
+    this.matchService.buscarTodas(this.rows * this.pagina, this.rows)
+      .then((matchs) => {
+        this.matchs = matchs;
+        let falta = this.rows - matchs.length;
+        if (falta < this.rows) {
+          for (let i = falta; i > 0; i--) {
+            this.matchs.push({ _id: '', player: '', score: '' });
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+      });
   }
-  ngOnInit() {
-    this.carregarPartidas();    
+
+  validaId() {
+    if (this.id) {
+      this.matchService.buscar(this.id)
+        .then((match) => {
+          if (match.player !== ' ') {
+            this._router.navigate(['/rank']);
+          }
+        })
+        .catch((err) => {
+          this._router.navigate(['/rank']);
+        });
+    }
   }
 
   carregarPartidas() {
-    console.log('Carregando partida!');
-    this.matchService.buscarTodas()
-      .then((matchs)=>{
+    // console.log('Carregando partida!');
+    this.matchService.buscarTodas(0, this.rows)
+      .then((matchs) => {
         this.matchs = matchs;
+        let falta = this.rows - matchs.length;
+        if (falta < this.rows) {
+          for (let i = falta; i > 0; i--) {
+            this.matchs.push({ _id: '', player: '', score: '' });
+          }
+        }
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(`Error: ${err}`);
       });
   }
 
-  abrirModal(){
+  abrirModal() {
     this.modal = true;
   }
 
-  salvarPartida(player: string){
-    
+  salvarPartida(player: string) {
+
     this.matchService.buscar(this.id)
-      .then((match)=>{
+      .then((match) => {
         match.player = player;
         this.matchService.atualizar(match)
-        .then((match)=>{
-          this.carregarPartidas();
-          this._router.navigate(['/rank']);
-        })
-        .catch((err)=>{
-          console.log(`Error: ${err}`);
-        });
+          .then((match) => {
+            this.carregarPartidas();
+            this._router.navigate(['/rank']);
+          })
+          .catch((err) => {
+            console.log(`Error: ${err}`);
+          });
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(`Error: ${err}`);
       });
-    
+
   }
 
-  fecharModal(){
+  fecharModal() {
     this.matchService.deletar(this.id)
-      .then(()=>{
+      .then(() => {
         this.carregarPartidas();
         this._router.navigate(['/rank']);
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(`Error: ${err}`);
-      });   
+      });
+
+  }
+  // Função para identificar o fim dos registros e desabilitar o botão proximo
+  chegouAoFim(): boolean{
+    try {
+      return this.matchs[this.rows-1].player == '';  
+    } catch (error) {
+      return true;
+    }
     
   }
-
 }

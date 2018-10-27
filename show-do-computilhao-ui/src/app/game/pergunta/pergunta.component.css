@@ -27,13 +27,6 @@ a{
     background: white;
     border-radius: 2%;   
 }
-.centralizado{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 .linha-cronometro{
     position: absolute;
     top:5px;

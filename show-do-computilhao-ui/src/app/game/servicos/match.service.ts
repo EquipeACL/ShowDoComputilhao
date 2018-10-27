@@ -9,8 +9,8 @@ export class MatchService {
 
     constructor(private http: Http) { }
 
-    buscarTodas(): Promise<any> {
-        return this.http.get(environment.urlAPI + '/matchs')
+    buscarTodas(skip: number, limit: number): Promise<any> {
+        return this.http.get(environment.urlAPI + '/matchs?skip='+skip+'&&limit='+limit)
             .toPromise()
             .then((response) => response.json())
             .catch((err) => {

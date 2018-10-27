@@ -30,9 +30,14 @@ export class MatchController {
     }
 
     public getMatchsAll(req: Request, res: Response) {//Retorna todas as partidas
-        let sort = { "hits":"desc", "cards":"asc","universitaries":"asc","plates":"asc", "skips":"asc", "data": "asc",}
-        return MatchModel.find({})
+        let skip = req.query.skip | 0;
+        let limit = req.query.limit | 0;
+        console.log(`LIMIT: ${limit}`);
+        let sort = { "hits":"desc", "cards":"asc","universitaries":"asc","plates":"asc", "skips":"asc", "data": "asc"}
+        return MatchModel.find()
             .sort(sort)
+            .skip(skip)
+            .limit(limit)
             .exec((err, matchs) => {
             if (err) res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             else res.status(HttpStatus.OK).send(matchs);
