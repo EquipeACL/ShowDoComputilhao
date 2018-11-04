@@ -1,9 +1,6 @@
 <div id="externa">
   <div tabindex="-1" role="dialog" class="col-md-2">
-    <img src="../../../assets/img/resposta-certa.gif" *ngIf="resposta" style="width: 100%">
-    <!--Gif reposta correta-->
-    <img src="../../../assets/img/resposta-errada.gif" alt="" *ngIf="!resposta" style="width: 100%">
-    <!--Gif reposta errada-->
+    <img [src]="'../../../assets/img/'+teste()+'.gif'" style="width: 100%">   
   </div>
 </div>
 <!--Fundo preto do modal-->

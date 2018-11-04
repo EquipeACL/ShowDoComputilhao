@@ -11,19 +11,55 @@ export class GameController {
      * @param res 
      */
     public getModule1(req: Request, res: Response) {
-        let filter: any = {
-            "level":"C"
+        let result = []
+        let temp = [];
+        if (req.headers['matematica'] === 'true') {
+            temp.push({ area: "matematica" });
         }
-        if (req.query.area)
-            filter.area = req.query.area
+        if (req.headers['fundamentos'] === 'true') {
+            temp.push({ area: "fundamentos" });
+        }
+        if (req.headers['tecnologias'] === 'true') {
+            temp.push({ area: "tecnologia" });
+        }
+
+        let filter: any = {
+            "level": "low",
+            $or: temp
+        }
+
         QuestionModel.find(filter).exec((err, questions) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             }
-            let list: IQuestion[] = QuestionRandom.selectRadom(questions,2);
-            res.status(HttpStatus.OK).json(list);
+            let list: IQuestion[] = QuestionRandom.selectRadom(questions, 12);
+            list.forEach(elem => {
+                result.push(elem)
+            })
+            filter.level = "medium"
+            QuestionModel.find(filter).exec((err, questions) => {
+                if (err) {
+                    res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
+                }
+                let list: IQuestion[] = QuestionRandom.selectRadom(questions, 6);
+                list.forEach(elem => {
+                    result.push(elem)
+                })
+                filter.level = "high"
+                QuestionModel.find(filter).exec((err, questions) => {
+                    if (err) {
+                        res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
+                    }
+                    let list: IQuestion[] = QuestionRandom.selectRadom(questions, 6);
+                    list.forEach(elem => {
+                        result.push(elem)
+                    })
+                    res.status(HttpStatus.OK).json(result);
+                });
+            });
         });
-       
+
+
     }
 
     /**
@@ -32,17 +68,27 @@ export class GameController {
      * @param res 
      */
     public getModule2(req: Request, res: Response) {
-        let filter: any = {
-            "level":"B"
+        let temp = [];
+        if (req.headers['matematica']) {
+            temp.push({ area: "matematica" });
         }
-        if (req.query.area)
-            filter.area = req.query.area
-        
+        if (req.headers['fundamentos']) {
+            temp.push({ area: "fundamentos" });
+        }
+        if (req.headers['tecnologias']) {
+            temp.push({ area: "tecnologia" });
+        }
+
+        let filter: any = {
+            "level": "medium",
+            $or: temp
+        }
+
         QuestionModel.find(filter).exec((err, questions) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             }
-            let list = QuestionRandom.selectRadom(questions,2);
+            let list = QuestionRandom.selectRadom(questions, 6);
             res.status(HttpStatus.OK).json(list);
         });
     }
@@ -53,17 +99,27 @@ export class GameController {
      * @param res 
      */
     public getModule3(req: Request, res: Response) {
-        let filter: any = {
-            "level":"A"
+        let temp = [];
+        if (req.headers['matematica']) {
+            temp.push({ area: "matematica" });
         }
-        if (req.query.area)
-            filter.area = req.query.area
-        
+        if (req.headers['fundamentos']) {
+            temp.push({ area: "fundamentos" });
+        }
+        if (req.headers['tecnologias']) {
+            temp.push({ area: "tecnologia" });
+        }
+
+        let filter: any = {
+            "level": "high",
+            $or: temp
+        }
+
         QuestionModel.find(filter).exec((err, questions) => {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             }
-            let list = QuestionRandom.selectRadom(questions,2);
+            let list = QuestionRandom.selectRadom(questions, 6);
             res.status(HttpStatus.OK).json(list);
         });
     }

@@ -25,6 +25,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import { PularComponent } from './game/ajudas/pular/pular.component';
 import { ValidandoRespostaComponent } from './game/validando-resposta/validando-resposta.component';
 import { AreasComponent } from './game/areas/areas.component';
+import { QuestionService } from './game/servicos/question.service';
 
 
 const rotas: Routes = [
@@ -67,7 +68,7 @@ const rotas: Routes = [
       //{ enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [CronometroService, MatchService],
+  providers: [CronometroService, MatchService, QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

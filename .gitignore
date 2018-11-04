@@ -8,6 +8,7 @@
 /back-end/package-lock.json
 
 # node modules
-/show-do-milhao-ui/node_modules
-
-.gitignore
+/show-do-computilhao-ui/node_modules
+/show-do-computilhao-ui/package-lock.json
+/show-do-computilhao-ui/.vscode
+/back-end/.env

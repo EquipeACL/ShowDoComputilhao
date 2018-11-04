@@ -7,8 +7,9 @@ export interface IQuestion extends mongoose.Document {
     id?: string
     statement: string
     area: string
+    img?: string
     options: Array<String>
-    links: Array<String>
+    links: Array<Object>
     level: string
     correctOption: string 
     comment: string
@@ -21,6 +22,9 @@ const QuestionSchema = new Schema({
     statement:{
         type: String,
         required: 'Enter the statement!'
+    },
+    img: {
+        type: String
     },
     area: {
         type: String,

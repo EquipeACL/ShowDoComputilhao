@@ -7,11 +7,12 @@ export class Routes {
     public routesQuestion: RoutesQuestion;
     public routesMatch: RoutesMatch;
     public routesGame: RoutesGame;
+    prefix = '/api/';
 
     public routes(app): void {
-        this.routesQuestion = new RoutesQuestion(app);
-        this.routesMatch = new RoutesMatch(app);
-        this.routesGame = new RoutesGame(app);
+        this.routesQuestion = new RoutesQuestion(app, this.prefix);
+        this.routesMatch = new RoutesMatch(app, this.prefix);
+        this.routesGame = new RoutesGame(app, this.prefix);
     }
 
 }

@@ -5,22 +5,22 @@ import * as HttpStatus from "http-status";
 
 export class QuestionController {
     public addNewQuestion(req: Request, res: Response) {//Salva uma nova questão
-        let newQuestion = new QuestionModel(req.body);
-
-        newQuestion.save((err, question) => {
-            if (err) {
-                switch (err.name) {
-                    case 'ValidationError':
-                        res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
-                        break;
-                    default:
-                        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
-                        break;
+        QuestionModel.create(req.body)
+            .then(questions => {
+                res.status(HttpStatus.CREATED).json(questions);
+            })
+            .catch( err => {
+                if (err) {
+                    switch (err.name) {
+                        case 'ValidationError':
+                            res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
+                            break;
+                        default:
+                            res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
+                            break;
+                    }
                 }
-            }
-            res.status(HttpStatus.CREATED).json(question);
-        });
-
+            });  
     }
 
     public getQuestionAll(req: Request, res: Response) {//Retorna todas as questoes

@@ -7,7 +7,7 @@ import { CronometroService } from './cronometro-service.service';
   styleUrls: ['./cronometro.component.css']
 })
 export class CronometroComponent implements OnInit {
-  cronometro = 1000;
+  cronometro = 205;
   styleCronometro = "cronometro";
   timer;
   constructor(private cronometroService: CronometroService ) { }
@@ -47,7 +47,7 @@ export class CronometroComponent implements OnInit {
   resetarCronometro() {
     clearInterval(this.timer);
 
-    this.cronometro = 10;
+    this.cronometro = 205;
     this.styleCronometro = "badge-primary";
     this.timer = this.inciarCronometro();
   }
