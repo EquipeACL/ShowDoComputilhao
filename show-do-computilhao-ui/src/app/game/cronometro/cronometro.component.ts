@@ -7,20 +7,20 @@ import { CronometroService } from './cronometro-service.service';
   styleUrls: ['./cronometro.component.css']
 })
 export class CronometroComponent implements OnInit {
-  cronometro = 10;
-  styleCronometro = "cronometro";
+  cronometro = 205;
+  styleCronometro = 'cronometro';
   timer;
-  constructor(private cronometroService: CronometroService ) { }
+  constructor(private cronometroService: CronometroService) { }
 
   ngOnInit() {
     this.timer = this.inciarCronometro();
-    this.cronometroService.resetarCronometro.subscribe(()=>{
+    this.cronometroService.resetarCronometro.subscribe(() => {
       this.resetarCronometro();
     });
-    this.cronometroService.pausarCronometro.subscribe(()=>{
+    this.cronometroService.pausarCronometro.subscribe(() => {
       this.pausarCronometro();
     });
-    this.cronometroService.iniciarCronometro.subscribe(()=>{
+    this.cronometroService.iniciarCronometro.subscribe(() => {
       this.timer = this.inciarCronometro();
     });
   }
@@ -32,12 +32,12 @@ export class CronometroComponent implements OnInit {
     const time = setInterval(() => {
       this.cronometro--;
       if (this.cronometro === 0) {
-        this.styleCronometro = "cronometro-acabou";
+        this.styleCronometro = 'cronometro-acabou';
         this.cronometroService.zerou();
         clearInterval(time);
       }
       if (this.cronometro === 5) {
-        this.styleCronometro = "ultimos-segundos";
+        this.styleCronometro = 'ultimos-segundos';
       }
     }, 1000);
     return time;
@@ -48,7 +48,7 @@ export class CronometroComponent implements OnInit {
     clearInterval(this.timer);
 
     this.cronometro = 205;
-    this.styleCronometro = "badge-primary";
+    this.styleCronometro = 'badge-primary';
     this.timer = this.inciarCronometro();
   }
 
