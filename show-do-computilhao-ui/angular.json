@@ -26,7 +26,8 @@
               "src/styles.css",
               "src/assets/css/main.css",
               "src/assets/css/linearicons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"
             ],
             "scripts": [ ]
           },

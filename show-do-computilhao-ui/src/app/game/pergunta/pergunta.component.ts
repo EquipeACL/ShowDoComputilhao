@@ -121,7 +121,8 @@ export class PerguntaComponent implements OnInit {
     if (this.validarResposta()) {
       setTimeout(() => {
         this.modalLoading = false;
-       // this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
+        this.mensagem = "Parabéns! Você acertou.";
+        this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
         this.proxima();
       }, 4000);
     } else {

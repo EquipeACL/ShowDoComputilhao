@@ -11,22 +11,24 @@
 	<!--Correta: {{pergunta.correctOption}} -->
 	<div class="col-sm-12 col-md-12 col-lg-12 pergunta">
 
-		<!-- CASO A PERGUNTA TENHA IMAGEM -->
+
 		<div class="row">
-			<div class="col-sm-8 col-md-8 col-lg-8 centralizado">
+      <!-- CASO A PERGUNTA TENHA IMAGEM -->
+			<div class="col-sm-8 col-md-8 col-lg-8 centralizado" *ngIf="pergunta.img!=null">
 				<h6>{{pergunta.statement}}</h6>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem">
+      </div>
+      	<!-- CASO A PERGUNTA NÂO TENHA IMAGEM -->
+      <div class="col-sm-12 col-md-12 col-lg-12 centralizado" *ngIf="pergunta.img==null">
+          <h6>{{pergunta.statement}}</h6>
+        </div>
+
+			<div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem" *ngIf="pergunta.img!=null">
 				<img class=""src="{{pergunta.img}}">
 			</div>
 		</div>
 
-		<!-- CASO A PERGUNTA NÂO TENHA IMAGEM -->
-		<div class="row" *ngIf="false">
-			<div class="col-sm-12 col-md-12 col-lg-12 centralizado">
-				<h6>{{pergunta.statement}}</h6>
-			</div>
-		</div>
+
+
 
 
 	</div>
