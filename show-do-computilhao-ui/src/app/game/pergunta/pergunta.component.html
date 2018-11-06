@@ -131,7 +131,7 @@
 
 	<!--Modal de resposta errada/feedback-->
 	<app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links"
-	 (closeDiv)="closeModalError()"></app-erro>
+	 (closeDiv)="fecharModalError()"></app-erro>
 
 	<!--Modal de ajuda-cartas -->
 	<app-cartas *ngIf="modalCartas" (close)="cartasFechou()" (num_cartas)="numCartas($event)"></app-cartas>

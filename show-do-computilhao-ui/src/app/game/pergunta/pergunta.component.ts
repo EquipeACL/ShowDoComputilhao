@@ -70,6 +70,7 @@ export class PerguntaComponent implements OnInit {
             this.valorSeAcertar = valores['acertar'][this.indeceAtual];
             this.pergunta = this.listaPerguntas[this.indeceAtual++];
             this.cronometroService.cronometroZerou.subscribe(() => {
+              this.mensagem = 'Tempo esgotado!';
               this.modalErro = true;
             });
           }
@@ -145,10 +146,16 @@ export class PerguntaComponent implements OnInit {
     this.cronometroService.iniciar();
   }
 
+  fecharModalError(){
+    this.mensagem = 'Tempo esgotado!';
+    this.closeModalError();
+  }
+
   closeModalError() {
 
     if (this.mensagem === 'Parabéns! Você acertou.') {
       this.modalErro = false;
+
       this.proxima();
     }
     else {
@@ -156,7 +163,7 @@ export class PerguntaComponent implements OnInit {
       this.match.player = ' ';
       this.match.data = new Date();
       this.match.hits = this.indeceAtual - 1;
-
+      this.match.score = this.valorSeErrar;
       this.modalErro = false;
 
       this.matchService.salvar(this.match)
