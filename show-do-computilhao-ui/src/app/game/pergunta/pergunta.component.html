@@ -138,7 +138,7 @@
 	<app-universitarios *ngIf="modalUniversitarios" (ok)="universitariosFechou()" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]"></app-universitarios>
 
 	<!--Modal de ajuda-placas -->
-	<app-placas *ngIf="modalPlacas" [correta]="pergunta.correctOption" (close)="placasFechou()"></app-placas>
+	<app-placas *ngIf="modalPlacas" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]" (close)="placasFechou()"></app-placas>
 
 	<!--Modal de ajuda-pular -->
 	<app-pular *ngIf="modalPular" (onclicksim)="modalPularSim()" (onclicknao)="modalPularNao()" [pulos]="3 - match.skips"></app-pular>

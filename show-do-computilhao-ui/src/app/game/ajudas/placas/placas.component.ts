@@ -6,9 +6,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./placas.component.css']
 })
 export class PlacasComponent implements OnInit {
-  @Input() correta;
+
   @Output() close = new EventEmitter();
-  
+  @Input() correta;
+
   constructor() { }
 
   ngOnInit() {
