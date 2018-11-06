@@ -123,13 +123,13 @@ export class PerguntaComponent implements OnInit {
         this.modalLoading = false;
         this.mensagem = "Parabéns! Você acertou.";
         this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
-        this.proxima();
       }, 4000);
+
     } else {
       setTimeout(() => {
         this.modalLoading = false;
         this.modalErro = true;
-        this.mensagem = "Você errou!";
+        this.mensagem = 'Você errou!';
         this.match.score = this.valorSeErrar;
       }, 4000);
 
@@ -147,23 +147,29 @@ export class PerguntaComponent implements OnInit {
 
   closeModalError() {
 
-    this.match.player = ' ';
-    this.match.data = new Date();
-    this.match.hits = this.indeceAtual - 1;
+    if (this.mensagem === 'Parabéns! Você acertou.') {
+      this.modalErro = false;
+      this.proxima();
+    }
+    else {
 
-    this.modalErro = false;
+      this.match.player = ' ';
+      this.match.data = new Date();
+      this.match.hits = this.indeceAtual - 1;
 
-    this.matchService.salvar(this.match)
-      .then((match) => {
-        let navigationExtras: NavigationExtras = {
-          queryParams: { id: match._id }
-        };
-        this._router.navigate(['rank'], navigationExtras);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      this.modalErro = false;
 
+      this.matchService.salvar(this.match)
+        .then((match) => {
+          let navigationExtras: NavigationExtras = {
+            queryParams: { id: match._id }
+          };
+          this._router.navigate(['rank'], navigationExtras);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   mostrarCartas() {
@@ -218,6 +224,7 @@ export class PerguntaComponent implements OnInit {
   modalPararOk() {
     this.modalParar = false;
     this.match.score = this.valorSeParar;
+    this.mensagem = "Você errou!";
     this.closeModalError();
   }
 

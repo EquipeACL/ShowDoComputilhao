@@ -46,7 +46,7 @@ export class RankComponent implements OnInit {
       .catch((err) => {
         console.log(`Error: ${err}`);
       });
-  }  
+  }
 
   anterior() {
     this.pagina--;
@@ -84,7 +84,7 @@ export class RankComponent implements OnInit {
     this.matchService.buscarTodas(0, this.rows)
       .then((matchs) => {
         this.matchs = matchs;
-        let falta = this.rows - matchs.length;
+        const falta = this.rows - matchs.length;
         if (falta < this.rows) {
           for (let i = falta; i > 0; i--) {
             this.matchs.push({ _id: '', player: '', score: '' });
@@ -132,12 +132,12 @@ export class RankComponent implements OnInit {
 
   }
   // Função para identificar o fim dos registros e desabilitar o botão proximo
-  chegouAoFim(): boolean{
+  chegouAoFim(): boolean {
     try {
-      return this.matchs[this.rows-1].player == '';  
+      return this.matchs[this.rows - 1].player == '';
     } catch (error) {
       return true;
     }
-    
+
   }
 }
