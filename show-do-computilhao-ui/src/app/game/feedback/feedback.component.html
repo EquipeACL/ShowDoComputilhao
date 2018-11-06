@@ -17,19 +17,19 @@
 							<h4 class="mb-10">Material de Apoio</h4>
 							<p>Alguns links com material de apoio sobre a pergunta podem ser consultados abaixo:</p>
 							<div class="link" *ngFor="let link of links">
-								<h6>Wikipedia:<a [href]="link" target=true class="genric-btn link radius small">link</a></h6>
+								<h6>{{link.title}}:<a [href]="link.link" target=true class="genric-btn link radius small">link</a></h6>
 							</div>
-							
+
 						</div>
-					</div>					
-					
+					</div>
+
 				</div>
 				<div class="modal-footer">
 					<div class="col-md">
 						<button type="button" class="btn btn-secondary btn-block" (click)="oncloseevent()">Fechar</button>
 					</div>
 				</div>
-	
+
 			</div>
 		</div>
 	</div>

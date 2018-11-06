@@ -18,11 +18,11 @@ export class QuestionService {
 
   constructor(private http: Http) { }
 
-  buscarTodas(filters: any): Promise<any> {        
+  buscarTodas(filters: any): Promise<any> {
     return this.http.get('/api/game/1',{headers:filters})
       .toPromise()
       .then((response) => {
-        console.log('response: ', JSON.stringify(response.json().length));        
+        console.log('response: ', JSON.stringify(response.json().length));
         return response.json()
       })
       .catch((err) => {
