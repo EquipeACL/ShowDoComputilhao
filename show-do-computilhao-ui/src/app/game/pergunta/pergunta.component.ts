@@ -14,7 +14,7 @@ import { QuestionService } from '../servicos/question.service';
 })
 export class PerguntaComponent implements OnInit {
   match: IMatch;
-  flags = ['A', 'B', 'C', 'D'];//Indica a letra da resposta  
+  flags = ['A', 'B', 'C', 'D'];//Indica a letra da resposta
   valorSeErrar: any = 0;
   valorSeAcertar: any = 0;
   valorSeParar: any = 0;
@@ -64,6 +64,8 @@ export class PerguntaComponent implements OnInit {
       this.questionService.buscarTodas(filters)
         .then(questions => {
           if (questions.length > 0) {
+            const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
+            audio.play();
             this.listaPerguntas = questions;
             this.valorSeAcertar = valores['acertar'][this.indeceAtual];
             this.pergunta = this.listaPerguntas[this.indeceAtual++];
@@ -89,6 +91,8 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indeceAtual <= 23) {
+      const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
+      audio.play();
       this.valorSeParar = this.valorSeAcertar;
       this.valorSeErrar = valores['errar'][this.indeceAtual];
       this.valorSeAcertar = valores['acertar'][this.indeceAtual];
@@ -117,6 +121,7 @@ export class PerguntaComponent implements OnInit {
     if (this.validarResposta()) {
       setTimeout(() => {
         this.modalLoading = false;
+       // this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
         this.proxima();
       }, 4000);
     } else {
