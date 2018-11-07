@@ -1,152 +1,163 @@
 <div class="row fullscreen">
 
-	<div class="col-sm-12 col-md-12 col-lg-12 container linha-cronometro">
-		<!-- <div class="col-sm-10" style="position: absolute; left: 0">
+  <div class="col-sm-12 col-md-12 col-lg-12 container linha-cronometro">
+    <!-- <div class="col-sm-10" style="position: absolute; left: 0">
 			<app-progresso></app-progresso>
 		</div> -->
-		<div class="col-sm-2" style="position: absolute; right: 0">
-			<app-cronometro></app-cronometro>
-		</div>
-	</div>
-	<!--Correta: {{pergunta.correctOption}} -->
-	<div class="col-sm-12 col-md-12 col-lg-12 pergunta">
+    <div class="col-sm-2" style="position: absolute; right: 0">
+      <app-cronometro></app-cronometro>
+    </div>
+  </div>
+  <!--Correta: {{pergunta.correctOption}} -->
+  <div class="col-sm-12 col-md-12 col-lg-12 pergunta">
 
 
-		<div class="row">
+    <div class="row">
       <!-- CASO A PERGUNTA TENHA IMAGEM -->
-			<div class="col-sm-8 col-md-8 col-lg-8 centralizado" *ngIf="pergunta.img!=null">
-				<h6>{{pergunta.statement}}</h6>
+      <div class="col-sm-8 col-md-8 col-lg-8 centralizado" *ngIf="pergunta.img!=null">
+        <h6>{{pergunta.statement}}</h6>
       </div>
-      	<!-- CASO A PERGUNTA NÂO TENHA IMAGEM -->
+      <!-- CASO A PERGUNTA NÂO TENHA IMAGEM -->
       <div class="col-sm-12 col-md-12 col-lg-12 centralizado" *ngIf="pergunta.img==null">
-          <h6>{{pergunta.statement}}</h6>
-        </div>
+        <h6>{{pergunta.statement}}</h6>
+      </div>
+      <!-- Se tiver imagem, mostra essa div aqui-->
+      <div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem" *ngIf="(pergunta.img!=null) && (pergunta!=null)">
+        <a data-toggle="tooltip" title="Clique para ampliar a imagem.">
+          <img id="imagemCentral" width="350" height="240" src="{{pergunta.img}}" (click)="mostrarImagem()">
+        </a>
+      </div>
+    </div>
 
-			<div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem" *ngIf="pergunta.img!=null">
-				<img class=""src="{{pergunta.img}}">
-			</div>
-		</div>
+  </div>
 
 
 
+  <!-- DIV DE OPÇÔES -->
+  <div class="col-lg-8">
+    <div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]">
+      <button class="genric-btn default-border radius" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
+        <button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'">{{flags[i]}}</button>
+        <span> {{op}}</span>
+      </button>
+    </div>
 
+  </div>
+  <!-- FIM DA DIV DE OPÇÔES -->
 
-	</div>
+  <!-- DIV DE AJUDAS -->
+  <div class="col-lg-4 ajudas">
+    <div class="row centralizado">
+      <h4 class="title">Tipos de ajuda</h4>
+    </div>
 
-	<!-- DIV DE OPÇÔES -->
-	<div class="col-lg-8">
-		<div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]">
-			<button class="genric-btn default-border radius" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
-				<button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'">{{flags[i]}}</button>
-				<span> {{op}}</span>
-			</button>
-		</div>
+    <div class="row centralizado">
+      <div class="ajuda cartas">
+        <button class="genric-btn default-border radius" [ngClass]="match.cards?'ajuda-usada':null" (click)="mostrarCartas()"
+          [disabled]="match.cards">
+          <a data-toggle="tooltip" title="Usar as cartas">
+            <img width="50px" src="../../../assets/img/cartas.png" *ngIf="!match.cards">
+            <img width="50px" src="../../../assets/img/cartas-usada.png" *ngIf="match.cards">
+          </a>
+          <!--<h6>Cartas</h6>-->
+        </button>
+      </div>
 
-	</div>
-	<!-- FIM DA DIV DE OPÇÔES -->
+      <div class="ajuda universitarios">
+        <button class="genric-btn default-border radius" [ngClass]="match.universitaries?'ajuda-usada':null" (click)="mostrarUniversitarios()"
+          [disabled]="match.universitaries">
+          <a data-toggle="tooltip" title="Pedir ajuda aos Universitários.">
+            <img width="50px" src="../../../assets/img/universitarios.png" *ngIf="!match.universitaries">
+            <img width="50px" src="../../../assets/img/universitarios-usada.png" *ngIf="match.universitaries">
+          </a>
+          <!--<h6>Universitários</h6>-->
+        </button>
+      </div>
 
-	<!-- DIV DE AJUDAS -->
-	<div class="col-lg-4 ajudas">
-		<div class="row centralizado">
-			<h4 class="title">Tipos de ajuda</h4>
-		</div>
+      <div class="ajuda pular">
+        <button href="#" class="genric-btn default-border radius" [ngClass]="match.skips==3?'ajuda-usada':null" (click)="mostrarModalPular()"
+          [disabled]="match.skips==3">
+          <span class="badge badge-pill badge-danger">{{3 - match.skips}}</span>
+          <a data-toggle="tooltip" title="Pular essa pergunta">
+            <img width="50px" src="../../../assets/img/pular.png" *ngIf="match.skips<3">
+            <img width="50px" src="../../../assets/img/pular-usada.png" *ngIf="match.skips==3">
+          </a>
+          <!--<h6>Pular</h6>-->
+        </button>
+      </div>
 
-		<div class="row centralizado">
-			<div class="ajuda cartas">
-				<button class="genric-btn default-border radius" [ngClass]="match.cards?'ajuda-usada':null" (click)="mostrarCartas()" [disabled]="match.cards">
-					<img src="../../../assets/img/cartas.png" *ngIf="!match.cards">
-					<img src="../../../assets/img/cartas-usada.png" *ngIf="match.cards">
-					<h5>Cartas</h5>
-				</button>
-			</div>
+      <div class="ajuda placas">
+        <button class="genric-btn default-border radius" [ngClass]="match.plates?'ajuda-usada':null" (click)="mostrarPlacas()"
+          [disabled]="match.plates">
+          <a data-toggle="tooltip" title="Utulizar as placas">
+            <img width="50px" src="../../../assets/img/placas.png" *ngIf="!match.plates">
+            <img width="50px" src="../../../assets/img/placas-usada.png" *ngIf="match.plates">
+          </a>
+          <!--<h6>Placas</h6>-->
+        </button>
+      </div>
 
-			<div class="ajuda universitarios">
-				<button class="genric-btn default-border radius" [ngClass]="match.universitaries?'ajuda-usada':null" (click)="mostrarUniversitarios()"
-				 [disabled]="match.universitaries">
-					<img src="../../../assets/img/universitarios.png" *ngIf="!match.universitaries">
-					<img src="../../../assets/img/universitarios-usada.png" *ngIf="match.universitaries">
-					<h5>Universitários</h5>
-				</button>
-			</div>
+    </div>
 
-			<div class="ajuda pular">
-				<button href="#" class="genric-btn default-border radius" [ngClass]="match.skips==3?'ajuda-usada':null" (click)="mostrarModalPular()"
-				 [disabled]="match.skips==3">
-					<span class="badge badge-pill badge-danger">{{3 - match.skips}}</span>
-					<img src="../../../assets/img/pular.png" *ngIf="match.skips<3">
-					<img src="../../../assets/img/pular-usada.png" *ngIf="match.skips==3">
-					<h5>Pular</h5>
-				</button>
-			</div>
+    <div class="row centralizado">
+      <h4 class="title">Situação atual</h4>
+    </div>
 
-			<div class="ajuda placas">
-				<button class="genric-btn default-border radius" [ngClass]="match.plates?'ajuda-usada':null" (click)="mostrarPlacas()" [disabled]="match.plates">
-					<img src="../../../assets/img/placas.png" *ngIf="!match.plates">
-					<img src="../../../assets/img/placas-usada.png" *ngIf="match.plates">
-					<h5>Placas</h5>
-				</button>
-			</div>
+    <div class="row centralizado">
 
-		</div>
+      <div>
+        <img width="60px" src="../../../assets/img/perdeutudo.png">
+        <span class="situacao">R$ {{valorSeErrar}}</span>
+        <h6>Errar</h6>
+      </div>
 
-		<div class="row centralizado">
-			<h4 class="title">Situação atual</h4>
-		</div>
+      <div>
+        <img width="60px" src="../../../assets/img/parar.png">
+        <span class="situacao">R$ {{valorSeParar}}</span>
+        <!--<a href="#" title="Clique aqui se quiser parar o jogo.">-->
+        <h6>Parar</h6>
+        <!--</a>-->
+      </div>
 
-		<div class="row centralizado">
+      <div>
+        <img width="60px" src="../../../assets/img/acertar.png">
+        <span class="situacao">R$ {{valorSeAcertar}}</span>
+        <h6>Acertar</h6>
+      </div>
 
-			<div>
-				<img src="../../../assets/img/perdeutudo.png">
-				<span class="situacao">R$ {{valorSeErrar}}</span>
-				<h5>Errar</h5>
-			</div>
+    </div>
 
-			<div>
-				<img src="../../../assets/img/parar.png">
-				<span class="situacao">R$ {{valorSeParar}}</span>
-				<!--<a href="#" title="Clique aqui se quiser parar o jogo.">-->
-					<h5>Parar</h5>
-				<!--</a>-->
-			</div>
+    <div class="row">
+      <div class="col-md">
+        <button class="btn btn-danger btn-block" (click)="mostrarModalParar()">PARAR JOGO</button>
+      </div>
+    </div>
 
-			<div>
-				<img src="../../../assets/img/acertar.png">
-				<span class="situacao">R$ {{valorSeAcertar}}</span>
-				<h5>Acertar</h5>
-			</div>
+  </div>
+  <!-- FIM DA DIV DE AJUDAS -->
 
-		</div>
+  <!--Modal de confirmar resposta-->
+  <app-confirmacao *ngIf="modalConfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorSeAcertar"></app-confirmacao>
 
-		<div class="row">
-			<div class="col-md">
-				<button class="btn btn-danger btn-block" (click)="mostrarModalParar()">PARAR JOGO</button>
-			</div>
-		</div>
+  <!--Modal de resposta errada/feedback-->
+  <app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links" (closeDiv)="fecharModalError()"></app-erro>
 
-	</div>
-	<!-- FIM DA DIV DE AJUDAS -->
+  <!--Modal de ajuda-cartas -->
+  <app-cartas *ngIf="modalCartas" (close)="cartasFechou()" (num_cartas)="numCartas($event)"></app-cartas>
 
-	<!--Modal de confirmar resposta-->
-	<app-confirmacao *ngIf="modalConfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorSeAcertar"></app-confirmacao>
+  <!--Modal de ajuda-universitarios -->
+  <app-universitarios *ngIf="modalUniversitarios" (ok)="universitariosFechou()" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]"></app-universitarios>
 
-	<!--Modal de resposta errada/feedback-->
-	<app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links"
-	 (closeDiv)="fecharModalError()"></app-erro>
+  <!--Modal de ajuda-placas -->
+  <app-placas *ngIf="modalPlacas" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]" (close)="placasFechou()"></app-placas>
 
-	<!--Modal de ajuda-cartas -->
-	<app-cartas *ngIf="modalCartas" (close)="cartasFechou()" (num_cartas)="numCartas($event)"></app-cartas>
+  <!--Modal de ajuda-pular -->
+  <app-pular *ngIf="modalPular" (onclicksim)="modalPularSim()" (onclicknao)="modalPularNao()" [pulos]="3 - match.skips"></app-pular>
 
-	<!--Modal de ajuda-universitarios -->
-	<app-universitarios *ngIf="modalUniversitarios" (ok)="universitariosFechou()" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]"></app-universitarios>
+  <!--Modal de parar jogo -->
+  <app-parar-jogo *ngIf="modalParar" (onclicksim)="modalPararOk()" (onclicknao)="modalPararCancelar()"></app-parar-jogo>
 
-	<!--Modal de ajuda-placas -->
-	<app-placas *ngIf="modalPlacas" [correta]="flags[pergunta.options.indexOf(pergunta.correctOption)]" (close)="placasFechou()"></app-placas>
+  <app-imagem [imagem]="pergunta.img" *ngIf="modalImagem" (closeDiv)="esconderImagem()"></app-imagem>
 
-	<!--Modal de ajuda-pular -->
-	<app-pular *ngIf="modalPular" (onclicksim)="modalPularSim()" (onclicknao)="modalPularNao()" [pulos]="3 - match.skips"></app-pular>
-
-	<!--Modal de parar jogo -->
-	<app-parar-jogo *ngIf="modalParar" (onclicksim)="modalPararOk()" (onclicknao)="modalPararCancelar()"></app-parar-jogo>
-
-	<app-validando-resposta *ngIf="modalLoading" [resposta]="validarResposta()"></app-validando-resposta>
+  <app-validando-resposta *ngIf="modalLoading" [resposta]="validarResposta()"></app-validando-resposta>
 </div>

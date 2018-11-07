@@ -26,6 +26,7 @@ import { PularComponent } from './game/ajudas/pular/pular.component';
 import { ValidandoRespostaComponent } from './game/validando-resposta/validando-resposta.component';
 import { AreasComponent } from './game/areas/areas.component';
 import { QuestionService } from './game/servicos/question.service';
+import { ImagemComponent } from './game/imagem/imagem.component';
 
 
 const rotas: Routes = [
@@ -55,7 +56,8 @@ const rotas: Routes = [
     PaginaNaoEncontradaComponent,
     PularComponent,
     ValidandoRespostaComponent,
-    AreasComponent
+    AreasComponent,
+    ImagemComponent
 
   ],
   imports: [

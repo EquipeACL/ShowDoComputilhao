@@ -3,7 +3,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 a{
     text-decoration: none;
-    
+
 }
 .opcao-invalida{
     padding-top: 10px;
@@ -13,22 +13,27 @@ a{
     opacity: 0.5;
     z-index: 20000;
 }
-.opcao-invalida span{  
-    text-transform: capitalize;  
+.opcao-invalida span{
+    text-transform: capitalize;
     cursor:not-allowed;
 }
-.opcao-invalida button{    
+.opcao-invalida button{
     cursor:not-allowed;
 }
 .opcao-invalida a{
     cursor:not-allowed;
 }
 #imagem{
-    background: white;
-    border-radius: 2%;   
+    /*background: white;*/
+    border-radius: 2%;
+    padding: 10px;
 }
 .linha-cronometro{
     position: absolute;
     top:5px;
     left: 0px;
+}
+
+#imagemCentral{
+  cursor: pointer;
 }

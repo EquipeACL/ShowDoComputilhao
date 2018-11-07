@@ -33,6 +33,7 @@ export class PerguntaComponent implements OnInit {
   modalParar: boolean;
   modalPular: boolean;
   modalLoading: boolean;
+  modalImagem: boolean;
 
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];// vetor para controlar as opções validas
 
@@ -146,13 +147,13 @@ export class PerguntaComponent implements OnInit {
     this.cronometroService.iniciar();
   }
 
-  fecharModalError(){
-    this.mensagem = 'Tempo esgotado!';
+  fecharModalError() {
+    //this.mensagem = 'Tempo esgotado!';
     this.closeModalError();
   }
 
   closeModalError() {
-
+    console.log(this.mensagem);
     if (this.mensagem === 'Parabéns! Você acertou.') {
       this.modalErro = false;
 
@@ -258,5 +259,11 @@ export class PerguntaComponent implements OnInit {
     this.cronometroService.iniciar();
   }
 
+  mostrarImagem() {
+    this.modalImagem = true;
+  }
+  esconderImagem() {
+    this.modalImagem = false;
+  }
 }
 
