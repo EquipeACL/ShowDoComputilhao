@@ -1,4 +1,4 @@
-<div class="row fullscreen">
+<div class="row fullscreen" height="400px">
 
   <div class="col-sm-12 col-md-12 col-lg-12 container linha-cronometro">
     <!-- <div class="col-sm-10" style="position: absolute; left: 0">
@@ -41,10 +41,12 @@
         </a>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4" id = "semImagem"*ngIf="(pergunta.img==null)">
-        <span data-toggle="tooltip" title="Questão sem imagem!">
+      <!--  <span data-toggle="tooltip" title="Questão sem imagem!">
           <img width="340" height="180" id="imagemPadrao" class = "imagens" src="https://drive.google.com/uc?id=1Tyd0JakVp9_irOyraEqJk6PKOr8o6Ykp">
         </span>
+        -->
       </div>
+
     </div>
 
   </div>
@@ -52,7 +54,7 @@
 
 
   <!-- DIV DE OPÇÔES -->
-  <div class="col-lg-8">
+  <div class="col-lg-8 divop">
     <div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]">
       <button class="genric-btn default-border radius opcoes" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
         <button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'">{{flags[i]}}</button>
@@ -64,7 +66,7 @@
   <!-- FIM DA DIV DE OPÇÔES -->
 
   <!-- DIV DE AJUDAS -->
-  <div class="col-lg-4 ajudas">
+  <div class="col-lg-4 ajudas" padding-bottom="10px">
     <div class="row centralizado">
       <h4 class="title">Tipos de ajuda</h4>
     </div>
