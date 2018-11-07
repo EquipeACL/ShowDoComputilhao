@@ -125,7 +125,7 @@ export class PerguntaComponent implements OnInit {
         this.modalLoading = false;
         this.mensagem = "Parabéns! Você acertou.";
         this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
-      }, 4000);
+      }, 2000);
 
     } else {
       setTimeout(() => {
@@ -133,7 +133,7 @@ export class PerguntaComponent implements OnInit {
         this.modalErro = true;
         this.mensagem = 'Você errou!';
         this.match.score = this.valorSeErrar;
-      }, 4000);
+      }, 2000);
 
     }
   }

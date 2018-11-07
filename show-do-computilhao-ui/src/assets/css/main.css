@@ -296,11 +296,10 @@ body{
 }
 
 .pergunta{
-	color: gray;
+	/*color: gray;*/
 	text-align: justify-all;
-	background:#E6E6E6;
-	padding-top: 10px;
-	width: 100%;
+	/*background:#E6E6E6;*/
+  /*width: 100%;*/
 }
 
 .opcao{
@@ -310,12 +309,12 @@ body{
 
 .title{
 	text-align: center;
-	
+
 }
 .ajudas{
 	color:#E6E6E6;
 	border:2px solid #E6E6E6;
-	background: white;	
+	background: white;
 }
 .centralizado{
 	display: flex;
@@ -343,7 +342,7 @@ body{
 	cursor:not-allowed;
 }
 .ajuda-usada:hover{
-	background-color: white; 	
+	background-color: white;
 }
 .situacao{
 	border:1px solid #000;

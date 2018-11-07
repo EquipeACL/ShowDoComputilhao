@@ -31,18 +31,18 @@
     -->
     <div class="row">
       <!-- CASO A PERGUNTA TENHA IMAGEM -->
-      <div class="col-sm-8 col-md-8 col-lg-8">
+      <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta">
         <h4>{{indiceAtual}} - {{pergunta.statement}}</h4>
       </div>
       <!-- Se tiver imagem, mostra essa div aqui-->
-      <div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem" *ngIf="(pergunta.img!=null)">
+      <div class="col-sm-4 col-md-4 col-lg-4" id="imagem" *ngIf="(pergunta.img!=null)">
         <a data-toggle="tooltip" title="Clique para ampliar a imagem.">
-          <img id="imagemCentral" width="340" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
+          <img class = "imagens" id="imagemCentral" width="340" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
         </a>
       </div>
-      <div class="col-sm-4 col-md-4 col-lg-4 centralizado" id = "semImagem"*ngIf="(pergunta.img==null)">
+      <div class="col-sm-4 col-md-4 col-lg-4" id = "semImagem"*ngIf="(pergunta.img==null)">
         <span data-toggle="tooltip" title="Questão sem imagem!">
-          <img width="340" height="180" id="imagemPadrao" src="https://drive.google.com/uc?id=1Tyd0JakVp9_irOyraEqJk6PKOr8o6Ykp">
+          <img width="340" height="180" id="imagemPadrao" class = "imagens" src="https://drive.google.com/uc?id=1Tyd0JakVp9_irOyraEqJk6PKOr8o6Ykp">
         </span>
       </div>
     </div>
@@ -54,9 +54,9 @@
   <!-- DIV DE OPÇÔES -->
   <div class="col-lg-8">
     <div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]">
-      <button class="genric-btn default-border radius" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
+      <button class="genric-btn default-border radius opcoes" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
         <button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'">{{flags[i]}}</button>
-        <span> {{op}}</span>
+        <span class = ""> {{op}}</span>
       </button>
     </div>
 
