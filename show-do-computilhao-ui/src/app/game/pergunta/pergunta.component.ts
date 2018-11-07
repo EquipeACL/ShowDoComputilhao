@@ -20,7 +20,7 @@ export class PerguntaComponent implements OnInit {
   valorSeParar: any = 0;
   pergunta: any;//A pergunta da vez
   opcao: string; // Opcao escolhida pelo usuário
-  indeceAtual = 0;
+  indiceAtual = 0;
   listaPerguntas: any[];
 
   mensagem = 'Tempo esgotado!';
@@ -68,8 +68,8 @@ export class PerguntaComponent implements OnInit {
             const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
             audio.play();
             this.listaPerguntas = questions;
-            this.valorSeAcertar = valores['acertar'][this.indeceAtual];
-            this.pergunta = this.listaPerguntas[this.indeceAtual++];
+            this.valorSeAcertar = valores['acertar'][this.indiceAtual];
+            this.pergunta = this.listaPerguntas[this.indiceAtual++];
             this.cronometroService.cronometroZerou.subscribe(() => {
               this.mensagem = 'Tempo esgotado!';
               this.modalErro = true;
@@ -92,13 +92,13 @@ export class PerguntaComponent implements OnInit {
   }
 
   proxima() {
-    if (this.indeceAtual <= 23) {
+    if (this.indiceAtual <= 23) {
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.play();
       this.valorSeParar = this.valorSeAcertar;
-      this.valorSeErrar = valores['errar'][this.indeceAtual];
-      this.valorSeAcertar = valores['acertar'][this.indeceAtual];
-      this.pergunta = this.listaPerguntas[this.indeceAtual++];
+      this.valorSeErrar = valores['errar'][this.indiceAtual];
+      this.valorSeAcertar = valores['acertar'][this.indiceAtual];
+      this.pergunta = this.listaPerguntas[this.indiceAtual++];
       this.cronometroService.resetar();
       this.classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];
     }
@@ -163,7 +163,7 @@ export class PerguntaComponent implements OnInit {
 
       this.match.player = ' ';
       this.match.data = new Date();
-      this.match.hits = this.indeceAtual - 1;
+      this.match.hits = this.indiceAtual - 1;
       this.match.score = this.valorSeErrar;
       this.modalErro = false;
 

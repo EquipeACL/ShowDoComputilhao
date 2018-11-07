@@ -37,3 +37,7 @@ a{
 #imagemCentral{
   cursor: pointer;
 }
+
+#imagemPadrao{
+  cursor: not-allowed;
+}

@@ -11,21 +11,39 @@
   <!--Correta: {{pergunta.correctOption}} -->
   <div class="col-sm-12 col-md-12 col-lg-12 pergunta">
 
-
+    <!--Estava assim, o layout da pergunta mudava se tiver imagem ou não
     <div class="row">
-      <!-- CASO A PERGUNTA TENHA IMAGEM -->
-      <div class="col-sm-8 col-md-8 col-lg-8 centralizado" *ngIf="pergunta.img!=null">
-        <h6>{{pergunta.statement}}</h6>
+      <!-- CASO A PERGUNTA TENHA IMAGEM
+      <div class="col-sm-8 col-md-8 col-lg-8" *ngIf="pergunta.img!=null">
+        <h4>{{indiceAtual}} - {{pergunta.statement}}</h4>
       </div>
-      <!-- CASO A PERGUNTA NÂO TENHA IMAGEM -->
-      <div class="col-sm-12 col-md-12 col-lg-12 centralizado" *ngIf="pergunta.img==null">
-        <h6>{{pergunta.statement}}</h6>
+      <!-- CASO A PERGUNTA NÂO TENHA IMAGEM
+      <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="pergunta.img==null">
+        <h4>{{indiceAtual}} - {{pergunta.statement}}</h4>
       </div>
-      <!-- Se tiver imagem, mostra essa div aqui-->
+      <!-- Se tiver imagem, mostra essa div aqui
       <div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem" *ngIf="(pergunta.img!=null) && (pergunta!=null)">
         <a data-toggle="tooltip" title="Clique para ampliar a imagem.">
           <img id="imagemCentral" width="350" height="240" src="{{pergunta.img}}" (click)="mostrarImagem()">
         </a>
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <!-- CASO A PERGUNTA TENHA IMAGEM -->
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        <h4>{{indiceAtual}} - {{pergunta.statement}}</h4>
+      </div>
+      <!-- Se tiver imagem, mostra essa div aqui-->
+      <div class="col-sm-4 col-md-4 col-lg-4 centralizado" id="imagem" *ngIf="(pergunta.img!=null)">
+        <a data-toggle="tooltip" title="Clique para ampliar a imagem.">
+          <img id="imagemCentral" width="340" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
+        </a>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 centralizado" id = "semImagem"*ngIf="(pergunta.img==null)">
+        <span data-toggle="tooltip" title="Questão sem imagem!">
+          <img width="340" height="180" id="imagemPadrao" src="https://drive.google.com/uc?id=1Tyd0JakVp9_irOyraEqJk6PKOr8o6Ykp">
+        </span>
       </div>
     </div>
 
