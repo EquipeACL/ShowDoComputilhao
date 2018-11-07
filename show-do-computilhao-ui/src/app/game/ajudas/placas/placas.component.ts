@@ -20,7 +20,7 @@ export class PlacasComponent implements OnInit {
     const audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosnossosconvidados.mp3');
     audio.play();
 
-    let valor = 0.8;
+    let valor = 0.7;
     this.opcoes = this.opcoes.splice(this.correta);
 
     console.log(this.opcoes);
@@ -30,9 +30,9 @@ export class PlacasComponent implements OnInit {
         this.resultado.push(this.correta);
       }
       else {
-        this.resultado.push(this.opcoes[Math.ceil(Math.random() * 3));
+        this.resultado.push(this.opcoes[Math.floor(Math.random() * 4)]); // Exemplo: 0,4*4 = 1,6. PEgando o floor, fica 1
       }
-      valor -= 0.2;
+      valor -= 0.15;
 
     });
 

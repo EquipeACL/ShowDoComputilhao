@@ -29,7 +29,7 @@ export class UniversitariosComponent implements OnInit {
         this.resultado.push(this.correta);
       }
       else {
-        this.resultado.push(this.opcoes[Math.ceil(Math.random() * 3));
+        this.resultado.push(this.opcoes[Math.floor(Math.random() * 4)]);//Exemplo: 0,4*4 = 1,6. PEgando o floor, fica 1
       }
       valor -= 0.15;
 

@@ -248,7 +248,8 @@ export class PerguntaComponent implements OnInit {
 
   modalPularSim() {
     this.modalPular = false;
-    this.proxima();
+    this.proxima();//Aqui tem q ppegar uma questão que seja diferente das que tem na lista
+
     this.match.skips++;
   }
 
