@@ -164,7 +164,7 @@ export class PerguntaComponent implements OnInit {
   }
 
   fecharModalError() {
-    //this.mensagem = 'Tempo esgotado!';
+    // this.mensagem = 'Tempo esgotado!';
     this.closeModalError();
   }
 
