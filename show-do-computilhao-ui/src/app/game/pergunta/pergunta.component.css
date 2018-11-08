@@ -26,7 +26,6 @@ a{
 #imagem{
     /*background: white;*/
     border-radius: 2%;
-    padding: 10px;
 }
 .linha-cronometro{
     position: absolute;
@@ -43,13 +42,17 @@ a{
 }
 
 .opcoes{
-  border: 1px solid black;
+  border-style: ridge;
+  border-width: 2px;
   border-radius: 8px;
-  padding-left: 0px;
+  padding: 2px;
+  padding-right: 60px;
 }
 .imagens{
+
   border-radius: 8px;
-  border: 1px solid blue;
+  border-style: groove;
+  border-width: 3px;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-right: 0px;
@@ -57,30 +60,47 @@ a{
 
 #imagem{
   padding-right: 0px;
+  margin: auto;
 }
 #semImagem{
   padding-right: 0px;
 }
 .statementPergunta{
-  border: 1px solid blue;
+  background-color:beige;
   border-radius: 8px;
+  border-style: groove;
+  border-width: 3px;
 }
 
 .ajudas{
-
+  background-color:beige;
+  position: relative;
+  left: 5px;
   border-radius: 8px;
-  border: 1px solid blue;
-  padding-bottom: 0px;
+  border-style: groove;
+  border-width: 3px;
+  padding: 5px;
 }
 
 .pergunta{
-  padding-bottom: 0px;
-  margin-right: 30px
+
+  margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 .divop{
-  border: 1px solid blue;
+  background-color:beige;
   border-radius: 8px;
+  border-style: groove;
+  border-width: 3px;
   padding-left: 20px;
+
+}
+
+.help{
+  border-style: outset;
+  border-width: 2px;
+  border-radius: 8px;
+
 
 }

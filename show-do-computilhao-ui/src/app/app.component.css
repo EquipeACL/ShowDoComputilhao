@@ -6,3 +6,11 @@
     justify-content: center;
 }
 
+.fullscreen{
+  border-radius: 8px;
+
+  background-image: linear-gradient(white, rgba(204, 223, 219, 0.658));
+
+}
+
+

@@ -70,6 +70,8 @@ export class PerguntaComponent implements OnInit {
             this.listaPerguntas = questions;
             this.valorSeAcertar = valores['acertar'][this.indiceAtual];
             this.pergunta = this.listaPerguntas[this.indiceAtual++];
+            //gerando as opções de forma aleatória
+            this.pergunta.options = this.pergunta.options.sort();
             this.cronometroService.cronometroZerou.subscribe(() => {
               this.mensagem = 'Tempo esgotado!';
               this.modalErro = true;
@@ -99,6 +101,8 @@ export class PerguntaComponent implements OnInit {
       this.valorSeErrar = valores['errar'][this.indiceAtual];
       this.valorSeAcertar = valores['acertar'][this.indiceAtual];
       this.pergunta = this.listaPerguntas[this.indiceAtual++];
+      //gerando as opções de forma aleatória
+      this.pergunta.options = this.pergunta.options.sort();
       this.cronometroService.resetar();
       this.classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];
     }

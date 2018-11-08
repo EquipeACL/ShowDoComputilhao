@@ -1,4 +1,4 @@
-<div class="row fullscreen" height="400px">
+<div class="row" height="400px">
 
   <div class="col-sm-12 col-md-12 col-lg-12 container linha-cronometro">
     <!-- <div class="col-sm-10" style="position: absolute; left: 0">
@@ -32,12 +32,12 @@
     <div class="row">
       <!-- CASO A PERGUNTA TENHA IMAGEM -->
       <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta">
-        <h4>{{indiceAtual}} - {{pergunta.statement}}</h4>
+        <h5>{{indiceAtual}} - {{pergunta.statement}}</h5>
       </div>
       <!-- Se tiver imagem, mostra essa div aqui-->
       <div class="col-sm-4 col-md-4 col-lg-4" id="imagem" *ngIf="(pergunta.img!=null)">
-        <a data-toggle="tooltip" title="Clique para ampliar a imagem.">
-          <img class = "imagens" id="imagemCentral" width="340" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
+        <a data-toggle="tooltip" title="Clique para ver a imagem no tamanho original.">
+          <img class = "imagens" id="imagemCentral" width="300" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
         </a>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4" id = "semImagem"*ngIf="(pergunta.img==null)">
@@ -73,7 +73,7 @@
 
     <div class="row centralizado">
       <div class="ajuda cartas">
-        <button class="genric-btn default-border radius" [ngClass]="match.cards?'ajuda-usada':null" (click)="mostrarCartas()"
+        <button class="genric-btn default-border radius help" [ngClass]="match.cards?'ajuda-usada':null" (click)="mostrarCartas()"
           [disabled]="match.cards">
           <a data-toggle="tooltip" title="Usar as cartas">
             <img width="50px" src="../../../assets/img/cartas.png" *ngIf="!match.cards">
@@ -84,7 +84,7 @@
       </div>
 
       <div class="ajuda universitarios">
-        <button class="genric-btn default-border radius" [ngClass]="match.universitaries?'ajuda-usada':null" (click)="mostrarUniversitarios()"
+        <button class="genric-btn default-border radius help" [ngClass]="match.universitaries?'ajuda-usada':null" (click)="mostrarUniversitarios()"
           [disabled]="match.universitaries">
           <a data-toggle="tooltip" title="Pedir ajuda aos Universitários.">
             <img width="50px" src="../../../assets/img/universitarios.png" *ngIf="!match.universitaries">
@@ -95,7 +95,7 @@
       </div>
 
       <div class="ajuda pular">
-        <button href="#" class="genric-btn default-border radius" [ngClass]="match.skips==3?'ajuda-usada':null" (click)="mostrarModalPular()"
+        <button href="#" class="genric-btn default-border radius help" [ngClass]="match.skips==3?'ajuda-usada':null" (click)="mostrarModalPular()"
           [disabled]="match.skips==3">
           <span class="badge badge-pill badge-danger">{{3 - match.skips}}</span>
           <a data-toggle="tooltip" title="Pular essa pergunta">
@@ -107,7 +107,7 @@
       </div>
 
       <div class="ajuda placas">
-        <button class="genric-btn default-border radius" [ngClass]="match.plates?'ajuda-usada':null" (click)="mostrarPlacas()"
+        <button class="genric-btn default-border radius help" [ngClass]="match.plates?'ajuda-usada':null" (click)="mostrarPlacas()"
           [disabled]="match.plates">
           <a data-toggle="tooltip" title="Utulizar as placas">
             <img width="50px" src="../../../assets/img/placas.png" *ngIf="!match.plates">
