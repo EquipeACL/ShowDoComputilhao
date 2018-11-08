@@ -289,12 +289,12 @@ export class PerguntaComponent implements OnInit {
   }
 
   fecharModalUmMilhao() {
-    this.mensagem = "Parabéns voce ganhou Um Milhão de Reias! ";
+    this.mensagem = 'Parabéns voce ganhou Um Milhão de Reias!';
+    this.match.score = this.valorSeAcertar;
     this.modalUmMilhao = false;
     this.closeModalError();
   }
   private myFunc(event: KeyboardEvent): void {
-
 
     if (event.key.toUpperCase() === 'A') {
 
