@@ -1,10 +1,10 @@
 .checkbox {
-    padding-left: 20px; 
+    padding-left: 20px;
     margin: 10px 10px;
 }
 button{
     font-size: 20px;
-    text-decoration: none; 
+    text-decoration: none;
 }
 .checkbox label {
     display: inline-block;
@@ -25,7 +25,7 @@ button{
     background-color: #fff;
     -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-    transition: border 0.15s ease-in-out, color 0.15s ease-in-out; 
+    transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 .checkbox label::after {
     display: inline-block;
@@ -38,7 +38,7 @@ button{
     padding-left: 3px;
     padding-top: 1px;
     font-size: 16px;
-    color: #555555; 
+    color: #555555;
 }
 .checkbox input[type="checkbox"] {
     opacity: 0; }
@@ -69,11 +69,11 @@ color: #fff; }
     opacity: 0.5;
     z-index: 20000;
 }
-.opcao-invalida span{  
-    text-transform: capitalize;  
+.opcao-invalida span{
+    text-transform: capitalize;
     cursor:not-allowed;
 }
-.opcao-invalida button{    
+.opcao-invalida button{
     cursor:not-allowed;
 }
 .opcao-invalida a{

@@ -248,7 +248,7 @@ td,th{border-radius:0px}
 .primary-btn.white-bg span{color:#2E2EFE;-webkit-transition:all 0.3s ease 0s;-moz-transition:all 0.3s ease 0s;-o-transition:all 0.3s ease 0s;transition:all 0.3s ease 0s}
 .primary-btn.white-bg:hover{background:#2E2EFE;color:#fff;border:1px solid transparent}
 .primary-btn.white-bg:hover span{color:#fff}
-.banner-area{background:#fff}
+/*Mudei isso aqui pra não ficar com uma falha.banner-area{background:#fff}*/
 
 @media (max-width: 990px){.banner-area .fullscreen{height:900px !important}}
 @media (min-width: 1057px){.banner-area .fullscreen{height:600px !important}}
