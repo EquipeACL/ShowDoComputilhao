@@ -2,7 +2,7 @@ export interface IMatch{
 
     _id?: string
     player: string
-    score: string 
+    score: number 
     data: Date 
     hits: number
     skips: number
@@ -16,7 +16,7 @@ export interface IMatch{
 export class Match implements IMatch{
     _id: string;
     player: string = '';
-    score: string = '';
+    score: number = 0;
     data: Date = new Date();
     hits: number = 0;
     skips: number = 0;

@@ -15,7 +15,7 @@
 				<tr *ngFor="let match of matchs; let i=index;">
 					<th scope="row">{{pagina*rows+i+1}}</th>
 					<td>{{match.player}}</td>
-					<td *ngIf="match.score!=''">R$ {{match.score}}</td>
+					<td *ngIf="match.score!=''">R$ {{converter.toString(match.score)}}</td>
 					<td *ngIf="match.score==''">{{match.score}}</td>
 					<td *ngIf="match._id!=''">
 						<a [routerLink]="['/detalhes/',match._id]" class="genric-btn primary-border small">Visualizar</a>

@@ -127,13 +127,13 @@
 
       <div>
         <img width="60px" src="../../../assets/img/perdeutudo.png">
-        <span class="situacao">R$ {{valorSeErrar}}</span>
+        <span class="situacao">R$ {{converter.toString(valorSeErrar)}}</span>
         <h6>Errar</h6>
       </div>
 
       <div>
         <img width="60px" src="../../../assets/img/parar.png">
-        <span class="situacao">R$ {{valorSeParar}}</span>
+        <span class="situacao">R$ {{converter.toString(valorSeParar)}}</span>
         <!--<a href="#" title="Clique aqui se quiser parar o jogo.">-->
         <h6>Parar</h6>
         <!--</a>-->
@@ -141,7 +141,7 @@
 
       <div>
         <img width="60px" src="../../../assets/img/acertar.png">
-        <span class="situacao">R$ {{valorSeAcertar}}</span>
+        <span class="situacao">R$ {{converter.toString(valorSeAcertar)}}</span>
         <h6>Acertar</h6>
       </div>
 
@@ -157,7 +157,7 @@
   <!-- FIM DA DIV DE AJUDAS -->
 
   <!--Modal de confirmar resposta-->
-  <app-confirmacao *ngIf="modalConfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="valorSeAcertar"></app-confirmacao>
+  <app-confirmacao *ngIf="modalConfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="converter.toString(valorSeAcertar)"></app-confirmacao>
 
   <!--Modal de resposta errada/feedback-->
   <app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links" (closeDiv)="fecharModalError()"></app-erro>

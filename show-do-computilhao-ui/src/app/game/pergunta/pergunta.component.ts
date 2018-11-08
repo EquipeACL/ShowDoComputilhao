@@ -6,6 +6,7 @@ import { valores } from './valores-por-pergunta';
 import { IMatch, Match } from './Match';
 import { MatchService } from '../servicos/match.service';
 import { QuestionService } from '../servicos/question.service';
+import { ConverterScoreToString } from '../servicos/converterScoreToString';
 
 @Component({
   selector: 'app-pergunta',
@@ -13,6 +14,7 @@ import { QuestionService } from '../servicos/question.service';
   styleUrls: ['./pergunta.component.css']
 })
 export class PerguntaComponent implements OnInit {
+  converter: ConverterScoreToString;
   match: IMatch;
   flags = ['A', 'B', 'C', 'D'];//Indica a letra da resposta
   valorSeErrar: any = 0;
@@ -44,6 +46,7 @@ export class PerguntaComponent implements OnInit {
     private matchService: MatchService,
     private questionService: QuestionService
   ) {
+    this.converter = new ConverterScoreToString();
     this.match = new Match();
     this.pergunta = {
       "statement": "",

@@ -33,7 +33,7 @@ export class MatchController {
         let skip = req.query.skip | 0;
         let limit = req.query.limit | 0;
         console.log(`LIMIT: ${limit}`);
-        let sort = { "hits":"desc", "cards":"asc","universitaries":"asc","plates":"asc", "skips":"asc", "data": "asc"}
+        let sort = { "score":"desc", "hits":"desc", "skips":"asc","cards":"asc","universitaries":"asc","plates":"asc", "data": "asc"}
         return MatchModel.find()
             .sort(sort)
             .skip(skip)

@@ -3,12 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { IMatch, Match } from '../pergunta/Match';
 import { MatchService } from '../servicos/match.service';
+import { ConverterScoreToString } from '../servicos/converterScoreToString';
 @Component({
   selector: 'app-rank',
   templateUrl: './rank.component.html',
   styleUrls: ['./rank.component.css']
 })
 export class RankComponent implements OnInit {
+  converter: ConverterScoreToString;
   id: string;
   modal: boolean = false;
   matchs = [];
@@ -16,6 +18,7 @@ export class RankComponent implements OnInit {
   pagina: number = 0;
 
   constructor(private route: ActivatedRoute, private matchService: MatchService, private _router: Router) {
+    this.converter = new ConverterScoreToString();
     this.route.queryParams.subscribe((params: any) => {
       if (JSON.stringify(params) !== '{}') {
         this.modal = true;
