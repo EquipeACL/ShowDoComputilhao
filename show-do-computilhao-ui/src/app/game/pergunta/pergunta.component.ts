@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 import { CronometroService } from '../cronometro/cronometro-service.service';
@@ -38,8 +38,8 @@ export class PerguntaComponent implements OnInit {
   modalImagem: boolean;
   carregamentoInicial: boolean;
   modalUmMilhao: boolean;
-  classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];// vetor para controlar as opções validas
-
+  classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
+  @ViewChild('inputEscondido') inputEscondido: ElementRef;
   constructor(
     private cronometroService: CronometroService,
     private _router: Router,
@@ -83,9 +83,10 @@ export class PerguntaComponent implements OnInit {
                 this.modalErro = true;
               });
               this.carregamentoInicial = true;
+
             }, 100);
 
-        }
+          }
         })
         .catch(err => {
           console.error(`Problemas de acesso: ${err}`)
@@ -104,6 +105,7 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indiceAtual <= 23) {
+
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.play();
       this.valorSeParar = this.valorSeAcertar;
@@ -114,6 +116,7 @@ export class PerguntaComponent implements OnInit {
       this.pergunta.options = this.pergunta.options.sort();
       this.cronometroService.resetar();
       this.classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];
+      this.foco();
     }
     else { // Ganhou um milhao de reais
       this.modalUmMilhao = true;
@@ -157,6 +160,7 @@ export class PerguntaComponent implements OnInit {
     this.opcao = '';
     this.modalConfirmacao = false;
     this.cronometroService.iniciar();
+    this.foco();
   }
 
   fecharModalError() {
@@ -200,6 +204,7 @@ export class PerguntaComponent implements OnInit {
   cartasFechou() {
     this.modalCartas = false;
     this.cronometroService.iniciar();
+    this.foco();
   }
 
   numCartas(event: number) {
@@ -223,6 +228,7 @@ export class PerguntaComponent implements OnInit {
     this.match.universitaries = 1;
     this.modalUniversitarios = false;
     this.cronometroService.iniciar();
+    this.foco();
   }
 
   mostrarPlacas() {
@@ -234,6 +240,7 @@ export class PerguntaComponent implements OnInit {
     this.match.plates = 1;
     this.modalPlacas = false;
     this.cronometroService.iniciar();
+    this.foco();
   }
 
   mostrarModalParar() {
@@ -251,6 +258,7 @@ export class PerguntaComponent implements OnInit {
   modalPararCancelar() {
     this.modalParar = false;
     this.cronometroService.iniciar();
+    this.foco();
   }
 
 
@@ -269,6 +277,7 @@ export class PerguntaComponent implements OnInit {
   modalPularNao() {
     this.modalPular = false;
     this.cronometroService.iniciar();
+    this.foco();
   }
 
   mostrarImagem() {
@@ -276,12 +285,38 @@ export class PerguntaComponent implements OnInit {
   }
   esconderImagem() {
     this.modalImagem = false;
+    this.foco();
   }
 
   fecharModalUmMilhao() {
     this.mensagem = "Parabéns voce ganhou Um Milhão de Reias! ";
     this.modalUmMilhao = false;
     this.closeModalError();
+  }
+  private myFunc(event: KeyboardEvent): void {
+
+
+    if (event.key.toUpperCase() === 'A') {
+
+      this.mostrarConfirmacao(this.pergunta.options[0]);
+    }
+    else if (event.key.toUpperCase() === 'B') {
+      this.mostrarConfirmacao(this.pergunta.options[1]);
+    }
+    else if (event.key.toUpperCase() === 'C') {
+      this.mostrarConfirmacao(this.pergunta.options[2]);
+    }
+    else if (event.key.toUpperCase() === 'D') {
+      this.mostrarConfirmacao(this.pergunta.options[3]);
+    }
+  }
+
+
+  foco(): void {
+    this.inputEscondido.nativeElement.focus();
+  }
+  clicounadiv() {
+    this.foco();
   }
 }
 
