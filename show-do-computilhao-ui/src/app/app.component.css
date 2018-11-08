@@ -12,8 +12,8 @@
   border-width: 4px;
   padding-right: 30px;
   padding-left: 30px;
-  /*background-image: linear-gradient(white, rgba(204, 223, 219, 0.658));*/
-  background-image: linear-gradient(to bottom right, #99ccff 0%, #99ccff 100%);
+  background-image: linear-gradient(to bottom right, white, rgba(204, 223, 219, 0.658));
+  /*background-image: linear-gradient(to bottom right, #99ccff 0%, #99ccff 100%);*/
 
 
 }

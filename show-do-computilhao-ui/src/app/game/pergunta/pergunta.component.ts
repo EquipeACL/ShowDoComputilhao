@@ -36,7 +36,7 @@ export class PerguntaComponent implements OnInit {
   modalPular: boolean;
   modalLoading: boolean;
   modalImagem: boolean;
-
+  carregamentoInicial: boolean;
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];// vetor para controlar as opções validas
 
   constructor(
@@ -69,18 +69,22 @@ export class PerguntaComponent implements OnInit {
       this.questionService.buscarTodas(filters)
         .then(questions => {
           if (questions.length > 0) {
-            const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
-            audio.play();
-            this.listaPerguntas = questions;
-            this.valorSeAcertar = valores['acertar'][this.indiceAtual];
-            this.pergunta = this.listaPerguntas[this.indiceAtual++];
-            //gerando as opções de forma aleatória
-            this.pergunta.options = this.pergunta.options.sort();
-            this.cronometroService.cronometroZerou.subscribe(() => {
-              this.mensagem = 'Tempo esgotado!';
-              this.modalErro = true;
-            });
-          }
+            setTimeout(() => {
+              const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
+              audio.play();
+              this.listaPerguntas = questions;
+              this.valorSeAcertar = valores['acertar'][this.indiceAtual];
+              this.pergunta = this.listaPerguntas[this.indiceAtual++];
+              //gerando as opções de forma aleatória
+              this.pergunta.options = this.pergunta.options.sort();
+              this.cronometroService.cronometroZerou.subscribe(() => {
+                this.mensagem = 'Tempo esgotado!';
+                this.modalErro = true;
+              });
+              this.carregamentoInicial = true;
+            }, 100);
+
+        }
         })
         .catch(err => {
           console.error(`Problemas de acesso: ${err}`)
@@ -99,6 +103,7 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indiceAtual <= 23) {
+
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.play();
       this.valorSeParar = this.valorSeAcertar;

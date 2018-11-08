@@ -10,22 +10,22 @@ export class AreasComponent implements OnInit {
   matematica: boolean;
   fundamentos: boolean;
   tecnologias: boolean;
-  
+
   constructor(private router: Router) { }
 
   ngOnInit() { }
 
-  onclickTodas(value){
+  onclickTodas(value) {
     this.matematica = value;
     this.fundamentos = value;
     this.tecnologias = value;
   }
 
-  iniciarJogo(){
+  iniciarJogo() {
     let navigationExtras: NavigationExtras = {
       queryParams: { matematica: this.matematica, fundamentos: this.fundamentos, tecnologias: this.tecnologias }
     };
-    this.router.navigate(['/game'],navigationExtras);
+    this.router.navigate(['/game'], navigationExtras);
   }
 
 }
