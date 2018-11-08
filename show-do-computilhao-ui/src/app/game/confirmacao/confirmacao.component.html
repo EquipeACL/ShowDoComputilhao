@@ -1,27 +1,25 @@
 <div id="externa">
-  <div role="dialog" id="confirmacao">
-    <form ngForm (ngSubmit)="sim()">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Voce está certo disso?</h5>
-          </div>
-          <div class="modal-body">
-
-            <h4>Valendo R$ {{valor}}, posso perguntar?</h4>
-          </div>
-          <div class="modal-footer">
-            <div class="col-md">
-              <button type="submit" ngbAutofocus class="btn btn-primary btn-block">Sim</button>
-            </div>
-            <div class="col-md">
-              <button type="button" class="btn btn-secondary btn-block" (click)="nao()">Não</button>
-            </div>
-          </div>
-
+  <div class="" tabindex="-1" role="dialog" id="confirmacao">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Voce está certo disso?</h5>
         </div>
+        <div class="modal-body">
+
+          <h4>Valendo R$ {{valor}}, posso perguntar?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md">
+            <button type="button" class="btn btn-primary btn-block" (click)="sim()">Sim</button>
+          </div>
+          <div class="col-md">
+            <button type="button" class="btn btn-secondary btn-block" (click)="nao()">Não</button>
+          </div>
+        </div>
+
       </div>
-    </form>
+    </div>
   </div>
 </div>
 <!--Fundo preto do modal-->

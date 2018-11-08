@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   }
 
   foiPraArea() {
-    console.log('entrei no metodo');
     this.audio.pause();
   }
 }

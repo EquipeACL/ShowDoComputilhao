@@ -163,7 +163,7 @@
   <app-confirmacao *ngIf="modalConfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="converter.toString(valorSeAcertar)"></app-confirmacao>
 
   <!--Modal de resposta errada/feedback-->
-  <app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [links]="pergunta.links" (closeDiv)="fecharModalError()"></app-erro>
+  <app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [correta]="pergunta.correctOption" [links]="pergunta.links" (closeDiv)="fecharModalError()"></app-erro>
 
   <!--Modal de ajuda-cartas -->
   <app-cartas *ngIf="modalCartas" (close)="cartasFechou()" (num_cartas)="numCartas($event)"></app-cartas>

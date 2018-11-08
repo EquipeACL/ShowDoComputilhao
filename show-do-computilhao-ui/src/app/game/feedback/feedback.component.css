@@ -1,0 +1,23 @@
+.respcorreta{
+  background-color: rgb(30, 80, 30);
+  color: white;
+  text-decoration-style: solid;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+.comentario{
+  border-radius: 5px;
+  padding: 8px;
+  border-style: outset;
+  border-color: gray;
+}
+
+.links-apoio{
+  margin-top: 5px;
+  border-radius: 5px;
+  padding: 8px;
+  border-style: outset;
+  border-color: gray;
+}

@@ -1,38 +1,42 @@
 <div id="externa">
-	<div tabindex="-1" role="dialog" id="errou">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">{{titulo}}</h5>
-					<button type="button" class="close" (click)="oncloseevent()">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="col-lg-12">
-						<blockquote class="generic-blockquote">
-							  “{{comentario}}”
-						</blockquote>
-						<div class="links-apoio">
-							<h4 class="mb-10">Material de Apoio</h4>
-							<p>Alguns links com material de apoio sobre a pergunta podem ser consultados abaixo:</p>
-							<div class="link" *ngFor="let link of links">
-								<h6>{{link.title}}:<a [href]="link.link" target=true class="genric-btn link radius small">link</a></h6>
-							</div>
+  <div tabindex="-1" role="dialog" id="errou">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{titulo}}</h5>
+          <button type="button" class="close" (click)="oncloseevent()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-lg-12" >
+            <div class = "respcorreta"> Resposta correta: {{correta}}</div>
+          </div>
+          <div class="col-lg-12" style="margin-top:5px">
+            <div class="comentario">
+              “{{comentario}}”
+            </div>
+            <div class="links-apoio">
+              <h4 class="mb-10">Material de Apoio</h4>
+              <!--<p>Alguns links com material de apoio sobre a pergunta podem ser consultados abaixo:</p>-->
+              <div class="link" *ngFor="let link of links">
+                <h6>{{link.title}}:<a [href]="link.link" target=true class="genric-btn link radius small">link</a></h6>
+              </div>
 
-						</div>
-					</div>
+            </div>
+          </div>
 
-				</div>
-				<div class="modal-footer">
-					<div class="col-md">
-						<button type="button" class="btn btn-secondary btn-block" (click)="oncloseevent()">Fechar</button>
-					</div>
-				</div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md">
+            <button type="button" class="btn btn-secondary btn-block" (click)="oncloseevent()">{{acao}}</button>
+          </div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
   </div>
-  <!--Fundo preto do modal-->
-<div class="modal-backdrop show"><div>
+</div>
+<!--Fundo preto do modal-->
+<div class="modal-backdrop show">
+  <div>
