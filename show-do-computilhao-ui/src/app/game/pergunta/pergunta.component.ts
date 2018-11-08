@@ -56,7 +56,8 @@ export class PerguntaComponent implements OnInit {
       "img": "",
       "links": [{ "title": "", "link": "" }],
       "comment": "",
-      "level": ""
+      "level": "",
+      "year": ""
     }
   }
 

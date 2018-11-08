@@ -32,7 +32,7 @@
     <div class="row">
       <!-- CASO A PERGUNTA TENHA IMAGEM -->
       <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta">
-        <h5>{{indiceAtual}} - {{pergunta.statement}}</h5>
+        <h5>{{indiceAtual}} - [{{pergunta.year}}] {{pergunta.statement}}</h5>
       </div>
       <!-- Se tiver imagem, mostra essa div aqui-->
       <div class="col-sm-4 col-md-4 col-lg-4" id="imagem" *ngIf="(pergunta.img!=null)">

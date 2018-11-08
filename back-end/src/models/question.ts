@@ -13,6 +13,7 @@ export interface IQuestion extends mongoose.Document {
     level: string
     correctOption: string 
     comment: string
+    year: string
 }
 
 const QuestionSchema = new Schema({
@@ -49,6 +50,10 @@ const QuestionSchema = new Schema({
     level: {
         type: String,
         required: "Enter the level of answer"
+    },
+    year: {
+        type: String,
+        required: 'Enter the Year of the question'
     }
 })
 
