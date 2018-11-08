@@ -180,4 +180,7 @@
   <app-imagem [imagem]="pergunta.img" *ngIf="modalImagem" (closeDiv)="esconderImagem()"></app-imagem>
 
   <app-validando-resposta *ngIf="modalLoading" [resposta]="validarResposta()"></app-validando-resposta>
+
+  <!--Modal de parar jogo -->
+  <app-ganhou-ummihao *ngIf="modalUmMilhao" (close)="fecharModalUmMilhao()"></app-ganhou-ummihao>
 </div>

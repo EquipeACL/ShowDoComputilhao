@@ -37,6 +37,7 @@ export class PerguntaComponent implements OnInit {
   modalLoading: boolean;
   modalImagem: boolean;
   carregamentoInicial: boolean;
+  modalUmMilhao: boolean;
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];// vetor para controlar as opções validas
 
   constructor(
@@ -103,7 +104,6 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indiceAtual <= 23) {
-
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.play();
       this.valorSeParar = this.valorSeAcertar;
@@ -116,8 +116,7 @@ export class PerguntaComponent implements OnInit {
       this.classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];
     }
     else { // Ganhou um milhao de reais
-      const audio = new Audio('../../../assets/audios/parabensvoceacabadeganhar1m.mp3');
-      audio.play();
+      this.modalUmMilhao = true;
     }
   }
 
@@ -277,6 +276,12 @@ export class PerguntaComponent implements OnInit {
   }
   esconderImagem() {
     this.modalImagem = false;
+  }
+
+  fecharModalUmMilhao() {
+    this.mensagem = "Parabéns voce ganhou Um Milhão de Reias! ";
+    this.modalUmMilhao = false;
+    this.closeModalError();
   }
 }
 

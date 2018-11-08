@@ -27,6 +27,7 @@ import { ValidandoRespostaComponent } from './game/validando-resposta/validando-
 import { AreasComponent } from './game/areas/areas.component';
 import { QuestionService } from './game/servicos/question.service';
 import { ImagemComponent } from './game/imagem/imagem.component';
+import { GanhouUmmihaoComponent } from './game/ganhou-ummihao/ganhou-ummihao.component';
 
 
 const rotas: Routes = [
@@ -57,7 +58,8 @@ const rotas: Routes = [
     PularComponent,
     ValidandoRespostaComponent,
     AreasComponent,
-    ImagemComponent
+    ImagemComponent,
+    GanhouUmmihaoComponent
 
   ],
   imports: [
