@@ -13,14 +13,17 @@ export class ErroComponent implements OnInit {
   @Output() closeDiv = new EventEmitter();
   @Input() correta;
   acao;
+  acertou;
   constructor() { }
 
   ngOnInit() {
     if (this.titulo === 'Parabéns! Você acertou.') {
       this.acao = ('Continuar!');
+      this.acertou = true;
     }
     if (this.titulo !== 'Parabéns! Você acertou.') {
       this.acao = ('Ir para o ranking!');
+      this.acertou = false;
     }
 
     if (this.titulo !== 'Você errou!' && this.titulo !== 'Parabéns! Você acertou.') {

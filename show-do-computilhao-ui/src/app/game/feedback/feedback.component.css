@@ -1,12 +1,37 @@
-.respcorreta{
-  background-color: rgb(30, 80, 30);
+.modal-body{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.englobador{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.titulo{
+  text-align: center;
   color: white;
-  text-decoration-style: solid;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 5px;
+  margin-right: -50%;
+}
+.titulocerto{
+  background-color: #5cb85c
+}
+.tituloerrado{
+  background-color: #d9534f;
+}
+.respcorreta{
+  background-color: #f0ad4e;
+  color: white;
+  font-weight: bold;
   padding: 8px;
   border-radius: 5px;
   margin-bottom: 5px;
+  margin-top: 5px;
   font-size: 17px;
 }
+
 .comentario{
   border-radius: 5px;
   padding: 8px;
