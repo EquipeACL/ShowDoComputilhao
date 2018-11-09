@@ -11,7 +11,11 @@ export class GameController {
      * @param res 
      */
     public getModule1(req: Request, res: Response) {
-        let result = []
+        const QUANT_LOW = 12;
+        const QUANT_MEDIUM = 6;
+        const QUANT_HIGH = 6;
+        let result = [];
+        let skips = [];
         let temp = [];
         if (req.headers['matematica'] === 'true') {
             temp.push({ area: "matematica" });
@@ -32,29 +36,47 @@ export class GameController {
             if (err) {
                 res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             }
-            let list: IQuestion[] = QuestionRandom.selectRadom(questions, 12);
+            let list: IQuestion[] = QuestionRandom.selectRadom(questions, QUANT_LOW);
+            let i = 0;
             list.forEach(elem => {
-                result.push(elem)
+                if(i < QUANT_LOW - 3){
+                    result.push(elem);
+                }else{
+                    skips.push(elem);
+                }
+                i++;
             })
             filter.level = "medium"
             QuestionModel.find(filter).exec((err, questions) => {
                 if (err) {
                     res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
                 }
-                let list: IQuestion[] = QuestionRandom.selectRadom(questions, 6);
+                let list: IQuestion[] = QuestionRandom.selectRadom(questions,QUANT_MEDIUM);
+                i = 0;
                 list.forEach(elem => {
-                    result.push(elem)
+                    if(i < QUANT_MEDIUM - 3){
+                        result.push(elem);
+                    }else{
+                        skips.push(elem);
+                    }
+                    i++;
                 })
-                filter.level = "high"
+                filter.level = "high";
                 QuestionModel.find(filter).exec((err, questions) => {
                     if (err) {
                         res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
-                    }
-                    let list: IQuestion[] = QuestionRandom.selectRadom(questions, 6);
+                    }                    
+                    let list: IQuestion[] = QuestionRandom.selectRadom(questions, QUANT_HIGH);
+                    i=0;
                     list.forEach(elem => {
-                        result.push(elem)
+                        if(i < QUANT_HIGH - 3){
+                            result.push(elem);
+                        }else{
+                            skips.push(elem);
+                        }
+                        i++;
                     })
-                    res.status(HttpStatus.OK).json(result);
+                    res.status(HttpStatus.OK).json({result,skips});
                 });
             });
         });

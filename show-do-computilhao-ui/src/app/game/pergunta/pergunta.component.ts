@@ -24,6 +24,7 @@ export class PerguntaComponent implements OnInit {
   opcao: string; // Opcao escolhida pelo usuário
   indiceAtual = 0;
   listaPerguntas: any[];
+  perguntasExtras: any[];
 
   mensagem = 'Tempo esgotado!';
 
@@ -69,11 +70,14 @@ export class PerguntaComponent implements OnInit {
     } else {
       this.questionService.buscarTodas(filters)
         .then(questions => {
-          if (questions.length > 0) {
+          if (questions.result.length > 0 && questions.skips.length > 0) {
             setTimeout(() => {
               const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
               audio.play();
-              this.listaPerguntas = questions;
+              this.listaPerguntas = questions.result;
+              this.perguntasExtras = questions.skips;
+              console.log(`Perguntas: ${this.listaPerguntas.length}`);
+              console.log(`Perguntas: ${this.perguntasExtras.length}`);              
               this.valorSeAcertar = valores['acertar'][this.indiceAtual];
               this.pergunta = this.listaPerguntas[this.indiceAtual++];
               //gerando as opções de forma aleatória
