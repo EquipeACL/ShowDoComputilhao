@@ -76,8 +76,6 @@ export class PerguntaComponent implements OnInit {
               audio.play();
               this.listaPerguntas = questions.result;
               this.perguntasExtras = questions.skips;
-              console.log(`Perguntas: ${this.listaPerguntas.length}`);
-              console.log(`Perguntas: ${this.perguntasExtras.length}`);              
               this.valorSeAcertar = valores['acertar'][this.indiceAtual];
               this.pergunta = this.listaPerguntas[this.indiceAtual++];
               //gerando as opções de forma aleatória
@@ -109,7 +107,6 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indiceAtual <= 23) {
-
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.play();
       this.valorSeParar = this.valorSeAcertar;
@@ -273,8 +270,20 @@ export class PerguntaComponent implements OnInit {
 
   modalPularSim() {
     this.modalPular = false;
-    this.proxima();//Aqui tem q ppegar uma questão que seja diferente das que tem na lista
-
+    
+    // Busco uma nova pergunta que tenha o mesmo level
+    this.pergunta = this.perguntasExtras.find((elem) => {
+      if (elem.level === this.pergunta.level) {
+        return elem;
+      }
+    });
+    
+    // Removo a pergunta da lista de perguntas extras
+    this.perguntasExtras = this.perguntasExtras.filter(elem => {
+      if (elem.statement !== this.pergunta.statement) {
+        return elem;
+      }
+    });
     this.match.skips++;
   }
 
