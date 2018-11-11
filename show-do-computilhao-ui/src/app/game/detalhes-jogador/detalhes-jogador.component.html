@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div id="detalhes" class="fullscreen">
-	<h4 class="mb-30">Detalhes da partida</h4>
+	<h5 class="mb-30">Detalhes da partida</h5>
 	<form class="row">
 		<div class="form-group col-lg-12">
 			<label for="nome">Jogador:</label>
@@ -24,7 +24,7 @@
 
 	</form>
 	<div class="row">
-		<h4 class="col-lg-4">Ajudas utilizadas</h4>
+		<h5 class="col-lg-4">Ajudas utilizadas</h5>
 	</div>
 	<div class="row">
 		<div id="ajudas-usadas" class="table-responsive col-lg">
@@ -34,7 +34,7 @@
 						<div class="col-lg-2">
 							<img src="../../../assets/img/cartas.png" alt="..." class="rounded">
 							<h6 class="">Cartas</h6>
-							<span class="badge badge-success" *ngIf="match.cards" >Sim</span>
+							<span class="badge badge-success" *ngIf="match.cards">Sim</span>
 							<span class="badge badge-secondary" *ngIf="!match.cards">Não</span>
 						</div>
 					</td>
@@ -42,7 +42,7 @@
 						<div class="col-lg-2">
 							<img src="../../../assets/img/universitarios.png" alt="..." class="rounded">
 							<h6 class="">Universitários</h6>
-							<span class="badge badge-success" *ngIf="match.universitaries" >Sim</span>
+							<span class="badge badge-success" *ngIf="match.universitaries">Sim</span>
 							<span class="badge badge-secondary" *ngIf="!match.universitaries">Não</span>
 						</div>
 					</td>
@@ -50,7 +50,7 @@
 						<div class="col-lg-2">
 							<img src="../../../assets/img/placas.png" alt="..." class="rounded">
 							<h6 class="">Placas</h6>
-							<span class="badge badge-success" *ngIf="match.plates" >Sim</span>
+							<span class="badge badge-success" *ngIf="match.plates">Sim</span>
 							<span class="badge badge-secondary" *ngIf="!match.plates">Não</span>
 						</div>
 					</td>
@@ -58,8 +58,8 @@
 						<div class="col-lg-2">
 							<img src="../../../assets/img/pular.png" alt="..." class="rounded">
 							<h6 class="">Pulos</h6>
-							<span class="badge badge-success" *ngIf="match.skips"  >{{match.skips}}</span>
-							<span class="badge badge-secondary" *ngIf="!match.skips" >{{match.skips}}</span>
+							<span class="badge badge-success" *ngIf="match.skips">{{match.skips}}</span>
+							<span class="badge badge-secondary" *ngIf="!match.skips">{{match.skips}}</span>
 						</div>
 					</td>
 				</tr>
@@ -67,10 +67,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-6">
-			<h4 class="mb-30">Métricas de desempenho</h4>
+		<div class="col form-group" id="metricas">
+			<label>
+				<h5 class="mb-30">Métricas de desempenho: </h5>
+			</label>
+			<button type="button" class="btn btn-primary btn-sm" (click)="mostrarModalMetricas()">Visualizar</button>
 		</div>
 	</div>
-
-	<button type="button" class="btn btn-primary" (click)="voltar()">Voltar</button>
 </div>
+<app-metricas *ngIf="modalMetricas" [performance]="match.performance"(close)="fecharModalMetricas()"></app-metricas>

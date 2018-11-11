@@ -1,0 +1,29 @@
+<div id="externa">
+
+  <div class="modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Metricas de desempenho</h5>
+        <button type="button" class="close" (click)="clicouFechar()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Das {{totalDeTodasQuestoes}} questões foram acertadas {{totalDeQuestoesCertas}}, veja a distribuição abaixo.</label>
+        </div>
+        <div style="display: block">
+          <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--Fundo preto do modal-->
+<div class="modal-backdrop show">
+  <div>

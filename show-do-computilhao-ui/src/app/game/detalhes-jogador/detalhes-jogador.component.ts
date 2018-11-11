@@ -12,10 +12,11 @@ import { MatchService } from '../servicos/match.service';
 export class DetalhesJogadorComponent implements OnInit {
   id: string;
   match: IMatch;
-
-  constructor(private matchService: MatchService,private activeRoute: ActivatedRoute,private router: Router) { 
+  modalMetricas: boolean;
+    
+  constructor(private matchService: MatchService, private activeRoute: ActivatedRoute, private router: Router) {
     this.match = new Match();
-    }
+  }
 
   ngOnInit() {
     this.carregarPartida();
@@ -24,16 +25,25 @@ export class DetalhesJogadorComponent implements OnInit {
   carregarPartida() {
     this.id = this.activeRoute.snapshot.paramMap.get('id');
     this.matchService.buscar(this.id)
-      .then((match)=>{
+      .then((match) => {
         this.match = match;
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(`Error ${err}`);
       });
   }
 
-  voltar(){
-    this.router.navigate(['rank']);
+  mostrarMetricas() {
+    console.log(this.match.performance);
   }
+
+  mostrarModalMetricas() {
+    this.modalMetricas = true;
+  }
+
+  fecharModalMetricas() {
+    this.modalMetricas = false;
+  }
+
 
 }
