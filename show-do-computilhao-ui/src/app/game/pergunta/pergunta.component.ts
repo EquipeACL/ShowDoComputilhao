@@ -41,6 +41,8 @@ export class PerguntaComponent implements OnInit {
   modalUmMilhao: boolean;
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
   @ViewChild('inputEscondido') inputEscondido: ElementRef;
+
+  performance: any;
   constructor(
     private cronometroService: CronometroService,
     private _router: Router,
@@ -76,8 +78,6 @@ export class PerguntaComponent implements OnInit {
               audio.play();
               this.listaPerguntas = questions.result;
               this.perguntasExtras = questions.skips;
-              console.log(`Perguntas: ${this.listaPerguntas.length}`);
-              console.log(`Perguntas: ${this.perguntasExtras.length}`);              
               this.valorSeAcertar = valores['acertar'][this.indiceAtual];
               this.pergunta = this.listaPerguntas[this.indiceAtual++];
               //gerando as opções de forma aleatória
@@ -87,7 +87,7 @@ export class PerguntaComponent implements OnInit {
                 this.modalErro = true;
               });
               this.carregamentoInicial = true;
-
+              this.montarDadosDeDesempenho(this.listaPerguntas);
             }, 100);
 
           }
@@ -109,12 +109,12 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indiceAtual <= 23) {
-
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.play();
       this.valorSeParar = this.valorSeAcertar;
       this.valorSeErrar = valores['errar'][this.indiceAtual];
       this.valorSeAcertar = valores['acertar'][this.indiceAtual];
+      this.incrementarDesempenho(this.pergunta.level,this.pergunta.area);// Incremento as medidas de desempenho
       this.pergunta = this.listaPerguntas[this.indiceAtual++];
       //gerando as opções de forma aleatória
       this.pergunta.options = this.pergunta.options.sort();
@@ -123,6 +123,9 @@ export class PerguntaComponent implements OnInit {
       this.foco();
     }
     else { // Ganhou um milhao de reais
+      this.valorSeParar = this.valorSeAcertar;
+      this.valorSeErrar = valores['errar'][this.indiceAtual];
+      this.valorSeAcertar = valores['acertar'][this.indiceAtual];
       this.modalUmMilhao = true;
     }
   }
@@ -176,7 +179,6 @@ export class PerguntaComponent implements OnInit {
     console.log(this.mensagem);
     if (this.mensagem === 'Parabéns! Você acertou.') {
       this.modalErro = false;
-
       this.proxima();
     }
     else {
@@ -185,6 +187,7 @@ export class PerguntaComponent implements OnInit {
       this.match.data = new Date();
       this.match.hits = this.indiceAtual - 1;
       this.match.score = this.valorSeErrar;
+      this.match.performance = this.performance;
       this.modalErro = false;
 
       this.matchService.salvar(this.match)
@@ -273,8 +276,20 @@ export class PerguntaComponent implements OnInit {
 
   modalPularSim() {
     this.modalPular = false;
-    this.proxima();//Aqui tem q ppegar uma questão que seja diferente das que tem na lista
-
+    
+    // Busco uma nova pergunta que tenha o mesmo level
+    this.pergunta = this.perguntasExtras.find((elem) => {
+      if (elem.level === this.pergunta.level) {
+        return elem;
+      }
+    });
+    
+    // Removo a pergunta da lista de perguntas extras
+    this.perguntasExtras = this.perguntasExtras.filter(elem => {
+      if (elem.statement !== this.pergunta.statement) {
+        return elem;
+      }
+    });
     this.match.skips++;
   }
 
@@ -321,6 +336,37 @@ export class PerguntaComponent implements OnInit {
   }
   clicounadiv() {
     this.foco();
+  }
+
+  montarDadosDeDesempenho(lista: any[]) {
+    const low = this.getCount(lista,'level','low');
+    const medium = this.getCount(lista,'level','medium');
+    const high = this.getCount(lista,'level','high');
+    const mt = this.getCount(lista,'area','matematica');
+    const fd = this.getCount(lista,'area','fundamentos');
+    const tc = this.getCount(lista,'area','tecnologia');
+    this.performance = {
+      "low": {"todas":low, "certas": 0},
+      "medium": {"todas":medium, "certas": 0},
+      "high": {"todas":high, "certas": 0},
+      "matematica": {"todas":mt, "certas": 0},
+      "fundamentos": {"todas":fd, "certas": 0},
+      "tecnologia": {"todas":tc, "certas": 0},
+    };
+  }
+
+  incrementarDesempenho(level: string, area: string) {
+    this.performance[level]["certas"]++;
+    this.performance[area]["certas"]++;
+  }
+
+  getCount(array: any[], field: string, str: string) {
+    const r = array.filter(elem => {
+      if(elem[field] === str){
+        return elem;
+      }
+    });
+    return r.length;
   }
 }
 

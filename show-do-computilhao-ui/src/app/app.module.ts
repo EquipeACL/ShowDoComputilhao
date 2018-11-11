@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ChartsModule } from 'ng4-charts';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
@@ -28,6 +30,7 @@ import { AreasComponent } from './game/areas/areas.component';
 import { QuestionService } from './game/servicos/question.service';
 import { ImagemComponent } from './game/imagem/imagem.component';
 import { GanhouUmmihaoComponent } from './game/ganhou-ummihao/ganhou-ummihao.component';
+import { MetricasComponent } from './game/metricas/metricas.component';
 
 
 const rotas: Routes = [
@@ -59,7 +62,8 @@ const rotas: Routes = [
     ValidandoRespostaComponent,
     AreasComponent,
     ImagemComponent,
-    GanhouUmmihaoComponent
+    GanhouUmmihaoComponent,
+    MetricasComponent
 
   ],
   imports: [
@@ -70,7 +74,8 @@ const rotas: Routes = [
     RouterModule.forRoot(
       rotas
       //{ enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    ChartsModule
   ],
   providers: [CronometroService, MatchService, QuestionService],
   bootstrap: [AppComponent]

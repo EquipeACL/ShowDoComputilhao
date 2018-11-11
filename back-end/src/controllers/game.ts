@@ -3,7 +3,7 @@ import QuestionRandom from "../utils/questionRadom";
 import { Request, Response } from "express";
 import * as HttpStatus from "http-status";
 
-export class GameController {
+export class GameController {    
 
     /**
      * A ideia é retornar as 12 perguntas do primeiro modulo
@@ -75,7 +75,7 @@ export class GameController {
                             skips.push(elem);
                         }
                         i++;
-                    })
+                    })                    
                     res.status(HttpStatus.OK).json({result,skips});
                 });
             });
@@ -84,6 +84,7 @@ export class GameController {
 
     }
 
+   
     /**
      * A ideia é retornar todas as 6 perguntas do segundo modulo
      * @param req 
