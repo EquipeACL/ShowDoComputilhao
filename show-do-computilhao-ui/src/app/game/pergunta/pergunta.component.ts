@@ -318,7 +318,7 @@ export class PerguntaComponent implements OnInit {
   fecharModalUmMilhao() {
     this.mensagem = 'Parabéns você ganhou Um Milhão de Reias!';
     this.modalUmMilhao = false;
-
+    this.incrementarDesempenho(this.pergunta.level, this.pergunta.area);
     this.match.player = ' ';
     this.match.data = new Date();
     this.match.hits = this.indiceAtual;
