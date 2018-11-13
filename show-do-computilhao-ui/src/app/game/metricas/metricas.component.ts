@@ -7,9 +7,13 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MetricasComponent implements OnInit {
   // Radar
-  public radarChartLabels: string[];
-  public radarChartData: any;
-  public radarChartType: string;
+  public doughnutChartAreasLabels: string[];
+  public doughnutChartAreasData: any;
+  public doughnutChartAreasType: string;
+
+  public doughnutChartDificuldadeLabels: string[];
+  public doughnutChartDificuldadeData: any;
+  public doughnutChartDificuldadeType: string;
 
   totalDeTodasQuestoes: number = 0;
   totalDeQuestoesCertas: number = 0;
@@ -19,16 +23,35 @@ export class MetricasComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
     // Config grafico Radar
-    this.radarChartLabels = ['Matemática', 'Fundamentos', 'Tecnologias', "Faceis", "Médias", "Dificeis"];
-    this.radarChartData = [
-      { data: [this.performance['matematica']['todas'], this.performance['fundamentos']['todas'], this.performance['tecnologia']['todas'],this.performance['low']['todas'],this.performance['medium']['todas'],this.performance['high']['todas']], label: 'Total de questões' },
-      { data: [this.performance['matematica']['certas'], this.performance['fundamentos']['certas'], this.performance['tecnologia']['certas'],this.performance['low']['certas'],this.performance['medium']['certas'],this.performance['high']['certas']], label: 'Questões certas' }
+    this.doughnutChartAreasLabels = ['Matemática', 'Fundamentos', 'Tecnologia'];
+    this.doughnutChartDificuldadeLabels = ['Fácil', 'Mediana', 'Difícil'];
+    this.doughnutChartAreasData = [
+      {
+        data: [
+          this.performance['matematica']['certas'],
+          this.performance['fundamentos']['certas'],
+          this.performance['tecnologia']['certas'],
+        ]
+      }
     ];
-    this.radarChartType = 'radar';
-    this.totalDeTodasQuestoes = this.performance['low']['todas']+this.performance['medium']['todas']+this.performance['high']['todas'];
-    this.totalDeQuestoesCertas = this.performance['low']['certas']+this.performance['medium']['certas']+this.performance['high']['certas'];
+    this.doughnutChartDificuldadeData = [
+      {
+        data: [
+          this.performance['low']['certas'],
+          this.performance['medium']['certas'],
+          this.performance['high']['certas']
+        ],
+        label: 'Questões certas'
+      }
+    ];
+    this.doughnutChartAreasType = 'doughnut';
+    this.doughnutChartDificuldadeType = 'pie';
+    this.totalDeTodasQuestoes = this.performance['low']['todas'] + this.performance['medium']['todas'] + this.performance['high']['todas'];
+    this.totalDeQuestoesCertas = this.performance['low']['certas'] +
+      this.performance['medium']['certas'] +
+      this.performance['high']['certas'];
   }
 
 

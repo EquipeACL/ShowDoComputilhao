@@ -1,3 +1,4 @@
+<!-- Grafico de adal
 <div id="externa">
 
   <div class="modal-lg">
@@ -13,7 +14,7 @@
           <label>Das {{totalDeTodasQuestoes}} questões foram acertadas {{totalDeQuestoesCertas}}, veja a distribuição abaixo.</label>
         </div>
         <div style="display: block">
-          <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
+          <canvas baseChart [datasets]="doughnutChartAreasData" [labels]="doughnutChartAreasLabels" [chartType]="doughnutChartAreasType" (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
@@ -22,8 +23,45 @@
 
 </div>
 
+<div class="modal-backdrop show">
+  <div>
+-->
+<div id="externa">
 
+  <div class="modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Metricas de desempenho</h5>
+        <button type="button" class="close" (click)="clicouFechar()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Das {{totalDeTodasQuestoes}} questões foram acertadas {{totalDeQuestoesCertas}}, veja a distribuição
+            abaixo.</label>
+        </div>
 
-<!--Fundo preto do modal-->
+        <div style="float:left;">
+          Áreas do conhecimento
+          <canvas width="380" height="350" baseChart id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels"
+            [datasets]="doughnutChartAreasData" [labels]="doughnutChartAreasLabels" [chartType]="doughnutChartAreasType"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+
+        <div style="float:right;">
+          Dificuldade
+          <canvas width="360" height="350" baseChart id="doughnutDificuldade" class="chart chart-doughnut" chart-data="data" chart-labels="labels"
+            [datasets]="doughnutChartDificuldadeData" [labels]="doughnutChartDificuldadeLabels" [chartType]="doughnutChartDificuldadeType"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <div class="modal-backdrop show">
   <div>
