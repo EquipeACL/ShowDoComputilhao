@@ -145,11 +145,8 @@ export class PerguntaComponent implements OnInit {
     if (this.validarResposta()) {
       setTimeout(() => {
         this.modalLoading = false;
-
         this.mensagem = 'Parabéns! Você acertou.';
-        if (this.indiceAtual === 23) {
-          this.mensagem = 'Parabéns você ganhou Um Milhão de Reias!';
-        }
+
         this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
       }, 2000);
 
@@ -182,19 +179,21 @@ export class PerguntaComponent implements OnInit {
   closeModalError() {
     if (this.mensagem === 'Parabéns! Você acertou.') {
       this.modalErro = false;
-      this.proxima();
+      if (this.indiceAtual <= 23) {
+        this.proxima();
+      }
+      else{
+        this.modalUmMilhao = true;
+      }
     }
     else {
 
       this.match.player = ' ';
       this.match.data = new Date();
-      this.match.hits = this.indiceAtual;
-      if (this.mensagem !== 'Parabéns você ganhou Um Milhão de Reias!') {
-        this.match.score = this.valorSeErrar;
-      }
-      else {
-        this.match.hits = this.indiceAtual++;
-      }
+      this.match.hits = this.indiceAtual-1;
+
+      this.match.score = this.valorSeErrar;
+
 
       this.match.performance = this.performance;
       this.modalErro = false;
@@ -318,9 +317,29 @@ export class PerguntaComponent implements OnInit {
 
   fecharModalUmMilhao() {
     this.mensagem = 'Parabéns você ganhou Um Milhão de Reias!';
-    this.match.score = this.valorSeAcertar;
     this.modalUmMilhao = false;
-    this.closeModalError();
+
+    this.match.player = ' ';
+    this.match.data = new Date();
+    this.match.hits = this.indiceAtual;
+    this.match.score = this.valorSeAcertar;
+
+    this.match.performance = this.performance;
+    this.modalErro = false;
+
+    this.matchService.salvar(this.match)
+      .then((match) => {
+        let navigationExtras: NavigationExtras = {
+          queryParams: { id: match._id }
+        };
+        this._router.navigate(['rank'], navigationExtras);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+
   }
   private myFunc(event: KeyboardEvent): void {
 
