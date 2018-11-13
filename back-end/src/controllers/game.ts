@@ -11,9 +11,9 @@ export class GameController {
      * @param res 
      */
     public getModule1(req: Request, res: Response) {
-        const QUANT_LOW = 12;
-        const QUANT_MEDIUM = 6;
-        const QUANT_HIGH = 6;
+        const QUANT_LOW = 15;
+        const QUANT_MEDIUM = 9;
+        const QUANT_HIGH = 9;
         let result = [];
         let skips = [];
         let temp = [];

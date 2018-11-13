@@ -42,17 +42,17 @@
             abaixo.</label>
         </div>
 
-        <div style="float:left;">
+        <div style="float:left;margin: auto;">
           Áreas do conhecimento
-          <canvas width="380" height="350" baseChart id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels"
+          <canvas width="360" height="330" baseChart id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels"
             [datasets]="doughnutChartAreasData" [labels]="doughnutChartAreasLabels" [chartType]="doughnutChartAreasType"
             (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
           </canvas>
         </div>
 
-        <div style="float:right;">
+        <div style="float:left;margin: auto;">
           Dificuldade
-          <canvas width="360" height="350" baseChart id="doughnutDificuldade" class="chart chart-doughnut" chart-data="data" chart-labels="labels"
+          <canvas width="340" height="330" baseChart id="doughnutDificuldade" class="chart chart-doughnut" chart-data="data" chart-labels="labels"
             [datasets]="doughnutChartDificuldadeData" [labels]="doughnutChartDificuldadeLabels" [chartType]="doughnutChartDificuldadeType"
             (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
           </canvas>

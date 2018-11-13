@@ -114,7 +114,7 @@ export class PerguntaComponent implements OnInit {
       this.valorSeParar = this.valorSeAcertar;
       this.valorSeErrar = valores['errar'][this.indiceAtual];
       this.valorSeAcertar = valores['acertar'][this.indiceAtual];
-      this.incrementarDesempenho(this.pergunta.level,this.pergunta.area);// Incremento as medidas de desempenho
+      this.incrementarDesempenho(this.pergunta.level, this.pergunta.area);// Incremento as medidas de desempenho
       this.pergunta = this.listaPerguntas[this.indiceAtual++];
       //gerando as opções de forma aleatória
       this.pergunta.options = this.pergunta.options.sort();
@@ -145,7 +145,11 @@ export class PerguntaComponent implements OnInit {
     if (this.validarResposta()) {
       setTimeout(() => {
         this.modalLoading = false;
-        this.mensagem = "Parabéns! Você acertou.";
+
+        this.mensagem = 'Parabéns! Você acertou.';
+        if (this.indiceAtual === 23) {
+          this.mensagem = 'Parabéns você ganhou Um Milhão de Reias!';
+        }
         this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
       }, 2000);
 
@@ -176,7 +180,6 @@ export class PerguntaComponent implements OnInit {
   }
 
   closeModalError() {
-    console.log(this.mensagem);
     if (this.mensagem === 'Parabéns! Você acertou.') {
       this.modalErro = false;
       this.proxima();
@@ -185,8 +188,14 @@ export class PerguntaComponent implements OnInit {
 
       this.match.player = ' ';
       this.match.data = new Date();
-      this.match.hits = this.indiceAtual - 1;
-      this.match.score = this.valorSeErrar;
+      this.match.hits = this.indiceAtual;
+      if (this.mensagem !== 'Parabéns você ganhou Um Milhão de Reias!') {
+        this.match.score = this.valorSeErrar;
+      }
+      else {
+        this.match.hits = this.indiceAtual++;
+      }
+
       this.match.performance = this.performance;
       this.modalErro = false;
 
@@ -276,14 +285,14 @@ export class PerguntaComponent implements OnInit {
 
   modalPularSim() {
     this.modalPular = false;
-    
+
     // Busco uma nova pergunta que tenha o mesmo level
     this.pergunta = this.perguntasExtras.find((elem) => {
       if (elem.level === this.pergunta.level) {
         return elem;
       }
     });
-    
+
     // Removo a pergunta da lista de perguntas extras
     this.perguntasExtras = this.perguntasExtras.filter(elem => {
       if (elem.statement !== this.pergunta.statement) {
@@ -308,7 +317,7 @@ export class PerguntaComponent implements OnInit {
   }
 
   fecharModalUmMilhao() {
-    this.mensagem = 'Parabéns voce ganhou Um Milhão de Reias!';
+    this.mensagem = 'Parabéns você ganhou Um Milhão de Reias!';
     this.match.score = this.valorSeAcertar;
     this.modalUmMilhao = false;
     this.closeModalError();
@@ -339,19 +348,19 @@ export class PerguntaComponent implements OnInit {
   }
 
   montarDadosDeDesempenho(lista: any[]) {
-    const low = this.getCount(lista,'level','low');
-    const medium = this.getCount(lista,'level','medium');
-    const high = this.getCount(lista,'level','high');
-    const mt = this.getCount(lista,'area','matematica');
-    const fd = this.getCount(lista,'area','fundamentos');
-    const tc = this.getCount(lista,'area','tecnologia');
+    const low = this.getCount(lista, 'level', 'low');
+    const medium = this.getCount(lista, 'level', 'medium');
+    const high = this.getCount(lista, 'level', 'high');
+    const mt = this.getCount(lista, 'area', 'matematica');
+    const fd = this.getCount(lista, 'area', 'fundamentos');
+    const tc = this.getCount(lista, 'area', 'tecnologia');
     this.performance = {
-      "low": {"todas":low, "certas": 0},
-      "medium": {"todas":medium, "certas": 0},
-      "high": {"todas":high, "certas": 0},
-      "matematica": {"todas":mt, "certas": 0},
-      "fundamentos": {"todas":fd, "certas": 0},
-      "tecnologia": {"todas":tc, "certas": 0},
+      "low": { "todas": low, "certas": 0 },
+      "medium": { "todas": medium, "certas": 0 },
+      "high": { "todas": high, "certas": 0 },
+      "matematica": { "todas": mt, "certas": 0 },
+      "fundamentos": { "todas": fd, "certas": 0 },
+      "tecnologia": { "todas": tc, "certas": 0 },
     };
   }
 
@@ -362,7 +371,7 @@ export class PerguntaComponent implements OnInit {
 
   getCount(array: any[], field: string, str: string) {
     const r = array.filter(elem => {
-      if(elem[field] === str){
+      if (elem[field] === str) {
         return elem;
       }
     });
