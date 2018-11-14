@@ -46,7 +46,9 @@ a{
   border-width: 2px;
   border-radius: 8px;
   padding: 2px;
-  padding-right: 60px;
+  padding-right: 5px;
+  width: 75%;
+  min-width: 200px;
 }
 .imagens{
 
@@ -103,4 +105,59 @@ a{
   border-radius: 8px;
 
 
+}
+
+
+@media (max-width: 989px), (min-width:576){
+  .ajudas {
+    padding-left: 0px;
+    left: auto;
+  }
+  .imagens{
+    width: 100%;
+    padding-left: 0;
+  }
+  .pergunta{
+    margin-bottom: 5px;
+    margin-right: 0px;
+  }
+  .divop{
+    margin-bottom: 5px;
+    padding-right: 20px;
+  }
+  #imagem{
+    padding-left: 0px;
+  }
+  .opcoes{
+    width: 100%;
+  }
+}
+
+@media (max-width: 575){
+  .statementPergunta{
+    width: 100%;
+  }
+
+  .imagens{
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .pergunta{
+    margin-bottom: 5px;
+    margin-right: 0px;
+  }
+  .divop{
+    margin-bottom: 5px;
+  }
+  .ajudas {
+    padding-left: 0px;
+    left: auto;
+  }
+  #imagem{
+    padding-left: 0px;
+  }
+  .opcoes{
+    width: 100%;
+  }
 }

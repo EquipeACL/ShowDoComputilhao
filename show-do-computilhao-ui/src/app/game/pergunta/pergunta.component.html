@@ -40,7 +40,7 @@
       <!-- Se tiver imagem, mostra essa div aqui-->
       <div class="col-sm-4 col-md-4 col-lg-4" id="imagem" *ngIf="(pergunta.img!=null)">
         <a data-toggle="tooltip" title="Clique para ver a imagem no tamanho original.">
-          <img class = "imagens" id="imagemCentral" width="300" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
+          <img class = "imagens" id="imagemCentral" width="250" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
         </a>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4" id = "semImagem"*ngIf="(pergunta.img==null)">

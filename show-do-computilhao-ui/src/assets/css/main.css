@@ -250,7 +250,7 @@ td,th{border-radius:0px}
 .primary-btn.white-bg:hover span{color:#fff}
 /*Mudei isso aqui pra não ficar com uma falha.banner-area{background:#fff}*/
 
-@media (max-width: 990px){.banner-area .fullscreen{height:900px !important}}
+@media (max-width: 990px){.banner-area .fullscreen{height:100% !important}}
 @media (min-width: 1057px){.banner-area .fullscreen{height:600px !important}}
 @media (max-width: 1199px){.banner-left{margin-top:60px}}
 
