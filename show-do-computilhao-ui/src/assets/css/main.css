@@ -224,7 +224,7 @@ td,th{border-radius:0px}
 	nav a:hover{color:#2E2EFE}
 	body{background:#f6f6fc}
 .oz-body-wrap{
-	box-shadow:0px 0px 50px 0px rgba(0,0,0,0.2);
+	/*box-shadow:0px 0px 50px 0px rgba(0,0,0,0.2);*/
 	margin:50px;position:relative}
 @media (max-width: 767px){
 	.oz-body-wrap{
@@ -250,8 +250,8 @@ td,th{border-radius:0px}
 .primary-btn.white-bg:hover span{color:#fff}
 /*Mudei isso aqui pra não ficar com uma falha.banner-area{background:#fff}*/
 
-@media (max-width: 990px){.banner-area .fullscreen{height:100% !important}}
-@media (min-width: 1057px){.banner-area .fullscreen{height:600px !important}}
+@media (max-width: 991px){.banner-area .fullscreen{height:100% !important}}
+@media (min-width: 1057px){.banner-area{max-width: 1366px;margin:auto} .fullscreen{height:600px !important;max-width: 1366px;;margin:auto}}
 @media (max-width: 1199px){.banner-left{margin-top:60px}}
 
 .story-content h1{font-size:48px;font-weight:100;line-height:1.2em;margin-bottom:20px;margin-top:20px}

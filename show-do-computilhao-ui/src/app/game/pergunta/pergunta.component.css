@@ -96,7 +96,7 @@ a{
   border-style: groove;
   border-width: 3px;
   padding-left: 20px;
-
+  margin-bottom: 0px;
 }
 
 .help{
@@ -108,7 +108,7 @@ a{
 }
 
 
-@media (max-width: 989px), (min-width:576){
+@media (max-width: 992px)and (min-width:576px){
   .ajudas {
     padding-left: 0px;
     left: auto;
@@ -127,14 +127,20 @@ a{
   }
   #imagem{
     padding-left: 0px;
+    margin-bottom: 5px;
   }
   .opcoes{
     width: 100%;
   }
+  .statementPergunta{
+    margin-bottom: 5px;
+
+  }
 }
 
-@media (max-width: 575){
+@media (max-width: 575px){
   .statementPergunta{
+    margin-bottom: 5px;
     width: 100%;
   }
 
