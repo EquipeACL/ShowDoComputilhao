@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ChartsModule } from 'ng4-charts';
+import {AdsenseModule} from 'ng2-adsense';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -33,7 +34,6 @@ import { GanhouUmmihaoComponent } from './game/ganhou-ummihao/ganhou-ummihao.com
 import { MetricasComponent } from './game/metricas/metricas.component';
 import { FooterComponent } from './footer/footer.component';
 
-
 const rotas: Routes = [
   {path:'',component:HomeComponent},
   {path:'rank',component:RankComponent},
@@ -44,6 +44,8 @@ const rotas: Routes = [
 ];
 @NgModule({
   declarations: [
+
+
     AppComponent,
     HomeComponent,
     MenuComponent,
@@ -65,7 +67,7 @@ const rotas: Routes = [
     ImagemComponent,
     GanhouUmmihaoComponent,
     MetricasComponent,
-    FooterComponent
+    FooterComponent,
 
   ],
   imports: [
@@ -77,7 +79,11 @@ const rotas: Routes = [
       rotas
       //{ enableTracing: true } // <-- debugging purposes only
     ),
-    ChartsModule
+    ChartsModule,
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-7640562161899788',
+      adSlot: 7259870550,
+    })
   ],
   providers: [CronometroService, MatchService, QuestionService],
   bootstrap: [AppComponent]

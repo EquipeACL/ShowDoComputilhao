@@ -25,6 +25,7 @@
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
+    "ng2-adsense": "^5.3.4",
     "ng4-charts": "^1.0.2",
     "popper.js": "^1.14.5",
     "rxjs": "^6.0.0",

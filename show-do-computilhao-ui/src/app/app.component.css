@@ -16,8 +16,51 @@
   padding-bottom: 10px;
   background-image: linear-gradient(to bottom right, white, rgba(204, 223, 219, 0.658));
   /*background-image: linear-gradient(to bottom right, #99ccff 0%, #99ccff 100%);*/
-
-
 }
 
 
+
+
+@media (min-width:800px){
+  .ad{
+    width:728;
+    height: 90;
+    margin: auto;
+  }
+  #propaganda{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 799px)and (min-width:500px){
+  .ad{
+    width:468;
+    height: 60;
+  }
+  #propaganda{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 499px){
+  .ad{
+    width: 320;
+    height: 100;
+
+  }
+  #propaganda{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+}
