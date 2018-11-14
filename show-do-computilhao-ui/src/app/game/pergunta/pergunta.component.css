@@ -62,7 +62,7 @@ a{
 
 #imagem{
   padding-right: 0px;
-  margin: auto;
+
 }
 #semImagem{
   padding-right: 0px;
@@ -116,6 +116,8 @@ a{
   .imagens{
     width: 100%;
     padding-left: 0;
+    margin-bottom: 5px;
+
   }
   .pergunta{
     margin-bottom: 5px;

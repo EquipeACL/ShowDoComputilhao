@@ -31,6 +31,7 @@ import { QuestionService } from './game/servicos/question.service';
 import { ImagemComponent } from './game/imagem/imagem.component';
 import { GanhouUmmihaoComponent } from './game/ganhou-ummihao/ganhou-ummihao.component';
 import { MetricasComponent } from './game/metricas/metricas.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 const rotas: Routes = [
@@ -63,7 +64,8 @@ const rotas: Routes = [
     AreasComponent,
     ImagemComponent,
     GanhouUmmihaoComponent,
-    MetricasComponent
+    MetricasComponent,
+    FooterComponent
 
   ],
   imports: [

@@ -225,7 +225,10 @@ td,th{border-radius:0px}
 	body{background:#f6f6fc}
 .oz-body-wrap{
 	/*box-shadow:0px 0px 50px 0px rgba(0,0,0,0.2);*/
-	margin:50px;position:relative}
+  margin:50px;
+  position:relative;
+
+}
 @media (max-width: 767px){
 	.oz-body-wrap{
 		margin:30px}}
@@ -290,6 +293,12 @@ body{
 
 }
 
+footer{
+  background:#003c66;
+	background:-webkit-linear-gradient(#003c66,#003c66);
+	background:-o-linear-gradient(#003c66 0,#003c66 100%);
+	background:linear-gradient(#003c66,#003c66);
+}
 .fullscreen{
     padding-top: 50px;
 
