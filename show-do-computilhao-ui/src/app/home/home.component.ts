@@ -1,24 +1,25 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit, OnDestroy {
 
   audio;
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
 
-   /* this.audio = new Audio('../../../assets/audios/menuinicial.mp3');
-    this.audio.play();*/
+    this.audio = new Audio('../../../assets/audios/menuinicial.mp3');
+    this.audio.play();
   }
 
-  foiPraArea() {
-    /*this.audio.pause();*/
+  ngOnDestroy() {
+    this.audio.pause();
   }
+
 }

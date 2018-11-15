@@ -1,0 +1,12 @@
+
+
+
+@media (max-width: 991px){
+  img{
+    width: 80px;
+    height: 80px;
+  }
+  .btn{
+    margin-bottom: 5px;
+  }
+}

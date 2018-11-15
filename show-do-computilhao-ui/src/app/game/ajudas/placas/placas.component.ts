@@ -23,8 +23,6 @@ export class PlacasComponent implements OnInit {
     let valor = 0.7;
     this.opcoes = this.opcoes.splice(this.correta);
 
-    console.log(this.opcoes);
-
     this.opcoes.forEach(() => {
       if (Math.random() < valor) {
         this.resultado.push(this.correta);

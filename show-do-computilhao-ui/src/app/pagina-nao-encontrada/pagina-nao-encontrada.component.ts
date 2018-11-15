@@ -11,13 +11,13 @@ export class PaginaNaoEncontradaComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    setTimeout(()=>{
-      console.log('Acabou o tempo!');
+    setTimeout(() => {
+
       this.router.navigate(['/']);
-    },5000);
-    setInterval(()=>{
+    }, 5000);
+    setInterval(() => {
       this.timer--;
-    },1000);
+    }, 1000);
   }
 
 }

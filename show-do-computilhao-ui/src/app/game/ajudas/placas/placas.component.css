@@ -1,3 +1,13 @@
 .placa{
     border: 2px solid black;
 }
+
+@media (max-width: 991px){
+  img{
+    width: 110px;
+    height: 110px;
+  }
+  .btn{
+    margin-bottom: 5px;
+  }
+}

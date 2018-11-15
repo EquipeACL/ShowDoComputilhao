@@ -40,7 +40,6 @@ export class PerguntaComponent implements OnInit {
   carregamentoInicial: boolean;
   modalUmMilhao: boolean;
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
-  @ViewChild('inputEscondido') inputEscondido: ElementRef;
 
   performance: any;
   constructor(
@@ -120,7 +119,7 @@ export class PerguntaComponent implements OnInit {
       this.pergunta.options = this.pergunta.options.sort();
       this.cronometroService.resetar();
       this.classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];
-      this.foco();
+
     }
     else { // Ganhou um milhao de reais
       this.valorSeParar = this.valorSeAcertar;
@@ -168,7 +167,7 @@ export class PerguntaComponent implements OnInit {
     this.opcao = '';
     this.modalConfirmacao = false;
     this.cronometroService.iniciar();
-    this.foco();
+
   }
 
   fecharModalError() {
@@ -219,7 +218,7 @@ export class PerguntaComponent implements OnInit {
   cartasFechou() {
     this.modalCartas = false;
     this.cronometroService.iniciar();
-    this.foco();
+
   }
 
   numCartas(event: number) {
@@ -243,7 +242,7 @@ export class PerguntaComponent implements OnInit {
     this.match.universitaries = 1;
     this.modalUniversitarios = false;
     this.cronometroService.iniciar();
-    this.foco();
+
   }
 
   mostrarPlacas() {
@@ -255,7 +254,7 @@ export class PerguntaComponent implements OnInit {
     this.match.plates = 1;
     this.modalPlacas = false;
     this.cronometroService.iniciar();
-    this.foco();
+
   }
 
   mostrarModalParar() {
@@ -273,7 +272,7 @@ export class PerguntaComponent implements OnInit {
   modalPararCancelar() {
     this.modalParar = false;
     this.cronometroService.iniciar();
-    this.foco();
+
   }
 
 
@@ -304,7 +303,7 @@ export class PerguntaComponent implements OnInit {
   modalPularNao() {
     this.modalPular = false;
     this.cronometroService.iniciar();
-    this.foco();
+
   }
 
   mostrarImagem() {
@@ -312,7 +311,7 @@ export class PerguntaComponent implements OnInit {
   }
   esconderImagem() {
     this.modalImagem = false;
-    this.foco();
+
   }
 
   fecharModalUmMilhao() {
@@ -360,12 +359,6 @@ export class PerguntaComponent implements OnInit {
   }
 */
 
-  foco(): void {
-    this.inputEscondido.nativeElement.focus();
-  }
-  clicounadiv() {
-    this.foco();
-  }
 
   montarDadosDeDesempenho(lista: any[]) {
     const low = this.getCount(lista, 'level', 'low');
