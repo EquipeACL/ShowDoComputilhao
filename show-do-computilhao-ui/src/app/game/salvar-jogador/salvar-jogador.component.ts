@@ -18,8 +18,13 @@ export class SalvarJogadorComponent implements OnInit {
     this.close.emit();
   }
 
-  salvarPartida(palyer: any) {    
-    this.salvar.emit(palyer);
+  salvarPartida(player: any) { 
+    // So salva se relamente tiver algum nome e não apenas espaços em branco
+    if(player+''.trim().length == 0){
+      this.close.emit();
+    }else{
+      this.salvar.emit(player);
+    }   
   }
 
 }

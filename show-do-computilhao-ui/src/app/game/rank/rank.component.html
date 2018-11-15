@@ -2,6 +2,14 @@
 <div id="rank">
 	<div style="height: 100%;">
 		<h4 class="mb-30">Ranking</h4>
+		<span [ngClass]="pesquisa?'lnr lnr-cross':'lnr lnr-magnifier'" (click)="clicou()" ></span>
+		<div id="divpesquisa" class="row">			
+			<nav class="form-group col-md" [ngClass]="pesquisa?'show':'hide'">
+				<label for="pesquisa">Pesquisar:</label>
+				<input type="text" name="pesquisa" id="pesquisa" class="form-control form-control-sm"/>
+			</nav>
+
+		</div>
 		<table class="table table-striped table-sm" style="height: 90%">
 			<thead>
 				<tr>
@@ -41,9 +49,6 @@
 				</tr>
 			</tfoot>
 		</table>
-
-
-
 	</div>
 
 </div>

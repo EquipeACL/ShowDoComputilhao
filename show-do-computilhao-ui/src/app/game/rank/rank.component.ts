@@ -16,6 +16,7 @@ export class RankComponent implements OnInit {
   matchs = [];
   rows: number = 10;
   pagina: number = 0;
+  pesquisa: boolean;
 
   constructor(private route: ActivatedRoute, private matchService: MatchService, private _router: Router) {
     this.converter = new ConverterScoreToString();
@@ -73,7 +74,7 @@ export class RankComponent implements OnInit {
       this.matchService.buscar(this.id)
         .then((match) => {
           if (match.player !== ' ') {
-            this._router.navigate(['/rank']);
+            this._router.navigate([`/detalhes/${match._id}`]);
           }
         })
         .catch((err) => {
@@ -143,4 +144,9 @@ export class RankComponent implements OnInit {
     }
 
   }
+
+  clicou(){
+    this.pesquisa = !this.pesquisa;
+  }
+
 }
