@@ -27,3 +27,32 @@
 .externa{
   margin: auto;
 }
+
+
+@media(min-width:992px){
+  #doughnut{
+    width: 360px;
+    height: 330px;
+  }
+  #doughnutDificuldade{
+    width: 340px;
+    height: 330px;
+  }
+}
+
+@media (max-width: 991px){
+  .modal-lg{
+    width: 400px;
+    height: 930px;
+
+  }
+  #doughnut{
+    width: 250px;
+    height: 240px;
+  }
+  #doughnutDificuldade{
+    width: 250px;
+    height: 240px;
+  }
+}
+
