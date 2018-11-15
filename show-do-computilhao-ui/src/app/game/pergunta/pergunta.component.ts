@@ -341,6 +341,7 @@ export class PerguntaComponent implements OnInit {
 
 
   }
+  /*
   private myFunc(event: KeyboardEvent): void {
 
     if (event.key.toUpperCase() === 'A') {
@@ -357,7 +358,7 @@ export class PerguntaComponent implements OnInit {
       this.mostrarConfirmacao(this.pergunta.options[3]);
     }
   }
-
+*/
 
   foco(): void {
     this.inputEscondido.nativeElement.focus();

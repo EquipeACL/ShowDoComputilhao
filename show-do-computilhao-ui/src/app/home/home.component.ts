@@ -13,11 +13,12 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.audio = new Audio('../../../assets/audios/menuinicial.mp3');
-    this.audio.play();
+
+   /* this.audio = new Audio('../../../assets/audios/menuinicial.mp3');
+    this.audio.play();*/
   }
 
   foiPraArea() {
-    this.audio.pause();
+    /*this.audio.pause();*/
   }
 }

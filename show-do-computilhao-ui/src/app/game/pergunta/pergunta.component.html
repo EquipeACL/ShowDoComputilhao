@@ -1,7 +1,7 @@
-<div class="row" height="400px" *ngIf="carregamentoInicial" (click)="clicounadiv()"  >
+<div class="row" height="400px" *ngIf="carregamentoInicial" "  >
 
   <!--gambiarra-->
-  <input autofocus="autofocus" #inputEscondido id="inputEscondido" tabindex="0" (keypress)="myFunc($event)" style="border-style:none;color: white;width:1px;height:1px" />
+  <!--<input autofocus="autofocus" #inputEscondido id="inputEscondido" tabindex="0" (keypress)="myFunc($event)" style="border-style:none;color: white;width:1px;height:1px" />-->
 
   <div class="col-sm-12 col-md-12 col-lg-12 container linha-cronometro">
     <!-- <div class="col-sm-10" style="position: absolute; left: 0">
@@ -12,7 +12,7 @@
     </div>
   </div>
   <!--Correta: {{pergunta.correctOption}} -->
-  <div class="col-sm-12 col-md-12 col-lg-12 pergunta" (click)="clicounadiv()">
+  <div class="col-sm-12 col-md-12 col-lg-12 pergunta" ">
 
     <!--Estava assim, o layout da pergunta mudava se tiver imagem ou não
     <div class="row">
@@ -34,7 +34,7 @@
     -->
     <div class="row">
       <!-- CASO A PERGUNTA TENHA IMAGEM -->
-      <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta" (click)="clicounadiv()">
+      <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta" ">
         <h5>{{indiceAtual}} - [{{pergunta.year}}] {{pergunta.statement}}</h5>
       </div>
       <!-- Se tiver imagem, mostra essa div aqui-->
@@ -57,7 +57,7 @@
 
 
   <!-- DIV DE OPÇÔES -->
-  <div class="col-lg-8 divop" (click)="clicounadiv()">
+  <div class="col-lg-8 divop" ">
     <div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]">
       <button class="genric-btn default-border radius opcoes" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
         <button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'">{{flags[i]}}</button>
@@ -69,7 +69,7 @@
   <!-- FIM DA DIV DE OPÇÔES -->
 
   <!-- DIV DE AJUDAS -->
-  <div class="col-lg-4 ajudas" padding-bottom="10px" (click)="clicounadiv()">
+  <div class="col-lg-4 ajudas" padding-bottom="10px" ">
     <div class="row centralizado">
       <h4 class="title">Tipos de ajuda</h4>
     </div>
