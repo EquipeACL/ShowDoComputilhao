@@ -24,7 +24,7 @@ export class DetalhesJogadorComponent implements OnInit {
 
   carregarPartida() {
     this.id = this.activeRoute.snapshot.paramMap.get('id');
-    this.matchService.buscar(this.id)
+    this.matchService.buscarPorId(this.id)
       .then((match) => {
         this.match = match;
       })

@@ -71,7 +71,7 @@ export class RankComponent implements OnInit {
 
   validaId() {
     if (this.id) {
-      this.matchService.buscar(this.id)
+      this.matchService.buscarPorId(this.id)
         .then((match) => {
           if (match.player !== ' ') {
             this._router.navigate([`/detalhes/${match._id}`]);
@@ -106,7 +106,7 @@ export class RankComponent implements OnInit {
 
   salvarPartida(player: string) {
 
-    this.matchService.buscar(this.id)
+    this.matchService.buscarPorId(this.id)
       .then((match) => {
         match.player = player;
         this.matchService.atualizar(match)
@@ -145,8 +145,26 @@ export class RankComponent implements OnInit {
 
   }
 
+  // Mostra e esconde area de pesquisa
   clicou(){
     this.pesquisa = !this.pesquisa;
+  }
+
+  pesquisar(evento: any) {
+    let busca: string = evento.target.value;
+    this.matchService.buscar(busca)
+      .then((matchs) => {
+        this.matchs = matchs;
+        const falta = this.rows - matchs.length;
+        if (falta < this.rows) {
+          for (let i = falta; i > 0; i--) {
+            this.matchs.push({ _id: '', player: '', score: '' });
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+      });
   }
 
 }

@@ -16,13 +16,33 @@
     background-color: lightgrey;
     cursor: not-allowed;
 }
-.hide{
-    transition: opacity 1s ease-out;
-    opacity: 0; 
-    height: 0;
-    overflow: hidden; 
+#divpesquisa{
+    z-index: 1998;
+    position: relative;
 }
-.show{
-    opacity: 1;
-    height: auto;
+#botaoPesquisar{
+    position: relative;
+    top: 73px;
+    right: 32px;
+    z-index: 1999;
+}
+@media (max-width: 470px){
+    #botaoPesquisar{
+        position: absolute;
+        top: 45px;
+        right: 32px;
+        z-index: 1999;
+    }
+}
+@media (min-width: 768px){
+    .col-sm-2 label{
+        width: 100%;
+        text-align: right;
+    }
+}
+@media (max-width: 767px){
+    .col-sm-2 label{
+        width: 100%;
+        text-align: left;
+    }
 }

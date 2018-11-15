@@ -201,13 +201,15 @@ td,th{border-radius:0px}
 		transform-origin:100% 50%}
 	@media (max-width: 767px){
 		nav{
-			margin-right:0;position:absolute;
+			margin-right:0;
+			position:absolute;
 			right:0;
-			top:47px;
+			top:-70px;
 			text-align:right;
 			padding:20px 0;
 			z-index:5;
-			background:#2E2EFE}
+			background-image: linear-gradient(to bottom right, white, rgba(204, 223, 219, 0.658));
+		}
 	}
 	nav.hide{
 		transform:scale(0)}

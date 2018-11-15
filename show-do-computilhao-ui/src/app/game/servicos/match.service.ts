@@ -18,7 +18,16 @@ export class MatchService {
             });
     }
 
-    buscar(id: string): Promise<any> {
+    buscar(busca: string): Promise<any> {
+        return this.http.get(environment.urlAPI + '/matchs?player='+busca)
+            .toPromise()
+            .then((response) => response.json())
+            .catch((err) => {
+                return Promise.reject(err);
+            });
+    }
+
+    buscarPorId(id: string): Promise<any> {
         return this.http.get(environment.urlAPI + '/matchs/' + id)
             .toPromise()
             .then((response) => response.json())

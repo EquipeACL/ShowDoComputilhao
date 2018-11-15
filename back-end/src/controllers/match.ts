@@ -31,10 +31,11 @@ export class MatchController {
 
     public getMatchsAll(req: Request, res: Response) {//Retorna todas as partidas
         let skip = req.query.skip | 0;
-        let limit = req.query.limit | 0;
-        console.log(`LIMIT: ${limit}`);
+        let limit = req.query.limit | 10;
+        let player = req.query.player;
+        let reg = new RegExp(player);        
         let sort = { "score":"desc", "hits":"desc", "skips":"asc","cards":"asc","universitaries":"asc","plates":"asc", "data": "asc"}
-        return MatchModel.find()
+        return MatchModel.find({player:{$regex:reg}})
             .sort(sort)
             .skip(skip)
             .limit(limit)
@@ -42,6 +43,8 @@ export class MatchController {
             if (err) res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(err);
             else res.status(HttpStatus.OK).send(matchs);
         });
+        
+        
     }
 
     public getMatchId(req: Request, res: Response) {//Retorna uma partida pelo id
