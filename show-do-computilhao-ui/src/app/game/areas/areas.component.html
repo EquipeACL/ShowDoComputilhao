@@ -15,33 +15,33 @@
   <hr>
   <div class="row centralizado">
     <div class="col-md-12">
-      <h4>Escolha as areas que deseja jogar.</h4>
+      <h4>Escolha as áreas que deseja jogar.</h4>
     </div>
-    <div class="col-md-4 checkbox checkbox-primary">
+    <div class="col-md-4 col-sm-12 checkbox checkbox-primary">
       <input id="checkbox1" type="checkbox" [(ngModel)]="matematica">
       <label for="checkbox1">
         Matemática
       </label>
     </div>
 
-    <div class="col-md-4  checkbox checkbox-primary">
+    <div class="col-md-4 col-sm-12  checkbox checkbox-primary">
       <input id="checkbox2" type="checkbox" [(ngModel)]="fundamentos">
       <label for="checkbox2">
-        Fundamentos da Computação
+        Fundamentos
       </label>
     </div>
 
-    <div class="col-md-4  checkbox checkbox-primary">
+    <div class="col-md-4 col-sm-12  checkbox checkbox-primary">
       <input id="checkbox3" type="checkbox" [(ngModel)]="tecnologias">
       <label for="checkbox3">
-        Tecnologia da Computação
+        Tecnologia
       </label>
     </div>
 
-    <div class="col-md-4  checkbox checkbox-primary">
+    <div class="col-md-4 col-sm-12 checkbox checkbox-primary">
       <input id="checkbox4" type="checkbox" [(checked)]="matematica&&fundamentos&&tecnologias" #check (click)="onclickTodas(check.checked)">
       <label for="checkbox4">
-        Todas as areas
+        Todas as áreas
       </label>
     </div>
 
