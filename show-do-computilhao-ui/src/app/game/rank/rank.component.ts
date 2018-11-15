@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { IMatch, Match } from '../pergunta/Match';
 import { MatchService } from '../servicos/match.service';
 import { ConverterScoreToString } from '../servicos/converterScoreToString';
 @Component({
@@ -16,7 +15,7 @@ export class RankComponent implements OnInit {
   matchs = [];
   rows: number = 10;
   pagina: number = 0;
-  pesquisa: boolean;
+  pesquisando: boolean;
 
   constructor(private route: ActivatedRoute, private matchService: MatchService, private _router: Router) {
     this.converter = new ConverterScoreToString();
@@ -145,13 +144,9 @@ export class RankComponent implements OnInit {
 
   }
 
-  // Mostra e esconde area de pesquisa
-  clicou(){
-    this.pesquisa = !this.pesquisa;
-  }
-
-  pesquisar(evento: any) {
+   pesquisar(evento: any) {
     let busca: string = evento.target.value;
+    
     this.matchService.buscar(busca)
       .then((matchs) => {
         this.matchs = matchs;
@@ -165,6 +160,13 @@ export class RankComponent implements OnInit {
       .catch((err) => {
         console.log(`Error: ${err}`);
       });
+
+      // pesquisando é utilizada para mostrar ou não a colocação no rank
+      if(busca.length>0){
+        this.pesquisando = true;
+      }else{
+        this.pesquisando = false;
+      }
   }
 
 }

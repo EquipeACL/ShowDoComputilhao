@@ -20,7 +20,8 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let match of matchs; let i=index;">
-					<th scope="row">{{pagina*rows+i+1}}</th>
+					<th scope="row" *ngIf="!pesquisando">{{pagina*rows+i+1}}</th>
+					<th scope="row" *ngIf="pesquisando"></th>
 					<td>{{match.player}}</td>
 					<td *ngIf="match.score!=''">R$ {{converter.toString(match.score)}}</td>
 					<td *ngIf="match.score==''">{{match.score}}</td>

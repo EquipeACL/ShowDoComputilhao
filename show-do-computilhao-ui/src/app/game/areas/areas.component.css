@@ -48,7 +48,7 @@ button{
     outline-offset: -2px; }
 .checkbox input[type="checkbox"]:checked + label::after {
     font-family: 'FontAwesome';
-    content: "\f00c"; }
+}
 .checkbox input[type="checkbox"]:disabled + label {
     opacity: 0.65; }
 .checkbox input[type="checkbox"]:disabled + label::before {

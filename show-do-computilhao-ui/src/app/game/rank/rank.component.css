@@ -17,7 +17,7 @@
     cursor: not-allowed;
 }
 #divpesquisa{
-    z-index: 1998;
+    z-index: 4;
     position: relative;
 }
 #botaoPesquisar{
@@ -31,7 +31,7 @@
         position: absolute;
         top: 45px;
         right: 32px;
-        z-index: 1999;
+        z-index: 4;
     }
 }
 @media (min-width: 768px){

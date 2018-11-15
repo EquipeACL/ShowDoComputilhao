@@ -3,8 +3,8 @@
     text-align: center;
     color: black;
 }
-#menu a{
-    text-decoration: sub;
+#menu a:hover{
+    text-decoration: underline;
     text-align: center;
     color: rgb(16, 71, 173);
 }
