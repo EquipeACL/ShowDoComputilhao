@@ -80,7 +80,7 @@ export class PerguntaComponent implements OnInit {
               this.valorSeAcertar = valores['acertar'][this.indiceAtual];
               this.pergunta = this.listaPerguntas[this.indiceAtual++];
               //gerando as opções de forma aleatória
-              this.pergunta.options = this.pergunta.options.sort();
+              this.pergunta.options = this.shuffle(this.pergunta.options);
               this.cronometroService.cronometroZerou.subscribe(() => {
                 this.mensagem = 'Tempo esgotado!';
                 this.modalErro = true;
@@ -116,7 +116,7 @@ export class PerguntaComponent implements OnInit {
       this.incrementarDesempenho(this.pergunta.level, this.pergunta.area);// Incremento as medidas de desempenho
       this.pergunta = this.listaPerguntas[this.indiceAtual++];
       //gerando as opções de forma aleatória
-      this.pergunta.options = this.pergunta.options.sort();
+      this.pergunta.options = this.shuffle(this.pergunta.options);
       this.cronometroService.resetar();
       this.classOptions = ['opcao', 'opcao', 'opcao', 'opcao'];
 
@@ -181,7 +181,7 @@ export class PerguntaComponent implements OnInit {
       if (this.indiceAtual <= 23) {
         this.proxima();
       }
-      else{
+      else {
         this.modalUmMilhao = true;
       }
     }
@@ -189,7 +189,7 @@ export class PerguntaComponent implements OnInit {
 
       this.match.player = ' ';
       this.match.data = new Date();
-      this.match.hits = this.indiceAtual-1;
+      this.match.hits = this.indiceAtual - 1;
 
       this.match.score = this.valorSeErrar;
 
@@ -291,6 +291,9 @@ export class PerguntaComponent implements OnInit {
       }
     });
 
+    //gerando as opções de forma aleatória
+    this.pergunta.options = this.shuffle(this.pergunta.options);
+
     // Removo a pergunta da lista de perguntas extras
     this.perguntasExtras = this.perguntasExtras.filter(elem => {
       if (elem.statement !== this.pergunta.statement) {
@@ -389,6 +392,13 @@ export class PerguntaComponent implements OnInit {
       }
     });
     return r.length;
+  }
+  private shuffle(array: any[]): any[]{
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 }
 
