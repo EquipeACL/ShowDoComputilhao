@@ -9,7 +9,9 @@ export class AppComponent implements OnInit {
   title = 'show-do-milhao-ui';
   public innerWidth: any;
   public innerHeight: any;
+  mute;
   ngOnInit() {
+    mute = true;
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
   }
@@ -20,4 +22,7 @@ export class AppComponent implements OnInit {
     this.innerHeight = (event.target.innerHeight);
   }
 
+  muteSound() {
+    this.mute = true;
+  }
 }

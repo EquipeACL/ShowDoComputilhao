@@ -29,4 +29,17 @@
   [height]="100"></ng-adsense>
 </div>
 
+<button  ></button>
+
+<button class="genric-btn default-border radius help" (click)="muteSound()"
+[disabled]="mute"></button>
+<a data-toggle="tooltip" title="Ligar o som" *ngIf="mute">
+    <img width="50px" src="../../../assets/img/cartas.png" >
+</a>
+<a  data-toggle="tooltip" title="Ligar o som" *ngIf="!mute">
+
+  <img width="50px" src="../../../assets/img/cartas-usada.png" *ngIf="match.cards">
+</a>
+<!--<h6>Cartas</h6>-->
+</button>
 <app-footer></app-footer>

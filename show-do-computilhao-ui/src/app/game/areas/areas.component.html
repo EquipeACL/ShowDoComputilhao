@@ -48,12 +48,12 @@
   </div>
 
   <div class="row centralizado">
-    <div class="col-md-2">
+    <div class="parentElement col-md-2 col-lg-1 col-sm-4">
       <button class="genric-btn btn-block primary radius e-large"
       [ngClass]="matematica||fundamentos||tecnologias||todas?null:'opcao-invalida'"
       [disabled]="!(matematica||fundamentos||tecnologias||todas)"
-      (click)="iniciarJogo()">Iniciar
-        <span class="lnr lnr-arrow-right"></span>
+      (click)="iniciarJogo()">Iniciar Partida
+
       </button>
     </div>
   </div>

@@ -1,16 +1,27 @@
 .checkbox {
     padding-left: 20px;
     margin: 10px 10px;
+
 }
+div.parentElement{
+  text-align: center;
+}
+
 button{
     font-size: 20px;
     text-decoration: none;
+}
+.genric-btn{
+  text-align: center;
+  padding-left:0px;
+  padding-right:0px;
 }
 .checkbox label {
     display: inline-block;
     position: relative;
     padding-left: 15px;
     font-size: 20px;
+    cursor: pointer;
 }
 .checkbox label::before {
     content: "";
@@ -62,8 +73,7 @@ button{
 color: #fff; }
 
 .opcao-invalida{
-    padding-top: 10px;
-    padding-bottom: 10px;
+
     cursor:not-allowed;
     background-color: #E6E6E6;
     opacity: 0.5;
