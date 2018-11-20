@@ -3,14 +3,25 @@
   <!--gambiarra-->
   <!--<input autofocus="autofocus" #inputEscondido id="inputEscondido" tabindex="0" (keypress)="myFunc($event)" style="border-style:none;color: white;width:1px;height:1px" />-->
 
-  <div class="col-sm-12 col-md-12 col-lg-12 container linha-cronometro">
-    <!-- <div class="col-sm-10" style="position: absolute; left: 0">
-			<app-progresso></app-progresso>
-		</div> -->
-    <div class="col-sm-2" style="position: absolute; right: 0">
-      <app-cronometro></app-cronometro>
+  <div class="col-sm-12 col-md-12 col-lg-12  linha-cronometro" style="margin-bottom: 2px;">
+      <div class="col-sm-5 col-md-7 col-lg-7" style="position: absolute;display:inline-block">
+        <button class="genric-btn default-border radius help" (click)="muteSound()">
+          <a data-toggle="tooltip" title="Ligar o som" *ngIf="mute">
+            <img width="20px" src="../../../assets/img/mute.png">
+          </a>
+          <a data-toggle="tooltip" title="Desligar o som" *ngIf="!mute">
+            <img width="20px" src="../../../assets/img/unmute.png">
+          </a>
+          <!--<h6>Cartas</h6>-->
+        </button>
+      </div>
+      <!-- <div class="col-sm-10" style="position: absolute; left: 0">
+        <app-progresso></app-progresso>
+      </div> -->
+      <div class = "cronometro" class="col-sm-6 col-md-4 col-lg-4" style="float: right;">
+        <app-cronometro></app-cronometro>
+      </div>
     </div>
-  </div>
   <!--Correta: {{pergunta.correctOption}} -->
   <div class="col-sm-12 col-md-12 col-lg-12 pergunta" >
 

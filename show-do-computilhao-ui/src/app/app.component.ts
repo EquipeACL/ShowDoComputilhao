@@ -1,28 +1,25 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'show-do-milhao-ui';
-  public innerWidth: any;
-  public innerHeight: any;
-  mute;
-  ngOnInit() {
-    mute = true;
-    this.innerWidth = window.innerWidth;
-    this.innerHeight = window.innerHeight;
-  }
+    title = 'show-do-milhao-ui';
+    public innerWidth: any;
+    public innerHeight: any;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.innerWidth = (event.target.innerWidth);
-    this.innerHeight = (event.target.innerHeight);
-  }
+    ngOnInit() {
 
-  muteSound() {
-    this.mute = true;
-  }
+        this.innerWidth = window.innerWidth;
+        this.innerHeight = window.innerHeight;
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        this.innerWidth = (event.target.innerWidth);
+        this.innerHeight = (event.target.innerHeight);
+    }
+
 }

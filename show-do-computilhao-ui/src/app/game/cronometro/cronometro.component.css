@@ -25,3 +25,30 @@
 .ultimos-segundos{
     background: #dc3545;
 }
+@media (max-width: 575px){
+  .cronometro{
+    width:100px;
+    float: right;
+
+    margin-left: 200px;
+    margin-right:0px;
+  }
+}
+@media (max-width: 992px)and (min-width:576px){
+  .cronometro{
+    width:150px;
+    float: right;
+
+    margin-left: 200px;
+    margin-right:0px;
+  }
+}
+@media (min-width: 993px){
+  .cronometro{
+    width:200px;
+    float: right;
+
+    margin-left: 200px;
+    margin-right:0px;
+  }
+}

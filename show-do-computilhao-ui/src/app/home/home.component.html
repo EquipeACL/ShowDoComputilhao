@@ -1,38 +1,54 @@
 <app-menu></app-menu>
 <div class="row align-items-center justify-content-center">
-	<div class="banner-left col-lg-6">
-		<img class="d-flex mx-auto img-fluid" src="../assets/img/show-do-computilhao.png" alt="">
-	</div>
-	<div class="col-lg">
-		<h1>Show do Computilhão</h1>
-		<p style="text-align: justify-all;">O software é uma adaptação do programa do SBT Show do Milhão, apresentado por Silvio Santos. No lugar de perguntas de conhecimentos
-			gerais, o foco das perguntas será questões relacionadas ao mundo da computação, especialmente questões sobre o POSCOMP.</p>
-		<a routerLink="/gameareas" class="genric-btn btn-block primary radius e-large" (click)="foiPraArea()">QUERO JOGAR
-			<span class="lnr lnr-arrow-right"></span>
-		</a>
-	</div>
+  <div class="banner-left col-lg-6">
+    <img class="d-flex mx-auto img-fluid" src="../assets/img/show-do-computilhao.png" alt="">
+  </div>
+  <div class="col-lg">
+    <h1>Show do Computilhão</h1>
+    <p style="text-align: justify-all;">O software é uma adaptação do programa do SBT Show do Milhão, apresentado por
+      Silvio Santos. No lugar de perguntas de conhecimentos
+      gerais, o foco das perguntas será questões relacionadas ao mundo da computação, especialmente questões sobre o
+      POSCOMP.</p>
+    <a [queryParams] = "{mute: mute| json }" routerLink="/gameareas" class="genric-btn btn-block primary radius e-large">QUERO JOGAR
+      <span class="lnr lnr-arrow-right"></span>
+    </a>
+  </div>
+
 </div>
-
 <div class="row">
-	<div class="col-lg">
-		<h6>Para mais detalhes sobre o projeto e/ou documentação acesse: </h6>
-	</div>
-	<div class="row col-lg table-responsive">
-		<table class="table">
-			<tr>
-				<td class="col-lg">
+  <div class = "centralizado" style="margin: 10px;">
+    <button class="genric-btn default-border radius help" (click)="muteSound()" style="float:right;">
+      <a data-toggle="tooltip" title="Ligar o som" *ngIf="mute">
+        <img width="50px" src="../../../assets/img/mute.png">
+      </a>
+      <a data-toggle="tooltip" title="Desligar o som" *ngIf="!mute">
+        <img width="50px" src="../../../assets/img/unmute.png">
+      </a>
+      <!--<h6>Cartas</h6>-->
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg">
+    <h6>Para mais detalhes sobre o projeto e/ou documentação acesse: </h6>
+  </div>
+  <div class="row col-lg table-responsive">
+    <table class="table">
+      <tr>
+        <td class="col-lg">
 
-					<a href="https://docs.google.com/document/d/1fNFw_e8YvZv6UShbvSQHZ-rzWtWaJWpfiGhPnc6Mrf0/edit?usp=sharing" target="_blank">
-						<img src="../assets/img/documentacao.png" title="Clique para acessar a documentação no google docs.">
-					</a>
-				</td>
+          <a href="https://docs.google.com/document/d/1fNFw_e8YvZv6UShbvSQHZ-rzWtWaJWpfiGhPnc6Mrf0/edit?usp=sharing"
+            target="_blank">
+            <img src="../assets/img/documentacao.png" title="Clique para acessar a documentação no google docs.">
+          </a>
+        </td>
 
-				<td class="col-lg">
-					<a href="https://github.com/EquipeACL/ShowDoComputilhao" target="_blank" >
-						<img src="../assets/img/github.png" title="Clique para acessar nosso repositorio no github.">
-					</a>
-				</td>
-			</tr>
-		</table>
-	</div>
+        <td class="col-lg">
+          <a href="https://github.com/EquipeACL/ShowDoComputilhao" target="_blank">
+            <img src="../assets/img/github.png" title="Clique para acessar nosso repositorio no github.">
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
