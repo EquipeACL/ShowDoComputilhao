@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AudioService } from '../../servicos/audio.service';
 
 @Component({
   selector: 'app-pular',
@@ -10,10 +11,13 @@ export class PularComponent implements OnInit {
   @Output() onclicksim = new EventEmitter();
   @Output() onclicknao = new EventEmitter();
   
-  constructor() { }
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngOnInit() {
     let audio = new Audio('../../../assets/audios/vaipular.mp3');
+    audio.volume = this.audioService.getVolume();
     audio.play();
   }
 

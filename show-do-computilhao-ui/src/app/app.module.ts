@@ -33,6 +33,8 @@ import { ImagemComponent } from './game/imagem/imagem.component';
 import { GanhouUmmihaoComponent } from './game/ganhou-ummihao/ganhou-ummihao.component';
 import { MetricasComponent } from './game/metricas/metricas.component';
 import { FooterComponent } from './footer/footer.component';
+import { AudioComponent } from './game/audio/audio.component';
+import { AudioService } from './game/servicos/audio.service';
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
@@ -68,6 +70,7 @@ const rotas: Routes = [
     GanhouUmmihaoComponent,
     MetricasComponent,
     FooterComponent,
+    AudioComponent,
 
   ],
   imports: [
@@ -85,7 +88,7 @@ const rotas: Routes = [
       adSlot: 7259870550,
     })
   ],
-  providers: [CronometroService, MatchService, QuestionService],
+  providers: [CronometroService, MatchService, QuestionService, AudioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

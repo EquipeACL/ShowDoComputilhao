@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AudioService } from '../../servicos/audio.service';
 
 @Component({
   selector: 'app-cartas',
@@ -12,10 +13,13 @@ export class CartasComponent implements OnInit {
   sorteada: string;
   @Output() num_cartas = new EventEmitter<number>();
   @Output() close = new EventEmitter();
-  constructor() { }
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngOnInit() {
     const audio = new Audio('../../../assets/audios/tireaquiasuacartadobaralho.mp3');
+    audio.volume = this.audioService.getVolume();
     audio.play();    
   }
 

@@ -16,17 +16,7 @@
 
 </div>
 <div class="row">
-  <div class = "centralizado" style="margin: 10px;">
-    <button class="genric-btn default-border radius help" (click)="muteSound()" style="float:right;">
-      <a data-toggle="tooltip" title="Ligar o som" *ngIf="mute">
-        <img width="50px" src="../../../assets/img/mute.png">
-      </a>
-      <a data-toggle="tooltip" title="Desligar o som" *ngIf="!mute">
-        <img width="50px" src="../../../assets/img/unmute.png">
-      </a>
-      <!--<h6>Cartas</h6>-->
-    </button>
-  </div>
+  <app-audio (click)="clicouAudio()" [tamanho]="50"></app-audio>
 </div>
 <div class="row">
   <div class="col-lg">

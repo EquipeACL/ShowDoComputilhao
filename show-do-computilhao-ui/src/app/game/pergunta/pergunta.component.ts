@@ -7,6 +7,7 @@ import { IMatch, Match } from './Match';
 import { MatchService } from '../servicos/match.service';
 import { QuestionService } from '../servicos/question.service';
 import { ConverterScoreToString } from '../servicos/converterScoreToString';
+import { AudioService } from '../servicos/audio.service';
 
 @Component({
   selector: 'app-pergunta',
@@ -47,7 +48,8 @@ export class PerguntaComponent implements OnInit {
     private _router: Router,
     private activeRouter: ActivatedRoute,
     private matchService: MatchService,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private audioService: AudioService
   ) {
     this.converter = new ConverterScoreToString();
     this.match = new Match();
@@ -74,6 +76,7 @@ export class PerguntaComponent implements OnInit {
           if (questions.result.length > 0 && questions.skips.length > 0) {
             setTimeout(() => {
               const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
+              audio.volume = this.audioService.getVolume();
               audio.play();
               this.listaPerguntas = questions.result;
               this.perguntasExtras = questions.skips;
@@ -103,12 +106,14 @@ export class PerguntaComponent implements OnInit {
     this.modalConfirmacao = true;
     this.cronometroService.pausar();
     const audio = new Audio('../../../assets/audios/vocetemcerteza.mp3');
+    audio.volume = this.audioService.getVolume();
     audio.play();
   }
 
   proxima() {
     if (this.indiceAtual <= 23) {
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
+      audio.volume = this.audioService.getVolume();
       audio.play();
       this.valorSeParar = this.valorSeAcertar;
       this.valorSeErrar = valores['errar'][this.indiceAtual];

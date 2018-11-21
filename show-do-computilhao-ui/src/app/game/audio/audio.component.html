@@ -1,0 +1,8 @@
+<button class="genric-btn default-border radius help" (click)="muteSound()">
+  <a data-toggle="tooltip" title="Ligar o som" *ngIf="mute">
+    <img [width]="tamanho" src="../../../assets/img/mute.png">
+  </a>
+  <a data-toggle="tooltip" title="Desligar o som" *ngIf="!mute">
+    <img [width]="tamanho" src="../../../assets/img/unmute.png">
+  </a>
+</button>
