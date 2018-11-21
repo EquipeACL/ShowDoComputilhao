@@ -1,5 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component, OnInit, OnDestroy, AfterViewInit, Input } from '@angular/core';
+import { AudioService } from '../game/servicos/audio.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,14 @@ import { Component, OnInit, OnDestroy, AfterViewInit, Input } from '@angular/cor
 export class HomeComponent implements AfterViewInit, OnDestroy {
 
   audio;
-  mute = true;
-  constructor() { }
+
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngAfterViewInit() {
-
-
     this.audio = new Audio('../../../assets/audios/menuinicial.mp3');
-    this.audio.volume = 0;
+    this.audio.volume = this.audioService.getVolume();
     this.audio.play();
   }
 
@@ -24,18 +25,13 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.audio.pause();
   }
 
-  muteSound() {
-    if (this.mute === true) {
-      console.log('Liguei o som');
-      this.audio.volume = 1;
-      this.mute = false;
-    }
-    else {
-      console.log('Desliguei o som');
+  clicouAudio() {
+    if(this.audioService.getVolume() == 0) {
       this.audio.volume = 0;
-      this.mute = true;
-    }
-
+    }else{
+      this.audio.volume = 1;
+    }    
   }
+
 
 }

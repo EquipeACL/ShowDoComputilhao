@@ -1,5 +1,6 @@
 import { element } from 'protractor';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AudioService } from '../../servicos/audio.service';
 
 @Component({
   selector: 'app-placas',
@@ -14,10 +15,13 @@ export class PlacasComponent implements OnInit {
   opcoes = ['A', 'B', 'C', 'D'];
   resultado = [];
 
-  constructor() { }
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngOnInit() {
     const audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosnossosconvidados.mp3');
+    audio.volume = this.audioService.getVolume();
     audio.play();
 
     let valor = 0.7;

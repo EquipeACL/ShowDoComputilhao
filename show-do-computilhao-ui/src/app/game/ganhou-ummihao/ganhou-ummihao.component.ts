@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AudioService } from '../servicos/audio.service';
 
 @Component({
   selector: 'app-ganhou-ummihao',
@@ -7,10 +8,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class GanhouUmmihaoComponent implements OnInit {
   @Output() close = new EventEmitter();
-  constructor() { }
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngOnInit() {
     const audio = new Audio('../../../assets/audios/parabensvoceacabadeganhar1m.mp3');
+    audio.volume = this.audioService.getVolume();
     audio.play();
   }
 

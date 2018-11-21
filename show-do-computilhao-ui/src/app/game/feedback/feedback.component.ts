@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { AudioService } from '../servicos/audio.service';
 
 @Component({
   selector: 'app-erro',
@@ -14,7 +15,9 @@ export class ErroComponent implements OnInit {
   @Input() correta;
   acao;
   acertou;
-  constructor() { }
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngOnInit() {
     if (this.titulo === 'Parabéns! Você acertou.') {
@@ -28,6 +31,7 @@ export class ErroComponent implements OnInit {
 
     if (this.titulo !== 'Você errou!' && this.titulo !== 'Parabéns! Você acertou.') {
       const audio = new Audio(`../../../assets/audios/tempoesgotado.mp3`);
+      audio.volume = this.audioService.getVolume();
       audio.play();
     }
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { AudioService } from '../../servicos/audio.service';
 
 
 @Component({
@@ -12,10 +13,13 @@ export class UniversitariosComponent implements OnInit {
   opcoes = ['A', 'B', 'C', 'D'];
   resultado = [];
 
-  constructor() { }
+  constructor(
+    private audioService: AudioService
+  ) { }
 
   ngOnInit() {
     const audio = new Audio('../../../assets/audios/vamosverqualehaopiniaodosseuscolegas.mp3');
+    audio.volume = this.audioService.getVolume();
     audio.play();
 
 
