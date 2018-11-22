@@ -1,21 +1,21 @@
-<div class="row" height="400px" *ngIf="carregamentoInicial" >
+<div class="row" height="400px" *ngIf="carregamentoInicial">
 
   <!--gambiarra-->
   <!--<input autofocus="autofocus" #inputEscondido id="inputEscondido" tabindex="0" (keypress)="myFunc($event)" style="border-style:none;color: white;width:1px;height:1px" />-->
 
   <div class="col-sm-12 col-md-12 col-lg-12  linha-cronometro" style="margin-bottom: 2px;">
-      <div class="col-sm-5 col-md-7 col-lg-7" style="position: absolute;display:inline-block">
-        <app-audio [tamanho]="20"></app-audio>
-      </div>
-      <!-- <div class="col-sm-10" style="position: absolute; left: 0">
+    <div class="col-sm-5 col-md-7 col-lg-7" style="position: absolute;display:inline-block">
+      <app-audio [tamanho]="20"></app-audio>
+    </div>
+    <!-- <div class="col-sm-10" style="position: absolute; left: 0">
         <app-progresso></app-progresso>
       </div> -->
-      <div class = "cronometro" class="col-sm-6 col-md-4 col-lg-4" style="float: right;">
-        <app-cronometro></app-cronometro>
-      </div>
+    <div class="cronometro" class="col-sm-6 col-md-4 col-lg-4" style="float: right;">
+      <app-cronometro></app-cronometro>
     </div>
+  </div>
   <!--Correta: {{pergunta.correctOption}} -->
-  <div class="col-sm-12 col-md-12 col-lg-12 pergunta" >
+  <div class="col-sm-12 col-md-12 col-lg-12 pergunta">
 
     <!--Estava assim, o layout da pergunta mudava se tiver imagem ou não
     <div class="row">
@@ -37,17 +37,17 @@
     -->
     <div class="row">
       <!-- CASO A PERGUNTA TENHA IMAGEM -->
-      <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta" >
+      <div class="col-sm-8 col-md-8 col-lg-8 statementPergunta">
         <h5>{{indiceAtual}} - [{{pergunta.year}}] {{pergunta.statement}}</h5>
       </div>
       <!-- Se tiver imagem, mostra essa div aqui-->
       <div class="col" id="imagem" *ngIf="(pergunta.img!=null)">
         <a data-toggle="tooltip" title="Clique para ver a imagem no tamanho original.">
-          <img class = "imagens" id="imagemCentral" width="250" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
+          <img class="imagens" id="imagemCentral" width="250" height="180" src="{{pergunta.img}}" (click)="mostrarImagem()">
         </a>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4" id="semImagem" *ngIf="(pergunta.img==null)">
-      <!--  <span data-toggle="tooltip" title="Questão sem imagem!">
+        <!--  <span data-toggle="tooltip" title="Questão sem imagem!">
           <img width="340" height="180" id="imagemPadrao" class = "imagens" src="https://drive.google.com/uc?id=1Tyd0JakVp9_irOyraEqJk6PKOr8o6Ykp">
         </span>
         -->
@@ -60,11 +60,11 @@
 
 
   <!-- DIV DE OPÇÔES -->
-  <div class="col-lg-8 divop" >
+  <div class="col-lg-8 divop">
     <div class="row" *ngFor="let op of pergunta.options; let i=index" [ngClass]="classOptions[i]">
       <button class="genric-btn default-border radius opcoes" (click)="mostrarConfirmacao(op)" [disabled]="classOptions[i]==='opcao-invalida'">
         <button class="btn btn-primary" [disabled]="classOptions[i]==='opcao-invalida'">{{flags[i]}}</button>
-        <span class = ""> {{op}}</span>
+        <span class=""> {{op}}</span>
       </button>
     </div>
 
@@ -72,7 +72,7 @@
   <!-- FIM DA DIV DE OPÇÔES -->
 
   <!-- DIV DE AJUDAS -->
-  <div class="col-lg-4 ajudas" padding-bottom="10px" >
+  <div class="col-lg-4 ajudas" padding-bottom="10px">
     <div class="row centralizado">
       <h4 class="title">Tipos de ajuda</h4>
     </div>
@@ -166,7 +166,8 @@
   <app-confirmacao *ngIf="modalConfirmacao" (onclicksim)="clicouSim()" (onclicknao)="clicouNao()" [valor]="converter.toString(valorSeAcertar)"></app-confirmacao>
 
   <!--Modal de resposta errada/feedback-->
-  <app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [correta]="pergunta.correctOption" [links]="pergunta.links" (closeDiv)="fecharModalError()"></app-erro>
+  <app-erro *ngIf="modalErro" [titulo]="mensagem" [comentario]="pergunta.comment" [correta]="pergunta.correctOption" [links]="pergunta.links"
+    (closeDiv)="fecharModalError()"></app-erro>
 
   <!--Modal de ajuda-cartas -->
   <app-cartas *ngIf="modalCartas" (close)="cartasFechou()" (num_cartas)="numCartas($event)"></app-cartas>
@@ -189,4 +190,14 @@
 
   <!--Modal de parar jogo -->
   <app-ganhou-ummihao *ngIf="modalUmMilhao" (close)="fecharModalUmMilhao()"></app-ganhou-ummihao>
+
+  <!--Modal de solicitar revisão em pergunta -->
+  <app-solicitar-revisao *ngIf="modalReview" [question]="pergunta" (close)="fecharModalReview()"></app-solicitar-revisao>
+
+</div>
+
+<div id="review">
+  <a data-toggle="tooltip" title="Enviar revisão para esta pergunta." (click)="mostrarModalReview()">
+      <img src="../../../assets/img/review.png">
+  </a>
 </div>

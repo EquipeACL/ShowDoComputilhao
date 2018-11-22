@@ -40,6 +40,7 @@ export class PerguntaComponent implements OnInit {
   modalImagem: boolean;
   carregamentoInicial: boolean;
   modalUmMilhao: boolean;
+  modalReview: boolean;
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
 
   performance: any;
@@ -306,6 +307,7 @@ export class PerguntaComponent implements OnInit {
       }
     });
     this.match.skips++;
+    this.cronometroService.iniciar();
   }
 
   modalPularNao() {
@@ -344,10 +346,16 @@ export class PerguntaComponent implements OnInit {
       .catch((err) => {
         console.log(err);
       });
-
-
-
   }
+
+    mostrarModalReview(){
+      this.modalReview = true;
+    }
+
+    fecharModalReview(){
+      this.modalReview = false;
+    }
+
   /*
   private myFunc(event: KeyboardEvent): void {
     if (event.key.toUpperCase() === 'A') {

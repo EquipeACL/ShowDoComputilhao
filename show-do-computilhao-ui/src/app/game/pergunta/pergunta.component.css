@@ -168,3 +168,24 @@ a{
     padding-left: 0px;
   }
 }
+
+#review{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+#review img{
+  width: 100%;
+  background-color: white;
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 50px;
+}
+#review img:hover{
+  background-color:lightgray;
+  border-style: outset;
+  border-width: 2px;
+  border-radius: 50px;
+}

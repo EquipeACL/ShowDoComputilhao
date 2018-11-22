@@ -35,6 +35,7 @@ import { MetricasComponent } from './game/metricas/metricas.component';
 import { FooterComponent } from './footer/footer.component';
 import { AudioComponent } from './game/audio/audio.component';
 import { AudioService } from './game/servicos/audio.service';
+import { SolicitarRevisaoComponent } from './game/solicitar-revisao/solicitar-revisao.component';
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
@@ -71,6 +72,7 @@ const rotas: Routes = [
     MetricasComponent,
     FooterComponent,
     AudioComponent,
+    SolicitarRevisaoComponent,
 
   ],
   imports: [
