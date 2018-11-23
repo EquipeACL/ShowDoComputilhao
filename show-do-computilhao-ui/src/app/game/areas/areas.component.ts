@@ -40,4 +40,12 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.router.navigate(['/game'], navigationExtras);
   }
 
+  clicouAudio() {
+    if (this.audioService.getVolume() == 0) {
+      this.audio.volume = 0;
+    } else {
+      this.audio.volume = 1;
+    }
+  }
+
 }

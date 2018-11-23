@@ -440,4 +440,13 @@ export class PerguntaComponent implements OnInit, OnDestroy {
     }
     return array;
   }
+
+
+  clicouAudio() {
+    if (this.audioService.getVolume() == 0) {
+      this.suspense.volume = 0;
+    } else {
+      this.suspense.volume = 0.4;
+    }
+  }
 }
