@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 import { CronometroService } from '../cronometro/cronometro-service.service';
@@ -14,7 +14,7 @@ import { AudioService } from '../servicos/audio.service';
   templateUrl: './pergunta.component.html',
   styleUrls: ['./pergunta.component.css']
 })
-export class PerguntaComponent implements OnInit {
+export class PerguntaComponent implements OnInit, OnDestroy {
   converter: ConverterScoreToString;
   match: IMatch;
   flags = ['A', 'B', 'C', 'D'];//Indica a letra da resposta
@@ -44,6 +44,8 @@ export class PerguntaComponent implements OnInit {
   modalLoadingInicial: boolean
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
 
+  suspense;
+
   performance: any;
   constructor(
     private cronometroService: CronometroService,
@@ -66,11 +68,11 @@ export class PerguntaComponent implements OnInit {
       "level": "",
       "year": ""
     }
-    this.modalLoadingInicial=true;
+    this.modalLoadingInicial = true;
   }
 
   ngOnInit() {
-    
+
     const filters = this.activeRouter.snapshot.queryParams;
     if (Object.keys(filters).length === 0) {
       this._router.navigate(['/gameareas']);
@@ -82,6 +84,9 @@ export class PerguntaComponent implements OnInit {
               const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
               audio.volume = this.audioService.getVolume();
               audio.play();
+
+
+
               this.listaPerguntas = questions.result;
               this.perguntasExtras = questions.skips;
               this.valorSeAcertar = valores['acertar'][this.indiceAtual];
@@ -96,14 +101,23 @@ export class PerguntaComponent implements OnInit {
               this.montarDadosDeDesempenho(this.listaPerguntas);
               this.modalLoadingInicial = false;
             }, 100);
-
+            //música de suspense na pergunta
+            setTimeout(() => {
+              this.suspense = new Audio('../../../assets/audios/suspense.mp3');
+              this.suspense.volume = this.audioService.getVolume() * 0.4;
+              this.suspense.play();
+            },3000);
           }
+
         })
         .catch(err => {
           console.error(`Problemas de acesso: ${err}`)
         });
 
     }
+  }
+  ngOnDestroy() {
+    this.suspense.pause();
   }
 
   mostrarConfirmacao(option: string) {
@@ -117,9 +131,19 @@ export class PerguntaComponent implements OnInit {
 
   proxima() {
     if (this.indiceAtual <= 23) {
+
+
+
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.volume = this.audioService.getVolume();
+
       audio.play();
+
+      setTimeout(() => {
+        this.suspense = new Audio('../../../assets/audios/suspense.mp3');
+        this.suspense.volume = this.audioService.getVolume() * 0.4;
+        this.suspense.play();
+      },3000);
       this.valorSeParar = this.valorSeAcertar;
       this.valorSeErrar = valores['errar'][this.indiceAtual];
       this.valorSeAcertar = valores['acertar'][this.indiceAtual];
@@ -155,7 +179,7 @@ export class PerguntaComponent implements OnInit {
       setTimeout(() => {
         this.modalLoading = false;
         this.mensagem = 'Parabéns! Você acertou.';
-
+        this.suspense.pause();
         this.modalErro = true; //Coloquei isso pra mostrar o feedback mesmo se o usuário acertar a pergunta
       }, 2000);
 
@@ -164,6 +188,7 @@ export class PerguntaComponent implements OnInit {
         this.modalLoading = false;
         this.modalErro = true;
         this.mensagem = 'Você errou!';
+        this.suspense.pause();
         this.match.score = this.valorSeErrar;
       }, 2000);
 
@@ -352,13 +377,13 @@ export class PerguntaComponent implements OnInit {
       });
   }
 
-    mostrarModalReview(){
-      this.modalReview = true;
-    }
+  mostrarModalReview() {
+    this.modalReview = true;
+  }
 
-    fecharModalReview(){
-      this.modalReview = false;
-    }
+  fecharModalReview() {
+    this.modalReview = false;
+  }
 
   /*
   private myFunc(event: KeyboardEvent): void {
@@ -408,7 +433,7 @@ export class PerguntaComponent implements OnInit {
     });
     return r.length;
   }
-  private shuffle(array: any[]): any[]{
+  private shuffle(array: any[]): any[] {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
