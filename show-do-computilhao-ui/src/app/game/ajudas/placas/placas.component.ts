@@ -24,7 +24,7 @@ export class PlacasComponent implements OnInit {
     audio.volume = this.audioService.getVolume();
     audio.play();
 
-    let valor = 0.7;
+    let valor = 1;
     this.opcoes = this.opcoes.splice(this.correta);
 
     this.opcoes.forEach(() => {
@@ -34,7 +34,7 @@ export class PlacasComponent implements OnInit {
       else {
         this.resultado.push(this.opcoes[Math.floor(Math.random() * 4)]); // Exemplo: 0,4*4 = 1,6. PEgando o floor, fica 1
       }
-      valor -= 0.15;
+      valor -= 0.23;
 
     });
 

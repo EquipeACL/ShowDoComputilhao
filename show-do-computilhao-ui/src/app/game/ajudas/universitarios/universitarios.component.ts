@@ -23,7 +23,7 @@ export class UniversitariosComponent implements OnInit {
     audio.play();
 
 
-    let valor = 0.7;
+    let valor = 0.8;
     this.opcoes = this.opcoes.splice(this.correta);
 
     this.opcoes.forEach(() => {
