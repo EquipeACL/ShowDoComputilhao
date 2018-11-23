@@ -44,7 +44,7 @@ export class PerguntaComponent implements OnInit, OnDestroy {
   modalLoadingInicial: boolean
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
 
-  suspense;
+  suspense = new Audio();
 
   performance: any;
   constructor(
@@ -221,27 +221,29 @@ export class PerguntaComponent implements OnInit, OnDestroy {
       }
     }
     else {
-
+      // Pegando informações da partida para salvar
       this.match.player = ' ';
       this.match.data = new Date();
       this.match.hits = this.indiceAtual - 1;
-
       this.match.score = this.valorSeErrar;
-
-
       this.match.performance = this.performance;
+
+      localStorage.setItem('match',JSON.stringify(this.match));
+
       this.modalErro = false;
 
-      this.matchService.salvar(this.match)
-        .then((match) => {
-          let navigationExtras: NavigationExtras = {
-            queryParams: { id: match._id }
-          };
-          this._router.navigate(['rank'], navigationExtras);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this._router.navigate(['rank']);
+      
+      // this.matchService.salvar(this.match)
+      //   .then((match) => {
+      //     let navigationExtras: NavigationExtras = {
+      //       queryParams: { id: match._id }
+      //     };
+      //     this._router.navigate(['rank'], navigationExtras);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     }
   }
 

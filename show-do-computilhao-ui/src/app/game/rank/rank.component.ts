@@ -10,7 +10,7 @@ import { ConverterScoreToString } from '../servicos/converterScoreToString';
 })
 export class RankComponent implements OnInit {
   converter: ConverterScoreToString;
-  id: string;
+  match: any;
   modal: boolean = false;
   matchs = [];
   rows: number = 10;
@@ -19,18 +19,15 @@ export class RankComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private matchService: MatchService, private _router: Router) {
     this.converter = new ConverterScoreToString();
-    this.route.queryParams.subscribe((params: any) => {
-      if (JSON.stringify(params) !== '{}') {
-        this.modal = true;
-        this.id = params.id;
-      } else {
-        this.modal = false;
-      }
-      this.validaId();
-    });
   }
 
   ngOnInit() {
+    const match = JSON.parse(localStorage.getItem('match'));
+    localStorage.removeItem('match');
+    if(match !== null){
+      this.match = match;
+      this.abrirModal();
+    }
     this.carregarPartidas();
   }
 
@@ -68,20 +65,6 @@ export class RankComponent implements OnInit {
       });
   }
 
-  validaId() {
-    if (this.id) {
-      this.matchService.buscarPorId(this.id)
-        .then((match) => {
-          if (match.player !== ' ') {
-            this._router.navigate([`/detalhes/${match._id}`]);
-          }
-        })
-        .catch((err) => {
-          this._router.navigate(['/rank']);
-        });
-    }
-  }
-
   carregarPartidas() {
     // console.log('Carregando partida!');
     this.matchService.buscarTodas(0, this.rows)
@@ -104,36 +87,22 @@ export class RankComponent implements OnInit {
   }
 
   salvarPartida(player: string) {
-
-    this.matchService.buscarPorId(this.id)
+    this.match.player = player;
+    this.matchService.salvar(this.match)
       .then((match) => {
-        match.player = player;
-        this.matchService.atualizar(match)
-          .then((match) => {
-            this.carregarPartidas();
-            this._router.navigate(['/rank']);
-          })
-          .catch((err) => {
-            console.log(`Error: ${err}`);
-          });
+        this._router.navigate(['/detalhes/'+match._id]);
       })
       .catch((err) => {
         console.log(`Error: ${err}`);
-      });
+      });    
 
   }
 
   fecharModal() {
-    this.matchService.deletar(this.id)
-      .then(() => {
-        this.carregarPartidas();
-        this._router.navigate(['/rank']);
-      })
-      .catch((err) => {
-        console.log(`Error: ${err}`);
-      });
-
+      this.match = null;
+      this.modal = false;
   }
+
   // Função para identificar o fim dos registros e desabilitar o botão proximo
   chegouAoFim(): boolean {
     try {
