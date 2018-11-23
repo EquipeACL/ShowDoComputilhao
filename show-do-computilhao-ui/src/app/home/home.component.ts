@@ -17,7 +17,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.audio = new Audio('../../../assets/audios/menuinicial.mp3');
-    this.audio.volume = this.audioService.getVolume();
+    this.audio.volume = this.audioService.getVolume() * 0.6;
     this.audio.play();
   }
 
@@ -30,7 +30,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       this.audio.volume = 0;
     }else{
       this.audio.volume = 1;
-    }    
+    }
   }
 
 

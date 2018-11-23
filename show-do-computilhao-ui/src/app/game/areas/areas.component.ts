@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AudioService } from './../servicos/audio.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
@@ -6,14 +7,25 @@ import { Router, NavigationExtras } from '@angular/router';
   templateUrl: './areas.component.html',
   styleUrls: ['./areas.component.css']
 })
-export class AreasComponent implements OnInit {
+export class AreasComponent implements OnInit, OnDestroy {
   matematica: boolean;
   fundamentos: boolean;
   tecnologias: boolean;
+  audio;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private audioService: AudioService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.audio = new Audio('../../../assets/audios/area.mp3');
+    this.audio.volume = this.audioService.getVolume();
+    this.audio.play();
+  }
+  ngOnDestroy() {
+    this.audio.pause();
+  }
+
 
   onclickTodas(value) {
     this.matematica = value;
