@@ -36,10 +36,12 @@ import { FooterComponent } from './footer/footer.component';
 import { AudioComponent } from './game/audio/audio.component';
 import { AudioService } from './game/servicos/audio.service';
 import { SolicitarRevisaoComponent } from './game/solicitar-revisao/solicitar-revisao.component';
+import { ContatoComponent } from './contato/contato.component';
 
 const rotas: Routes = [
   {path:'',component:HomeComponent},
   {path:'rank',component:RankComponent},
+  {path:'contato',component:ContatoComponent},
   {path:'gameareas',component:AreasComponent},
   {path:'game',component:PerguntaComponent},
   {path:'detalhes/:id',component:DetalhesJogadorComponent},
@@ -73,6 +75,7 @@ const rotas: Routes = [
     FooterComponent,
     AudioComponent,
     SolicitarRevisaoComponent,
+    ContatoComponent,
 
   ],
   imports: [

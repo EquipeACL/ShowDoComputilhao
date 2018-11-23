@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AudioService } from '../servicos/audio.service';
 
 @Component({
   selector: 'app-validando-resposta',
@@ -9,7 +10,9 @@ export class ValidandoRespostaComponent implements OnInit {
 
   @Input() resposta: boolean;
 
-  constructor() {
+  constructor(
+    private audioService: AudioService
+  ) {
 
   }
 
@@ -21,7 +24,10 @@ export class ValidandoRespostaComponent implements OnInit {
     } else {
       audio = new Audio('../../../assets/audios/quepenavoceerrou.mp3');
     }
-    setTimeout(() => { audio.play() }, 1500);
+    setTimeout(() => { 
+      audio.volume = this.audioService.getVolume();
+      audio.play()
+    }, 1500);
   }
 
   teste(): string {

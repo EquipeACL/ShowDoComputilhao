@@ -41,6 +41,7 @@ export class PerguntaComponent implements OnInit {
   carregamentoInicial: boolean;
   modalUmMilhao: boolean;
   modalReview: boolean;
+  modalLoadingInicial: boolean
   classOptions = ['opcao', 'opcao', 'opcao', 'opcao']; // vetor para controlar as opções validas
 
   performance: any;
@@ -65,9 +66,11 @@ export class PerguntaComponent implements OnInit {
       "level": "",
       "year": ""
     }
+    this.modalLoadingInicial=true;
   }
 
   ngOnInit() {
+    
     const filters = this.activeRouter.snapshot.queryParams;
     if (Object.keys(filters).length === 0) {
       this._router.navigate(['/gameareas']);
@@ -91,6 +94,7 @@ export class PerguntaComponent implements OnInit {
               });
               this.carregamentoInicial = true;
               this.montarDadosDeDesempenho(this.listaPerguntas);
+              this.modalLoadingInicial = false;
             }, 100);
 
           }

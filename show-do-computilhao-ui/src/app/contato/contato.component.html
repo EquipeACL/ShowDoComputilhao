@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+
+<h5 class="modal-title">Envie-nos seus Comentários, Dúvidas ou Sugestões.</h5>
+<div id="mensagens">
+  <div class="alert alert-success" role="alert" *ngIf="sucesso">
+    Seu comentário foi enviado com sucesso!
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="falha">
+    Infelizmente ocorreram problemas no envio do seu comentário.
+  </div>
+</div>
+<form #comentario="ngForm" (ngSubmit)="enviar(comentario)">
+  <div class="col-md form-group">
+    <label for="name">Seu nome:</label>
+    <input type="text" class="form-control" required name="name" id="name" rows="3" #nameModel="ngModel" [(ngModel)]="name">
+  </div>
+  <div class="col-md form-group">
+    <label for="email">Email:</label>
+    <input type="text" class="form-control" required name="email" id="email" rows="3" #emailModel="ngModel" [(ngModel)]="email">
+  </div>
+  <div class="col-md form-group">
+    <label for="comment">Comentário:</label>
+    <textarea class="form-control" required name="comment" id="comment" rows="3" #commentModel="ngModel" [(ngModel)]="comment"></textarea>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <button type="button" class="btn btn-secondary btn-block btn-sm" [disabled]="!comentario.valid" (click)="formReset(comentario)">Limpar</button>
+    </div>
+    <div class="col-sm">
+      <button type="submit" class="btn btn-primary btn-block btn-sm" [disabled]="!comentario.valid">{{botao}}</button>
+    </div>
+  </div>
+</form>

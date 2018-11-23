@@ -198,6 +198,17 @@
 
 <div id="review">
   <a data-toggle="tooltip" title="Enviar revisão para esta pergunta." (click)="mostrarModalReview()">
-      <img src="../../../assets/img/review.png">
+    <img src="../../../assets/img/review.png">
   </a>
+</div>
+
+<!--Gif inicial, carregando perguntas-->
+<div *ngIf="modalLoadingInicial">
+  <div id="externa">
+    <div tabindex="-1" role="dialog" id="loading">
+      <img src="../../../assets/img/loading.gif" style="width: 100%">
+    </div>
+  </div>
+  <!--Fundo preto do modal-->
+  <div class="modal-backdrop show"><div>
 </div>

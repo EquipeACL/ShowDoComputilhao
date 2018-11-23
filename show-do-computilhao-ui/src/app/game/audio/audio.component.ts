@@ -12,7 +12,13 @@ export class AudioComponent implements AfterViewInit, OnDestroy {
   @Output() click = new EventEmitter();
   constructor(
     private audioService: AudioService
-  ) { }
+  ) { 
+    if(this.audioService.getVolume() == 0){
+      this.mute = true;
+    }else{
+      this.mute = false;
+    }
+  }
 
   ngAfterViewInit() {
     if(this.audioService.getVolume() == 0){
