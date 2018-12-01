@@ -45,11 +45,19 @@ Após clonar o projeto, acesse o diretório `show-do-computilhao-ui` e em seguid
 npm install
 npm run start
 ```
+Para mais detalhes consulte o manual do usuário: https://docs.google.com/document/d/13acckvk8Hf8DLmFWdMsxWf1EeOKHmEkcvrvThG4Jp8g
 
 ### Pré Requisitos 
 
 ```
 NodeJS 8.12
+```
+### Configurações para o banco de dados
+Caso deseje executar o projeto localmente utilize a base de dados disponivél em:  https://drive.google.com/file/d/1a3fWNZZoRgZUnRkhPjKy9eMiufPbpuWu/edit.<br>
+Baixe o arquivo 'sdc-database.js' e execute os comandos abaixo no shell do mongo:
+```
+use sdc;
+load("sdc-database.js");
 ```
 
 ### Desenvolvedores:
