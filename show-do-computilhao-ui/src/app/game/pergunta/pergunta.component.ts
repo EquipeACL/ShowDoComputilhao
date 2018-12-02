@@ -156,8 +156,7 @@ export class PerguntaComponent implements OnInit, OnDestroy {
   }
 
   validarResposta(): boolean {
-    //return this.opcao === this.pergunta.correctOption;
-    return this.opcao === this.opcao;
+    return this.opcao === this.pergunta.correctOption;
   }
 
   /**
