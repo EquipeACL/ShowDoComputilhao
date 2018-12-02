@@ -18,7 +18,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     private audioService: AudioService) { }
 
   ngOnInit() {
-    this.audio = new Audio('../../../assets/audios/area.mp3');
+    this.audio = new Audio('../../../assets/audios/areas.mp3');
     this.audio.volume = this.audioService.getVolume();
     this.audio.play();
   }

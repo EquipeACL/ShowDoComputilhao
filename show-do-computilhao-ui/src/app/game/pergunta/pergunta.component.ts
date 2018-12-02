@@ -84,9 +84,6 @@ export class PerguntaComponent implements OnInit, OnDestroy {
               const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
               audio.volume = this.audioService.getVolume();
               audio.play();
-
-
-
               this.listaPerguntas = questions.result;
               this.perguntasExtras = questions.skips;
               this.valorSeAcertar = valores['acertar'][this.indiceAtual];
@@ -131,14 +128,9 @@ export class PerguntaComponent implements OnInit, OnDestroy {
 
   proxima() {
     if (this.indiceAtual <= 23) {
-
-
-
       const audio = new Audio('../../../assets/audios/antesdapergunta.mp3');
       audio.volume = this.audioService.getVolume();
-
       audio.play();
-
       setTimeout(() => {
         this.suspense = new Audio('../../../assets/audios/suspense.mp3');
         this.suspense.volume = this.audioService.getVolume() * 0.4;
@@ -164,8 +156,8 @@ export class PerguntaComponent implements OnInit, OnDestroy {
   }
 
   validarResposta(): boolean {
-    return this.opcao === this.pergunta.correctOption;
-    // return this.opcao === this.opcao;
+    //return this.opcao === this.pergunta.correctOption;
+    return this.opcao === this.opcao;
   }
 
   /**
@@ -232,18 +224,8 @@ export class PerguntaComponent implements OnInit, OnDestroy {
 
       this.modalErro = false;
 
-      this._router.navigate(['rank']);
+      this._router.navigate(['rank']);      
       
-      // this.matchService.salvar(this.match)
-      //   .then((match) => {
-      //     let navigationExtras: NavigationExtras = {
-      //       queryParams: { id: match._id }
-      //     };
-      //     this._router.navigate(['rank'], navigationExtras);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
     }
   }
 
@@ -359,32 +341,26 @@ export class PerguntaComponent implements OnInit, OnDestroy {
     this.mensagem = 'Parabéns você ganhou Um Milhão de Reias!';
     this.modalUmMilhao = false;
     this.incrementarDesempenho(this.pergunta.level, this.pergunta.area);
+    // Pegando informações da partida para salvar
     this.match.player = ' ';
     this.match.data = new Date();
     this.match.hits = this.indiceAtual;
     this.match.score = this.valorSeAcertar;
-
     this.match.performance = this.performance;
+    this.modalErro = false;      
+    localStorage.setItem('match',JSON.stringify(this.match));
     this.modalErro = false;
-
-    this.matchService.salvar(this.match)
-      .then((match) => {
-        let navigationExtras: NavigationExtras = {
-          queryParams: { id: match._id }
-        };
-        this._router.navigate(['rank'], navigationExtras);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this._router.navigate(['rank']);   
   }
 
   mostrarModalReview() {
     this.modalReview = true;
+    this.cronometroService.pausar();
   }
 
   fecharModalReview() {
     this.modalReview = false;
+    this.cronometroService.iniciar();
   }
 
   /*

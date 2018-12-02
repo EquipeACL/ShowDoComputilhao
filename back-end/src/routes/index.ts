@@ -15,6 +15,10 @@ export class Routes {
     prefix = '/api/';
 
     public routes(app): void {
+        app.route('/')
+            .get((req,res)=>{
+                return res.send('API funcionando corretamente!');
+            });
         this.routesQuestion = new RoutesQuestion(app, this.prefix);
         this.routesMatch = new RoutesMatch(app, this.prefix);
         this.routesGame = new RoutesGame(app, this.prefix);
