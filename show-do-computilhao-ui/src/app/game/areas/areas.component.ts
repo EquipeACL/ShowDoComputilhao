@@ -20,12 +20,12 @@ export class AreasComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.audio = new Audio('../../../assets/audios/areas.mp3');
     this.audio.volume = this.audioService.getVolume();
+    this.audio.volume = 0.5;
     this.audio.play();
   }
   ngOnDestroy() {
     this.audio.pause();
   }
-
 
   onclickTodas(value) {
     this.matematica = value;
@@ -44,7 +44,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     if (this.audioService.getVolume() == 0) {
       this.audio.volume = 0;
     } else {
-      this.audio.volume = 1;
+      this.audio.volume = 0.5;
     }
   }
 

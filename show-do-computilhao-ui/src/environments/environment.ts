@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAPI:'/api'
+  urlAPI:'https://equipe-acl-sdc-api.herokuapp.com/api'
 };
 
 /*

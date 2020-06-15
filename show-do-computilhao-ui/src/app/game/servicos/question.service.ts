@@ -16,10 +16,11 @@ export interface IQuestion {
 @Injectable()
 export class QuestionService {
 
+ 
   constructor(private http: Http) { }
 
   buscarTodas(filters: any): Promise<any> {
-    return this.http.get('/api/game/1', { headers: filters })
+    return this.http.get(environment.urlAPI + '/game/1', { headers: filters })
       .toPromise()
       .then((response) => response.json())
       .catch((err) => {

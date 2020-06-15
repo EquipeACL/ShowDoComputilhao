@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "show-do-milhao-ui"
+  "defaultProject": "show-do-milhao-ui",
+  "cli": {
+    "analytics": "5427a828-46cd-400e-82ba-8fac2cb191e2"
+  }
 }
